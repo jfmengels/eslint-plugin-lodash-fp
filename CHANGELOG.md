@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Added
+- Added [`no-unused-result`] rule
 
 ## [1.2.0] - 2016-05-08
 ### Added
@@ -84,6 +85,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`no-partial-of-curried`]: ./docs/rules/no-partial-of-curried.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
 [`no-submodule-destructuring`]: ./docs/rules/no-submodule-destructuring.md
+[`no-unused-result`]: ./docs/rules/no-unused-result.md
 [`prefer-compact`]: ./docs/rules/prefer-compact.md
 [`prefer-composition-grouping`]: ./docs/rules/prefer-composition-grouping.md
 [`prefer-constant`]: ./docs/rules/prefer-constant.md

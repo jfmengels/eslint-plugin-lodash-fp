@@ -38,6 +38,7 @@ Configure it in `package.json`.
 			"lodash-fp/no-for-each": "off",
 			"lodash-fp/no-single-composition": "error",
 			"lodash-fp/no-submodule-destructuring": "error",
+			"lodash-fp/no-unused-result": "error",
 			"lodash-fp/prefer-compact": "error",
 			"lodash-fp/prefer-composition-grouping": "error",
 			"lodash-fp/prefer-constant": ["error", {"arrowFunctions": false}],
@@ -64,6 +65,7 @@ Configure it in `package.json`.
 - [no-for-each](docs/rules/no-for-each.md) - Forbid the use of [`_.forEach`].
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.
 - [no-submodule-destructuring](docs/rules/no-submodule-destructuring.md) - Forbid destructuring of Lodash submodules.
+- [no-unused-result](docs/rules/no-unused-result.md) - Enforce that the result of a Lodash method call gets used.
 - [no-partial-of-curried](docs/rules/no-partial-of-curried.md) - No use of [`_.partial`] on curried Lodash methods.
 - [prefer-compact](docs/rules/prefer-compact.md) - Prefer [`_.compact`] over [`_.filter`] with identity function.
 - [prefer-composition-grouping](docs/rules/prefer-composition-grouping.md) - Prefer grouping similar methods in composition methods.
