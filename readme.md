@@ -28,7 +28,8 @@ Configure it in `package.json`.
 			"lodash-fp"
 		],
 		"rules": {
-			"lodash-fp/use-fp": "off",
+			"lodash-fp/no-chain": "off",
+			"lodash-fp/use-fp": "off"
 		}
 	}
 }
@@ -37,6 +38,7 @@ Configure it in `package.json`.
 
 ## Rules
 
+- [no-chain](docs/rules/no-chain.md) - Forbid the use of `_.chain`.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
 ## Recommended configuration

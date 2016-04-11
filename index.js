@@ -2,6 +2,7 @@
 
 module.exports = {
   rules: {
+    'no-chain': require('./rules/no-chain'),
     'use-fp': require('./rules/use-fp')
   },
   configs: {
@@ -14,6 +15,7 @@ module.exports = {
         sourceType: 'module'
       },
       rules: {
+        'lodash-fp/no-chain': 'error',
         'lodash-fp/use-fp': 'error'
       }
     }
