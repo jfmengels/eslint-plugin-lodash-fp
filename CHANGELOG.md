@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (nothing)
+### Added
+- Added [`no-for-each`] rule
 
 ## [1.0.2] - 2016-04-29
 ### Fixed
@@ -46,6 +47,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`consistent-name`]: ./docs/rules/consistent-name.md
 [`no-argumentless-calls`]: ./docs/rules/no-argumentless-calls.md
 [`no-chain`]: ./docs/rules/no-chain.md
+[`no-for-each`]: ./docs/rules/no-for-each.md
 [`no-extraneous-function-wrapping`]: ./docs/rules/no-extraneous-function-wrapping.md
 [`no-fp`]: ./docs/rules/no-fp.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md

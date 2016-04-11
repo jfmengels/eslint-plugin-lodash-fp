@@ -33,6 +33,7 @@ Configure it in `package.json`.
 			"lodash-fp/no-argumentless-calls": "error",
 			"lodash-fp/no-chain": "error",
 			"lodash-fp/no-extraneous-function-wrapping": "error",
+			"lodash-fp/no-for-each": "off",
 			"lodash-fp/no-single-composition": "error",
 			"lodash-fp/no-submodule-destructuring": "error",
 			"lodash-fp/prefer-compact": "error",
@@ -55,6 +56,7 @@ Configure it in `package.json`.
 - [no-argumentless-calls](docs/rules/no-argumentless-calls.md) - Forbid argument-less calls of Lodash methods.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of [`_.chain`].
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
+- [no-for-each](docs/rules/no-for-each.md) - Forbid the use of [`_.forEach`].
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.
 - [no-submodule-destructuring](docs/rules/no-submodule-destructuring.md) - Forbid destructuring of Lodash submodules.
 - [prefer-compact](docs/rules/prefer-compact.md) - Prefer [`_.compact`] over [`_.filter`] with identity function.
@@ -93,6 +95,7 @@ MIT © [Jeroen Engels](https://github.com/jfmengels)
 [`_.filter`]: (https://lodash.com/docs#filter)
 [`_.flatMap`]: (https://lodash.com/docs#flatMap)
 [`_.flatten`]: (https://lodash.com/docs#flatten)
+[`_.forEach`]: (https://lodash.com/docs#forEach)
 [`_.get`]: (https://lodash.com/docs#get)
 [`_.identity`]: (https://lodash.com/docs#identity)
 [`_.map`]: (https://lodash.com/docs#map)
