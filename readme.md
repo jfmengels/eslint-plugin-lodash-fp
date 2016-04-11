@@ -28,6 +28,7 @@ Configure it in `package.json`.
 			"lodash-fp"
 		],
 		"rules": {
+			"lodash-fp/use-fp": "off",
 		}
 	}
 }
@@ -36,6 +37,7 @@ Configure it in `package.json`.
 
 ## Rules
 
+- [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
 ## Recommended configuration
 
