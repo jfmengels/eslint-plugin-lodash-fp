@@ -19,6 +19,13 @@ function stripLodash(name) {
   return name.slice(lodashPath.length);
 }
 
+function strippedModuleName(strippedName, name) {
+  if (strippedName === 'fp') {
+    return 'fp/' + name;
+  }
+  return name;
+}
+
 /* eslint quote-props: [2, "as-needed"] */
 module.exports = function createAvaRule() {
   var imports = {};
@@ -32,11 +39,7 @@ module.exports = function createAvaRule() {
           if (specifier.type === 'ImportDefaultSpecifier') {
             imports[specifier.local.name] = strippedName;
           } else if (specifier.type === 'ImportSpecifier') {
-            if (strippedName === 'fp') {
-              imports[specifier.local.name] = strippedName + '/' + specifier.imported.name;
-            } else {
-              imports[specifier.local.name] = specifier.imported.name;
-            }
+            imports[specifier.local.name] = strippedModuleName(strippedName, specifier.imported.name);
           }
         });
       }
@@ -45,7 +48,14 @@ module.exports = function createAvaRule() {
       if (node.init && isStaticRequire(node.init)) {
         var name = node.init.arguments[0].value;
         if (isLodashModule(name)) {
-          imports[node.id.name] = stripLodash(name);
+          var strippedName = stripLodash(name);
+          if (node.id.type === 'Identifier') {
+            imports[node.id.name] = strippedName;
+          } else if (node.id.type === 'ObjectPattern') {
+            node.id.properties.forEach(function (prop) {
+              imports[prop.key.name] = strippedModuleName(strippedName, prop.value.name);
+            });
+          }
         }
       }
     },
