@@ -1,6 +1,5 @@
 'use strict';
 
-var clone = require('lodash.clone');
 var assign = require('lodash.assign');
 
 function isStaticRequire(node) {
@@ -33,7 +32,11 @@ module.exports = function createAvaRule() {
           if (specifier.type === 'ImportDefaultSpecifier') {
             imports[specifier.local.name] = strippedName;
           } else if (specifier.type === 'ImportSpecifier') {
-            imports[specifier.local.name] = strippedName + '/' + specifier.imported.name;
+            if (strippedName === 'fp') {
+              imports[specifier.local.name] = strippedName + '/' + specifier.imported.name;
+            } else {
+              imports[specifier.local.name] = specifier.imported.name;
+            }
           }
         });
       }
@@ -75,9 +78,16 @@ module.exports = function createAvaRule() {
 
   Object.defineProperty(rule, 'imports', {
     get: function () {
-      return clone(imports);
+      return imports;
     }
   });
+
+  rule.is = function is(name, expected, canBeNonFp) {
+    if (expected === 'lodash') {
+      return imports[name] === 'fp' || (canBeNonFp && imports[name] === '');
+    }
+    return imports[name] === 'fp/' + expected || (canBeNonFp && imports[name] === expected);
+  };
 
   return rule;
 };

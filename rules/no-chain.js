@@ -2,14 +2,20 @@
 
 var enhance = require('./core/enhance');
 
-function isLodashWrap(node) {
-  return node.type === 'Identifier' && node.name === '_';
+function isLodashWrap(info, node) {
+  return node.type === 'Identifier' &&
+    info.is(node.name, 'lodash', true);
 }
 
-function isChain(node) {
+function isMemberChain(info, node) {
   return node.type === 'MemberExpression' &&
-    node.object.name === '_' &&
-    node.property.name === 'chain';
+    node.property.name === 'chain' &&
+    info.is(node.object.name, 'lodash', true);
+}
+
+function isChain(info, node) {
+  return node.type === 'Identifier' &&
+    info.is(node.name, 'chain', true);
 }
 
 module.exports = function (context) {
@@ -17,7 +23,8 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      if (isLodashWrap(node.callee) || isChain(node.callee)) {
+      var callee = node.callee;
+      if (isLodashWrap(info, callee) || isMemberChain(info, callee) || isChain(info, callee)) {
         context.report(node, 'Unallowed use of chain operations. Use flow/compose instead');
       }
     }

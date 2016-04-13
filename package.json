@@ -33,8 +33,7 @@
   ],
   "dependencies": {
     "eslint": "^2.7.0",
-    "lodash.assign": "^4.0.8",
-    "lodash.clone": "^4.3.2"
+    "lodash.assign": "^4.0.8"
   },
   "devDependencies": {
     "ava": "^0.14.0",
