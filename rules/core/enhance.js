@@ -1,14 +1,7 @@
 'use strict';
 
 var assign = require('lodash.assign');
-
-function isStaticRequire(node) {
-  return node &&
-    node.callee.type === 'Identifier' &&
-    node.callee.name === 'require' &&
-    node.arguments.length === 1 &&
-    node.arguments[0].type === 'Literal';
-}
+var isStaticRequire = require('./staticRequire');
 
 function isLodashModule(name) {
   return name.indexOf('lodash') === 0;

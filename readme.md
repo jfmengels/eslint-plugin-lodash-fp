@@ -29,6 +29,7 @@ Configure it in `package.json`.
 		],
 		"rules": {
 			"lodash-fp/consistent-compose": "off",
+			"lodash-fp/consistent-name": "off",
 			"lodash-fp/no-chain": "error",
 			"lodash-fp/use-fp": "error"
 		}
@@ -40,6 +41,7 @@ Configure it in `package.json`.
 ## Rules
 
 - [consistent-compose](docs/rules/consistent-compose.md) - Enforce a consistent composition method.
+- [consistent-name](docs/rules/consistent-name.md) - Enforce a consistent name for Lodash.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of `_.chain`.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
