@@ -1,8 +1,8 @@
 # Enforce a consistent composition method
 
 It can be pretty confusing to mix left to right and right to left composition methods. This rule enforces the use of a consistent single method to compose functions, among the following:
-- left to right: [`_.flow`](https://lodash.com/docs#flow), [`_.pipe`](https://lodash.com/docs#pipe)
-- right to left: [`_.compose`](https://lodash.com/docs#compose), [`_.flowRight`](https://lodash.com/docs#flowRight)
+- left to right: [`_.flow`, `_.pipe`](https://lodash.com/docs#flow)
+- right to left: [`_.compose`, `_.flowRight`](https://lodash.com/docs#flowRight)
 
 ## Options
 
