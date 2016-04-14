@@ -19,7 +19,7 @@ You can set the option in configuration like this:
 ```js
 import _, {pipe, compose} from 'lodash/fp';
 
-/* lodash-fp/consistent-compose: ["error", "flow"] */
+/* eslint lodash-fp/consistent-compose: ["error", "flow"] */
 pipe(fn1, fn2)(x);
 compose(fn1, fn2)(x);
 _.pipe(fn1, fn2)(x);
@@ -32,7 +32,7 @@ _.flowRight(fn1, fn2)(x);
 ```js
 import _, {flow} from 'lodash/fp';
 
-/* lodash-fp/consistent-compose: ["error", "flow"] */
+/* eslint lodash-fp/consistent-compose: ["error", "flow"] */
 flow(fn1, fn2)(x);
 _.flow(fn1, fn2)(x);
 ```
