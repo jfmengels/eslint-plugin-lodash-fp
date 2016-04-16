@@ -96,7 +96,14 @@ test(() => {
         }]
       },
       {
-        code: code(`var {compose: c} = require('lodash/fp'); compose(fn1, fn2)(x);`, false),
+        code: code(`import {compose as c} from 'lodash/fp'; c(fn1, fn2)(x);`, false),
+        options: ['flow'],
+        errors: [{
+          ...error, message: 'Forbidden use of `compose`. Use `flow` instead'
+        }]
+      },
+      {
+        code: code(`var {c: compose} = require('lodash/fp'); c(fn1, fn2)(x);`, false),
         options: ['flow'],
         errors: [{
           ...error, message: 'Forbidden use of `compose`. Use `flow` instead'

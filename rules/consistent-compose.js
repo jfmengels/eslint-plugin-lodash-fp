@@ -17,7 +17,7 @@ function isMemberCall(info, node) {
 function isCall(info, node) {
   return node.type === 'Identifier' &&
     info.imports[node.name] !== undefined &&
-    getComposeMethod(info, node.name);
+    getComposeMethod(info, info.imports[node.name].replace('fp/', ''));
 }
 
 module.exports = function (context) {
