@@ -1,4 +1,4 @@
-# Forbid the use of `_.chain`
+# Forbid the use of [`_.chain`](https://lodash.com/docs#chain)
 
 In `lodash/fp`, it is not recommended to use [`_.chain(x)`](https://lodash.com/docs#chain) or [`_(x)`](https://lodash.com/docs#_) to chain commands. Instead, it is recommended to use [`_.flow`](https://lodash.com/docs#flow)/[`_.compose/_.flowRight`](https://lodash.com/docs#flowRight).
 

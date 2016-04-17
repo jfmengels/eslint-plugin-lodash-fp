@@ -5,6 +5,7 @@ module.exports = {
     'consistent-compose': require('./rules/consistent-compose'),
     'consistent-name': require('./rules/consistent-name'),
     'no-chain': require('./rules/no-chain'),
+    'no-extraneous-function-wrapping': require('./rules/no-extraneous-function-wrapping'),
     'no-single-composition': require('./rules/no-single-composition'),
     'use-fp': require('./rules/use-fp')
   },
@@ -21,6 +22,7 @@ module.exports = {
         'lodash-fp/consistent-compose': 'off',
         'lodash-fp/consistent-name': ['error', '_'],
         'lodash-fp/no-chain': 'error',
+        'lodash-fp/no-extraneous-function-wrapping': 'error',
         'lodash-fp/no-single-composition': 'error',
         'lodash-fp/use-fp': 'error'
       }
