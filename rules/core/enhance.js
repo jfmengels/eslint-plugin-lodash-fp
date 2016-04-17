@@ -20,7 +20,7 @@ function strippedModuleName(strippedName, name) {
 }
 
 /* eslint quote-props: [2, "as-needed"] */
-module.exports = function createAvaRule() {
+module.exports = function enhance() {
   var imports = {};
 
   // `ImportDeclaration` and `VariableDeclarator` will find Lodash imports and require()

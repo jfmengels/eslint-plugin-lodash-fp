@@ -2,6 +2,7 @@
 
 module.exports = function isStaticRequire(node) {
   return node &&
+    node.callee &&
     node.callee.type === 'Identifier' &&
     node.callee.name === 'require' &&
     node.arguments.length === 1 &&
