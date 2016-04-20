@@ -7,6 +7,7 @@ module.exports = {
     'no-chain': require('./rules/no-chain'),
     'no-extraneous-function-wrapping': require('./rules/no-extraneous-function-wrapping'),
     'no-single-composition': require('./rules/no-single-composition'),
+    'prefer-get': require('./rules/prefer-get'),
     'use-fp': require('./rules/use-fp')
   },
   configs: {
@@ -24,6 +25,7 @@ module.exports = {
         'lodash-fp/no-chain': 'error',
         'lodash-fp/no-extraneous-function-wrapping': 'error',
         'lodash-fp/no-single-composition': 'error',
+        'lodash-fp/prefer-get': 'error',
         'lodash-fp/use-fp': 'error'
       }
     }

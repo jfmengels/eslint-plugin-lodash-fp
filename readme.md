@@ -33,6 +33,7 @@ Configure it in `package.json`.
 			"lodash-fp/no-chain": "error",
 			"lodash-fp/no-extraneous-function-wrapping": "error",
 			"lodash-fp/no-single-composition": "error",
+			"lodash-fp/prefer-get": "error",
 			"lodash-fp/use-fp": "error"
 		}
 	}
@@ -47,6 +48,8 @@ Configure it in `package.json`.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of [`_.chain`](https://lodash.com/docs#chain).
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.
+- [prefer-constant](docs/rules/prefer-constant.md) - Prefer [`_.constant`](https://lodash.com/docs#constant).
+- [prefer-get](docs/rules/prefer-get.md) - Prefer using [`_.get`](https://lodash.com/docs#get) or [`_.has`](https://lodash.com/docs#has) over expression chains like `a && a.b && a.b.c`.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
 ## Recommended configuration
