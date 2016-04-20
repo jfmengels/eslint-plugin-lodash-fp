@@ -1,6 +1,6 @@
 'use strict';
 
-var assign = require('lodash.assign');
+var _ = require('lodash/fp');
 var isStaticRequire = require('./staticRequire');
 
 function isLodashModule(name) {
@@ -90,7 +90,7 @@ module.exports = function enhance() {
         }
       });
 
-      return assign({}, customHandlers, predefinedRules);
+      return _.assign(customHandlers, predefinedRules);
     }
   };
 

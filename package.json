@@ -28,13 +28,13 @@
     "lodash/fp",
     "lodash-fp",
     "fp",
+    "FP",
     "functional",
     "programming"
   ],
   "dependencies": {
     "eslint": "^2.7.0",
-    "lodash.assign": "^4.0.8",
-    "lodash.values": "^4.1.0"
+    "lodash": "^4.11.1"
   },
   "devDependencies": {
     "ava": "^0.14.0",

@@ -1,6 +1,6 @@
 'use strict';
 
-var values = require('lodash.values');
+var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
 var isStaticRequire = require('./core/staticRequire');
 
@@ -34,7 +34,7 @@ module.exports = function (context) {
       }
     },
     'Program:exit': function () {
-      var importValues = values(info.imports);
+      var importValues = _.values(info.imports);
       if (// `lodash`/`lodash/fp` was imported
           (importValues.indexOf('') !== -1 || importValues.indexOf('fp') !== -1) &&
           // but <expectedName> does not refer to either `lodash` or `lodash/fp`
