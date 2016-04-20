@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- Added [`prefer-constant`] rule from [`eslint-plugin-lodash`]
 - Added [`prefer-get`] rule from [`eslint-plugin-lodash`]
 
 ## [0.1.0] - 2016-04-20
@@ -24,12 +25,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Added [`no-chain`] rule
 - Added [`no-fp`] rule
 
-[`no-fp`]: ./docs/rules/no-fp.md
-[`no-chain`]: ./docs/rules/no-chain.md
 [`consistent-compose`]: ./docs/rules/consistent-compose.md
 [`consistent-name`]: ./docs/rules/consistent-name.md
-[`no-single-composition`]: ./docs/rules/no-single-composition.md
+[`no-chain`]: ./docs/rules/no-chain.md
 [`no-extraneous-function-wrapping`]: ./docs/rules/no-extraneous-function-wrapping.md
+[`no-fp`]: ./docs/rules/no-fp.md
+[`no-single-composition`]: ./docs/rules/no-single-composition.md
+[`prefer-constant`]: ./docs/rules/prefer-constant.md
+[`prefer-get`]: ./docs/rules/prefer-get.md
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 

@@ -1,0 +1,62 @@
+# Prefer [`_.constant`] over functions returning literals
+
+When you want a function that always returns the same primitive value, it can be more concise to use [`_.constant`].
+
+## Options
+
+The rule takes one option, a boolean, which indicates whether or not to report arrow functions. Default is `false`, meaning arrow functions will not get reported.
+
+You can set the option in configuration like this:
+
+```js
+"lodash-fp/prefer-constant": ["error", true]
+```
+
+## Rule Details
+
+This rule takes one boolean argument: whether or not to check arrow functions. Default is `false`.
+
+### Fail
+
+```js
+function three() {
+  return 3;
+}
+
+// When including arrow functions
+var pi = () => 3.1415;
+```
+
+### Pass
+
+```js
+var three = _.constant(3);
+
+var pi = _.constant(3.1415);
+
+// When not including arrow functions
+var pi = () => 3.1415;
+
+function identity(x) {
+  return x;
+};
+
+function getObj() {
+  return {a: 1};
+};
+```
+
+The last example is not a warning because it does not return a primitive value: it is therefore not equivalent to `_.constant({a: 1})`, which always returns the same instance. Consider:
+```js
+var getObj = _.constant({a: 1});
+x = getObj();
+x.a = 2;
+getObj()
+// → {a: 2}
+```
+
+## When Not To Use It
+
+If you do not want to enforce using [`_.constant`], you should not use this rule.
+
+[`_.constant`]: https://lodash.com/docs#constant
