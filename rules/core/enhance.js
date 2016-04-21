@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash/fp');
+var lodashUtil = require('./lodashUtil');
 var isStaticRequire = require('./staticRequire');
 
 function isLodashModule(name) {
@@ -19,7 +20,6 @@ function strippedModuleName(strippedName, name) {
   return name;
 }
 
-/* eslint quote-props: [2, "as-needed"] */
 module.exports = function enhance() {
   var imports = {};
 
@@ -66,13 +66,12 @@ module.exports = function enhance() {
           }
         }
       }
-    },
-    'Program:exit': function () {
-      imports = {};
     }
   };
 
-  var rule = {
+  return {
+    imports: imports,
+    helpers: lodashUtil(imports),
     merge: function (customHandlers) {
       Object.keys(predefinedRules).forEach(function (key) {
         var predef = predefinedRules[key];
@@ -93,42 +92,4 @@ module.exports = function enhance() {
       return _.assign(customHandlers, predefinedRules);
     }
   };
-
-  rule.imports = imports;
-
-  /**
-   * Checks if the identifier `id` corresponds to Lodash or one of its modules.
-   * @param  {string}  id          The name of the identifier.
-   * @param  {string}  expected    The name of the method. Special case for 'lodash' which checks for the `lodash` object
-   * @param  {boolean}  canBeNonFp If false or undefined, will only check if method is the FP version.
-*                              		 If true, will check both FP and
-   * @example
-   * imports = {
-   *   '_': '', // vanilla lodash
-   *   'F': 'fp', // FP lodash
-   *   'vFind': 'find', // vanilla find
-   *   'fpFind': 'fp/find', // FP find
-   * }
-   *
-   * rule.is('_', 'lodash') // => false
-   * rule.is('_', 'lodash', true) // => true
-   * rule.is('F', 'lodash') // => true
-   * rule.is('F', 'lodash', true) // => true
-   *
-   * rule.is('vFind', 'find') // => false
-   * rule.is('vFind', 'find', true) // => true
-   * rule.is('fpFind', 'find') // => true
-   * rule.is('fpFind', 'find', true) // => true
-   *
-   * @return {Boolean}            True if the id matches the expected method.
-   */
-  rule.is = function is(id, expected, canBeNonFp) {
-    var imp = imports[id];
-    if (expected === 'lodash') {
-      return imp === 'fp' || (canBeNonFp && imp === '');
-    }
-    return imp === 'fp/' + expected || (canBeNonFp && imp === expected);
-  };
-
-  return rule;
 };

@@ -36,9 +36,10 @@ module.exports = function (context) {
     'Program:exit': function () {
       var importValues = _.values(info.imports);
       if (// `lodash`/`lodash/fp` was imported
-          (importValues.indexOf('') !== -1 || importValues.indexOf('fp') !== -1) &&
-          // but <expectedName> does not refer to either `lodash` or `lodash/fp`
-          !info.is(expectedName, 'lodash', true)) {
+        (importValues.indexOf('') !== -1 || importValues.indexOf('fp') !== -1) &&
+        // but <expectedName> does not refer to either `lodash` or `lodash/fp`
+        !info.helpers.isAnyLodash(expectedName)
+      ) {
         context.report(importNode, 'Lodash should be imported as `' + expectedName + '`');
       }
     }
