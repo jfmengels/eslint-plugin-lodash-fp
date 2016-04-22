@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- Added [`prefer-flat-map`] rule
 - Added [`prefer-constant`] rule from [`eslint-plugin-lodash`]
 - Added [`prefer-get`] rule from [`eslint-plugin-lodash`]
 
@@ -33,6 +34,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
 [`prefer-constant`]: ./docs/rules/prefer-constant.md
 [`prefer-get`]: ./docs/rules/prefer-get.md
+[`prefer-flat-map`]: ./docs/rules/prefer-flat-map.md
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 

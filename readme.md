@@ -34,6 +34,7 @@ Configure it in `package.json`.
 			"lodash-fp/no-extraneous-function-wrapping": "error",
 			"lodash-fp/no-single-composition": "error",
 			"lodash-fp/prefer-constant": ["error", false],
+			"lodash-fp/prefer-flat-map": "error",
 			"lodash-fp/prefer-get": "error",
 			"lodash-fp/use-fp": "error"
 		}
@@ -50,6 +51,7 @@ Configure it in `package.json`.
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.
 - [prefer-constant](docs/rules/prefer-constant.md) - Prefer [`_.constant`](https://lodash.com/docs#constant) over functions returning literals.
+- [prefer-flat-map](docs/rules/prefer-flat-map.md) - Prefer [`_.flatMap`](https://lodash.com/docs#flatMap) over consecutive [`_.map`](https://lodash.com/docs#map) and [`_.flatten`](https://lodash.com/docs#flatten).
 - [prefer-get](docs/rules/prefer-get.md) - Prefer [`_.get`](https://lodash.com/docs#get) over multiple `&&`.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 

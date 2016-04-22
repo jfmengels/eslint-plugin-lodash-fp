@@ -3,7 +3,9 @@
 var _ = require('lodash/fp');
 
 module.exports = function (imports) {
+  var isIdentifier = _.matches({type: 'Identifier'});
   var isCallExpression = _.matches({type: 'CallExpression'});
+  var isMemberExpression = _.matches({type: 'MemberExpression'});
 
   // Is X the Lodash object?
 
@@ -53,6 +55,7 @@ module.exports = function (imports) {
   var isMethod = _.curry(function _isMethod(_methods, id) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
     var imp = imports[id];
+    console.error('imp', imp, id);
     return imp && _.startsWith('fp/', imp) && _.find(_.eq(imp.replace('fp/', '')), methods);
   });
 
@@ -66,6 +69,27 @@ module.exports = function (imports) {
     return isMethod(_methods, id) || isVanillaMethod(_methods, id);
   });
 
+  // Is `X.Y` a Lodash method?
+  var isMemberOf = _.curry(function _isMemberOf(_methods, node) {
+    return isMemberExpression(node) &&
+      isIdentifier(node.object) &&
+      isIdentifier(node.property) &&
+      isLodash(node.object.name) &&
+      node.property.name;
+  });
+
+  var compositionMethods = ['compose', 'flow', 'flowRight', 'pipe'];
+
+  var getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
+    var methodNames = node.arguments.map(function (arg) {
+      return isLodashCallOf('map', arg) || isMemberOf('flatten', arg);
+    });
+    if (name === 'flowRight' || name === 'compose') {
+      return _.reverse(methodNames);
+    }
+    return methodNames;
+  });
+
   return {
     isAnyLodash: isAnyLodash,
     isLodash: isLodash,
@@ -76,6 +100,11 @@ module.exports = function (imports) {
 
     isAnyMethod: isAnyMethod,
     isMethod: isMethod,
-    isVanillaMethod: isVanillaMethod
+    isVanillaMethod: isVanillaMethod,
+
+    isMemberOf: isMemberOf,
+
+    isComposeMethod: isLodashCallOf(compositionMethods),
+    getComposeMethodArgMethods: getComposeMethodArgMethods
   };
 };
