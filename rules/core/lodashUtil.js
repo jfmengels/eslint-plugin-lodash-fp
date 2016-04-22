@@ -55,7 +55,6 @@ module.exports = function (imports) {
   var isMethod = _.curry(function _isMethod(_methods, id) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
     var imp = imports[id];
-    console.error('imp', imp, id);
     return imp && _.startsWith('fp/', imp) && _.find(_.eq(imp.replace('fp/', '')), methods);
   });
 

@@ -30,6 +30,7 @@ Configure it in `package.json`.
 		"rules": {
 			"lodash-fp/consistent-compose": "off",
 			"lodash-fp/consistent-name": ["error", "_"],
+			"lodash-fp/no-argumentless-calls": "error",
 			"lodash-fp/no-chain": "error",
 			"lodash-fp/no-extraneous-function-wrapping": "error",
 			"lodash-fp/no-single-composition": "error",
@@ -47,6 +48,7 @@ Configure it in `package.json`.
 
 - [consistent-compose](docs/rules/consistent-compose.md) - Enforce a consistent composition method.
 - [consistent-name](docs/rules/consistent-name.md) - Enforce a consistent name for Lodash.
+- [no-argumentless-calls](docs/rules/no-argumentless-calls.md) - Forbid argument-less calls of Lodash methods.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of [`_.chain`](https://lodash.com/docs#chain).
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.

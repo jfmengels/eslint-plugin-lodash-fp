@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- Added [`no-argumentless-calls`] rule
 - Added [`prefer-flat-map`] rule
 - Added [`prefer-constant`] rule from [`eslint-plugin-lodash`]
 - Added [`prefer-get`] rule from [`eslint-plugin-lodash`]
@@ -35,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`prefer-constant`]: ./docs/rules/prefer-constant.md
 [`prefer-get`]: ./docs/rules/prefer-get.md
 [`prefer-flat-map`]: ./docs/rules/prefer-flat-map.md
+[`no-argumentless-calls`]: ./docs/rules/no-argumentless-calls.md
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
