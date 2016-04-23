@@ -31,7 +31,8 @@ test(() => {
       code(`flow(fn);`),
       code(`pipe(fn);`),
       code(`flowRight(fn);`),
-      code(`compose(fn);`)
+      code(`compose(fn);`),
+      `import find from 'lodash/fp/find'; find();`
     ],
     invalid: [
       {

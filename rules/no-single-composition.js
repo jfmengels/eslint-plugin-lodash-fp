@@ -15,7 +15,7 @@ module.exports = function (context) {
         return;
       }
       var name = match(node);
-      if (name !== false) {
+      if (name) {
         context.report(node, '`' + name + '` should have at least two arguments');
       }
     }
