@@ -69,7 +69,7 @@ module.exports = function (imports) {
   });
 
   // Is `X.Y` a Lodash method?
-  var isMemberOf = _.curry(function _isMemberOf(_methods, node) {
+  var isMember = _.curry(function _isMember(node) {
     return isMemberExpression(node) &&
       isIdentifier(node.object) &&
       isIdentifier(node.property) &&
@@ -81,7 +81,7 @@ module.exports = function (imports) {
 
   var getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
     var methodNames = node.arguments.map(function (arg) {
-      return isLodashCallOf('map', arg) || isMemberOf('flatten', arg);
+      return isLodashCall(arg) || isMember(arg);
     });
     if (name === 'flowRight' || name === 'compose') {
       return _.reverse(methodNames);
@@ -101,7 +101,7 @@ module.exports = function (imports) {
     isMethod: isMethod,
     isVanillaMethod: isVanillaMethod,
 
-    isMemberOf: isMemberOf,
+    isMember: isMember,
 
     isComposeMethod: isLodashCallOf(compositionMethods),
     getComposeMethodArgMethods: getComposeMethodArgMethods

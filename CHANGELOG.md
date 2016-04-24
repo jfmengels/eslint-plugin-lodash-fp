@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- Added [`prefer-composition-grouping`] rule
 - Added [`no-submodule-destructuring`] rule
 - Added [`no-argumentless-calls`] rule
 - Added [`prefer-flat-map`] rule

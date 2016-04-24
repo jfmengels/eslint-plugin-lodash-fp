@@ -9,7 +9,9 @@ module.exports = {
     'no-extraneous-function-wrapping': require('./rules/no-extraneous-function-wrapping'),
     'no-single-composition': require('./rules/no-single-composition'),
     'no-submodule-destructuring': require('./rules/no-submodule-destructuring'),
+    'prefer-composition-grouping': require('./rules/prefer-composition-grouping'),
     'prefer-constant': require('./rules/prefer-constant'),
+    'prefer-flat-map': require('./rules/prefer-flat-map'),
     'prefer-get': require('./rules/prefer-get'),
     'use-fp': require('./rules/use-fp')
   },
@@ -30,7 +32,9 @@ module.exports = {
         'lodash-fp/no-extraneous-function-wrapping': 'error',
         'lodash-fp/no-single-composition': 'error',
         'lodash-fp/no-submodule-destructuring': 'error',
+        'lodash-fp/prefer-composition-grouping': 'error',
         'lodash-fp/prefer-constant': ['error', false],
+        'lodash-fp/prefer-flat-map': 'error',
         'lodash-fp/prefer-get': 'error',
         'lodash-fp/use-fp': 'error'
       }
