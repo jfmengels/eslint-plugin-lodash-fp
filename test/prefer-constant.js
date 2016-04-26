@@ -31,12 +31,12 @@ test(() => {
       {
         code: 'var x = () => 1;',
         parserOptions: {ecmaVersion: 6},
-        options: [false]
+        options: [{arrowFunctions: false}]
       },
       {
         code: 'var x = () => {return 1; };',
         parserOptions: {ecmaVersion: 6},
-        options: [false]
+        options: [{arrowFunctions: false}]
       }
     ],
     invalid: [
@@ -52,12 +52,12 @@ test(() => {
       }, {
         code: 'var x = () => 1;',
         parserOptions: {ecmaVersion: 6},
-        options: [true],
+        options: [{arrowFunctions: true}],
         errors
       }, {
         code: 'var x = () => { return 1; };',
         parserOptions: {ecmaVersion: 6},
-        options: [true],
+        options: [{arrowFunctions: true}],
         errors
       }, {
         code: 'function one() { return 1; }',

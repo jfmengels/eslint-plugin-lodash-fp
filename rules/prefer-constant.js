@@ -3,7 +3,8 @@
 var astUtil = require('./core/astUtil');
 
 module.exports = function (context) {
-  var shouldCheckArrowFunctions = context.options[0] === true;
+  var options = context.options[0] || {};
+  var shouldCheckArrowFunctions = options.arrowFunctions === true;
 
   function isCompletelyLiteral(node) {
     switch (node.type) {
@@ -40,6 +41,11 @@ module.exports = function (context) {
 
 module.exports.schema = [
   {
-    type: 'boolean'
+    type: 'object',
+    properties: {
+      arrowFunctions: {
+        type: 'boolean'
+      }
+    }
   }
 ];

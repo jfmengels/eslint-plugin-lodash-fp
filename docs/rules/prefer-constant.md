@@ -4,17 +4,15 @@ When you want a function that always returns the same primitive value, it can be
 
 ## Options
 
-The rule takes one option, a boolean, which indicates whether or not to report arrow functions. Default is `false`, meaning arrow functions will not get reported.
+This rule supports the following options:
 
-You can set the option in configuration like this:
+`arrowFunctions`: Whether or not to to report arrow functions. Default is `false`, meaning arrow functions will not get reported.
+
+You can set the options like this:
 
 ```js
-"lodash-fp/prefer-constant": ["error", true]
+"lodash-fp/prefer-constant": ["error", {"arrowFunctions": true}]
 ```
-
-## Rule Details
-
-This rule takes one boolean argument: whether or not to check arrow functions. Default is `false`.
 
 ### Fail
 

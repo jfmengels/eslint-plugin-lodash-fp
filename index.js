@@ -34,7 +34,7 @@ module.exports = {
         'lodash-fp/no-single-composition': 'error',
         'lodash-fp/no-submodule-destructuring': 'error',
         'lodash-fp/prefer-composition-grouping': 'error',
-        'lodash-fp/prefer-constant': ['error', false],
+        'lodash-fp/prefer-constant': ['error', {arrowFunctions: false}],
         'lodash-fp/prefer-flat-map': 'error',
         'lodash-fp/prefer-get': 'error',
         'lodash-fp/prefer-identify': ['error', {arrowFunctions: false}],
