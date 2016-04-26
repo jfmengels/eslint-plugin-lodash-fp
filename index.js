@@ -13,6 +13,7 @@ module.exports = {
     'prefer-constant': require('./rules/prefer-constant'),
     'prefer-flat-map': require('./rules/prefer-flat-map'),
     'prefer-get': require('./rules/prefer-get'),
+    'prefer-identify': require('./rules/prefer-identify'),
     'use-fp': require('./rules/use-fp')
   },
   configs: {
@@ -36,6 +37,7 @@ module.exports = {
         'lodash-fp/prefer-constant': ['error', false],
         'lodash-fp/prefer-flat-map': 'error',
         'lodash-fp/prefer-get': 'error',
+        'lodash-fp/prefer-identify': ['error', {arrowFunctions: false}],
         'lodash-fp/use-fp': 'error'
       }
     }

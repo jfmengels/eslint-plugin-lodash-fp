@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- Added [`prefer-identity`] rule
 - Added [`prefer-composition-grouping`] rule
 - Added [`no-submodule-destructuring`] rule
 - Added [`no-argumentless-calls`] rule
@@ -31,15 +32,17 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 [`consistent-compose`]: ./docs/rules/consistent-compose.md
 [`consistent-name`]: ./docs/rules/consistent-name.md
+[`no-argumentless-calls`]: ./docs/rules/no-argumentless-calls.md
 [`no-chain`]: ./docs/rules/no-chain.md
 [`no-extraneous-function-wrapping`]: ./docs/rules/no-extraneous-function-wrapping.md
 [`no-fp`]: ./docs/rules/no-fp.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
-[`prefer-constant`]: ./docs/rules/prefer-constant.md
-[`prefer-get`]: ./docs/rules/prefer-get.md
-[`prefer-flat-map`]: ./docs/rules/prefer-flat-map.md
-[`no-argumentless-calls`]: ./docs/rules/no-argumentless-calls.md
 [`no-submodule-destructuring`]: ./docs/rules/no-submodule-destructuring.md
+[`prefer-constant`]: ./docs/rules/prefer-constant.md
+[`prefer-composition-grouping`]: ./docs/rules/prefer-composition-grouping.md
+[`prefer-identity`]: ./docs/rules/prefer-identity.md
+[`prefer-flat-map`]: ./docs/rules/prefer-flat-map.md
+[`prefer-get`]: ./docs/rules/prefer-get.md
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 

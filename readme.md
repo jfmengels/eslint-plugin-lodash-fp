@@ -39,6 +39,7 @@ Configure it in `package.json`.
 			"lodash-fp/prefer-constant": ["error", false],
 			"lodash-fp/prefer-flat-map": "error",
 			"lodash-fp/prefer-get": "error",
+			"lodash-fp/prefer-identity": ["error", {"arrowFunctions": false}],
 			"lodash-fp/use-fp": "error"
 		}
 	}
@@ -59,6 +60,7 @@ Configure it in `package.json`.
 - [prefer-constant](docs/rules/prefer-constant.md) - Prefer [`_.constant`](https://lodash.com/docs#constant) over functions returning literals.
 - [prefer-flat-map](docs/rules/prefer-flat-map.md) - Prefer [`_.flatMap`](https://lodash.com/docs#flatMap) over consecutive [`_.map`](https://lodash.com/docs#map) and [`_.flatten`](https://lodash.com/docs#flatten).
 - [prefer-get](docs/rules/prefer-get.md) - Prefer [`_.get`](https://lodash.com/docs#get) over multiple `&&`.
+- [prefer-identify](docs/rules/prefer-identify.md) - Prefer [`_.identify`](https://lodash.com/docs#identify) over functions returning their argument.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
 ## Recommended configuration
