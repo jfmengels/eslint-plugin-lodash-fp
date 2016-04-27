@@ -13,8 +13,3 @@ module.exports = function (context) {
     }
   });
 };
-
-module.exports.schema = [{
-  type: 'string',
-  enum: ['flow', 'flowRight', 'compose', 'pipe']
-}];
