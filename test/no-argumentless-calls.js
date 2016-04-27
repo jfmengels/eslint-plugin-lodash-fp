@@ -23,7 +23,12 @@ test(() => {
     valid: [
       code('foo()'),
       code('_.map(foo)'),
-      code(`_.flow(_.map(f1), _.flatten)`)
+      code(`_.flow(_.map(f1), _.flatten)`),
+      // Exceptions
+      code('_.uniqueId()'),
+      code('_.now()'),
+      code('_.noConflict()'),
+      code('_.runInContext()')
     ],
     invalid: [
       {
