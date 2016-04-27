@@ -62,7 +62,7 @@ Configure it in `package.json`.
 - [prefer-constant](docs/rules/prefer-constant.md) - Prefer [`_.constant`] over functions returning literals.
 - [prefer-flat-map](docs/rules/prefer-flat-map.md) - Prefer [`_.flatMap`] over consecutive [`_.map`] and [`_.flatten`].
 - [prefer-get](docs/rules/prefer-get.md) - Prefer [`_.get`] over multiple `&&`.
-- [prefer-identify](docs/rules/prefer-identify.md) - Prefer [`_.identify`] over functions returning their argument.
+- [prefer-identity](docs/rules/prefer-identity.md) - Prefer [`_.identity`] over functions returning their argument.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
 ## Recommended configuration
@@ -94,5 +94,5 @@ MIT © [Jeroen Engels](https://github.com/jfmengels)
 [`_.flatMap`]: (https://lodash.com/docs#flatMap)
 [`_.flatten`]: (https://lodash.com/docs#flatten)
 [`_.get`]: (https://lodash.com/docs#get)
-[`_.identify`]: (https://lodash.com/docs#identify)
+[`_.identity`]: (https://lodash.com/docs#identity)
 [`_.map`]: (https://lodash.com/docs#map)

@@ -1,6 +1,5 @@
 # Forbid destructuring of Lodash submodules
 
-no-submodule-destructuring
 It is possible to use destructuring of Lodash modules, but doing it on a submodule will result in unexpected behavior.
 
 ### Fail
