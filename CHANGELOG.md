@@ -6,6 +6,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (nothing)
 
+## [1.0.1] - 2016-04-28
+- Problems with `npm` while publishing, added missing files.
+
 ## [1.0.0] - 2016-04-28
 ### Added
 - Added [`prefer-compact`] rule
@@ -55,6 +58,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 
 [Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.0...master
+[1.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.0.3...v0.1.0
 [0.0.3]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.0.2...v0.0.3
