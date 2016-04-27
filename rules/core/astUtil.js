@@ -289,6 +289,27 @@ function isIndexOfCall(node) {
   return isMethodCall(node) && getMethodName(node) === 'indexOf';
 }
 
+var isFunction = _.includes(_, ['FunctionExpression', 'FunctionDeclaration', 'ArrowFunctionExpression']);
+
+function isIdentityFunction(node) {
+  if (!isFunction(node.type) || node.params.length !== 1 || !node.body) {
+    return false;
+  }
+  var returnedElement;
+  if (node.body.type === 'BlockStatement') {
+    var subBody = node.body.body;
+    if (subBody.length !== 1 || subBody[0].type !== 'ReturnStatement') {
+      return false;
+    }
+    returnedElement = subBody[0].argument;
+  } else {
+    returnedElement = node.body;
+  }
+
+  return returnedElement.type === 'Identifier' &&
+    returnedElement.name === node.params[0].name;
+}
+
 module.exports = {
   getCaller: getCaller,
   getMethodName: getMethodName,
@@ -310,5 +331,6 @@ module.exports = {
   isEqEqEq: isEqEqEq,
   comparisonType: comparisonType,
   getExpressionComparedToInt: getExpressionComparedToInt,
-  isIndexOfCall: isIndexOfCall
+  isIndexOfCall: isIndexOfCall,
+  isIdentityFunction: isIdentityFunction
 };

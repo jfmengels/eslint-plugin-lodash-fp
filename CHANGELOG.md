@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- Added [`prefer-compact`] rule
 - Added [`prefer-identity`] rule
 - Added [`prefer-composition-grouping`] rule
 - Added [`no-submodule-destructuring`] rule
