@@ -54,7 +54,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@jfmengels]: https://github.com/jfmengels
 
 
-[1.0.0]: https://github.com/benmosher/eslint-plugin-import/compare/v0.1.0...v1.0.0
-[0.1.0]: https://github.com/benmosher/eslint-plugin-import/compare/v0.0.3...v0.1.0
-[0.0.3]: https://github.com/benmosher/eslint-plugin-import/compare/v0.0.2...v0.0.3
-[0.0.2]: https://github.com/benmosher/eslint-plugin-import/compare/v0.0.1...v0.0.2
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.0...master
+[1.0.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.0.3...v0.1.0
+[0.0.3]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.0.1...v0.0.2
