@@ -34,13 +34,16 @@ test(() => {
       {
         code: `import _ from 'lodash';`,
         errors
-      }, {
+      },
+      {
         code: `import _ from 'lodash/bindAll';`,
         errors
-      }, {
+      },
+      {
         code: `var _ = require('lodash');`,
         errors
-      }, {
+      },
+      {
         code: `var bindAll = require('lodash/bindAll');`,
         errors
       }

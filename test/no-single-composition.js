@@ -40,7 +40,8 @@ test(() => {
         errors: [{
           ...error, message: '`flow` should have at least two arguments'
         }]
-      }, {
+      },
+      {
         code: code(`_.flow(fn);`),
         errors: [{
           ...error, message: '`flow` should have at least two arguments'
@@ -51,7 +52,8 @@ test(() => {
         errors: [{
           ...error, message: '`pipe` should have at least two arguments'
         }]
-      }, {
+      },
+      {
         code: code(`_.pipe(fn);`),
         errors: [{
           ...error, message: '`pipe` should have at least two arguments'
@@ -62,7 +64,8 @@ test(() => {
         errors: [{
           ...error, message: '`flowRight` should have at least two arguments'
         }]
-      }, {
+      },
+      {
         code: code(`_.flowRight(fn);`),
         errors: [{
           ...error, message: '`flowRight` should have at least two arguments'

@@ -43,23 +43,28 @@ test(() => {
       {
         code: 'var x = function() { return 1; };',
         errors
-      }, {
+      },
+      {
         code: 'var x = function() { return 1 + 1; };',
         errors
-      }, {
+      },
+      {
         code: 'var x = function() { return typeof 1; };',
         errors
-      }, {
+      },
+      {
         code: 'var x = () => 1;',
         parserOptions: {ecmaVersion: 6},
         options: [{arrowFunctions: true}],
         errors
-      }, {
+      },
+      {
         code: 'var x = () => { return 1; };',
         parserOptions: {ecmaVersion: 6},
         options: [{arrowFunctions: true}],
         errors
-      }, {
+      },
+      {
         code: 'function one() { return 1; }',
         errors
       }

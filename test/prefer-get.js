@@ -27,20 +27,25 @@ test(() => {
       `a && a.b && typeof a.b === 'number'`,
       `a && a.b && a.b.c + a.b.d`
     ],
-    invalid: [{
-      code: `x = a && a.b && a.b.c === 8`,
-      errors
-    }, {
-      code: `x = a && a.b && a['b'].c && a.b.c.d`,
-      errors
-    }, {
-      code: `x = a && a.b`,
-      errors,
-      options: [2]
-    }, {
-      code: `x = a && a.b && a.b.c && a.b.c.d`,
-      errors,
-      options: [2]
-    }]
+    invalid: [
+      {
+        code: `x = a && a.b && a.b.c === 8`,
+        errors
+      },
+      {
+        code: `x = a && a.b && a['b'].c && a.b.c.d`,
+        errors
+      },
+      {
+        code: `x = a && a.b`,
+        errors,
+        options: [2]
+      },
+      {
+        code: `x = a && a.b && a.b.c && a.b.c.d`,
+        errors,
+        options: [2]
+      }
+    ]
   });
 });
