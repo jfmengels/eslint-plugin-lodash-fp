@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- (nothing)
+
+## [1.0.0] - 2016-04-28
+### Added
 - Added [`prefer-compact`] rule
 - Added [`prefer-identity`] rule
 - Added [`prefer-composition-grouping`] rule
@@ -26,7 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 - Added [`consistent-compose`] rule
 
-## [0.0.1] - 2016-04-12
+## 0.0.1 - 2016-04-12
 ### Added
 - Added [`no-chain`] rule
 - Added [`no-fp`] rule
@@ -48,3 +52,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
 [@jfmengels]: https://github.com/jfmengels
+
+
+[1.0.0]: https://github.com/benmosher/eslint-plugin-import/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/benmosher/eslint-plugin-import/compare/v0.0.3...v0.1.0
+[0.0.3]: https://github.com/benmosher/eslint-plugin-import/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/benmosher/eslint-plugin-import/compare/v0.0.1...v0.0.2
