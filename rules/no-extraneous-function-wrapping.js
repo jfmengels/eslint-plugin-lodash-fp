@@ -37,7 +37,7 @@ function isExtraneous(info, argNode) {
     return false;
   }
 
-  var methodName = info.helpers.isLodashCall(callExpression);
+  var methodName = info.helpers.isMethodCall(callExpression);
   if (!methodName && callExpression.callee.type !== 'CallExpression') {
     return false;
   }

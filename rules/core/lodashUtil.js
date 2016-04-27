@@ -25,47 +25,52 @@ module.exports = function (imports) {
     return _.find(_.eq(name), methods);
   });
 
-  function isMemberCall(node) {
-    return node.type === 'MemberExpression' &&
+  function isMemberMethod(node) {
+    return isMemberExpression(node) &&
       isLodash(node.object.name) &&
       node.property.name;
   }
 
-  function isCall(node) {
-    return node.type === 'Identifier' &&
+  function isAnyMemberMethod(node) {
+    return isMemberExpression(node) &&
+      isAnyLodash(node.object.name) &&
+      node.property.name;
+  }
+
+  function isIdentifierMethod(node) {
+    return isIdentifier(node) &&
       imports[node.name] !== undefined &&
       imports[node.name].replace('fp/', '');
   }
 
-  var isLodashCall = function _isLodashCall(node) {
-    if (!isCallExpression(node)) {
-      return false;
-    }
-    return isMemberCall(node.callee) || isCall(node.callee);
-  };
+  function isMethod(node) {
+    return isMemberMethod(node) || isIdentifierMethod(node);
+  }
 
-  var isLodashCallOf = _.curry(function _isLodashCallOf(_methods, node) {
+  function isAnyMethod(node) {
+    return isAnyMemberMethod(node) || isIdentifierMethod(node);
+  }
+
+  var isMethodOf = _.curry(function _isMethodOf(_methods, node) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
-    var name = isLodashCall(node);
+    var name = isMethod(node);
     return name && findName(methods, name);
   });
 
-  // Is X a Lodash method?
-
-  var isMethod = _.curry(function _isMethod(_methods, id) {
+  var isAnyMethodOf = _.curry(function _isAnyMethodOf(_methods, node) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
-    var imp = imports[id];
-    return imp && _.startsWith('fp/', imp) && _.find(_.eq(imp.replace('fp/', '')), methods);
+    var name = isAnyMethod(node);
+    return name && findName(methods, name);
   });
 
-  var isVanillaMethod = _.curry(function _isVanillaMethod(_methods, id) {
-    var methods = _.isArray(_methods) ? _methods : [_methods];
-    var imp = imports[id];
-    return imp && _.find(_.eq(imp), methods);
-  });
+  function isMethodCall(node) {
+    return isCallExpression(node) && isMethod(node.callee);
+  }
 
-  var isAnyMethod = _.curry(function _isAnyMethod(_methods, id) {
-    return isMethod(_methods, id) || isVanillaMethod(_methods, id);
+  var isMethodCallOf = _.curry(function _isMethodCallOf(_methods, node) {
+    var methods = _.isArray(_methods) ? _methods : [_methods];
+    var name = isMethodCall(node);
+    return name && findName(methods, name);
   });
 
   // Is `X.Y` a Lodash method?
@@ -81,7 +86,7 @@ module.exports = function (imports) {
 
   var getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
     var methodNames = node.arguments.map(function (arg) {
-      return isLodashCall(arg) || isMember(arg);
+      return isMethodCall(arg) || isMember(arg);
     });
     if (name === 'flowRight' || name === 'compose') {
       return _.reverse(methodNames);
@@ -90,20 +95,22 @@ module.exports = function (imports) {
   });
 
   return {
+    isIdentifier: isIdentifier,
+    isCallExpression: isCallExpression,
+    isMemberExpression: isMemberExpression,
+
     isAnyLodash: isAnyLodash,
     isLodash: isLodash,
     isVanillaLodash: isVanillaLodash,
 
-    isLodashCall: isLodashCall,
-    isLodashCallOf: isLodashCallOf,
+    isMethodCall: isMethodCall,
+    isMethodCallOf: isMethodCallOf,
 
-    isAnyMethod: isAnyMethod,
     isMethod: isMethod,
-    isVanillaMethod: isVanillaMethod,
+    isMethodOf: isMethodOf,
+    isAnyMethodOf: isAnyMethodOf,
 
-    isMember: isMember,
-
-    isComposeMethod: isLodashCallOf(compositionMethods),
+    isComposeMethod: isMethodCallOf(compositionMethods),
     getComposeMethodArgMethods: getComposeMethodArgMethods
   };
 };

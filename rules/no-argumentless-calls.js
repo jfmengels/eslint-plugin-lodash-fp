@@ -7,7 +7,7 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      if (node.arguments.length === 0 && info.helpers.isLodashCall(node) !== false) {
+      if (node.arguments.length === 0 && info.helpers.isMethodCall(node) !== false) {
         context.report(node, 'No call without arguments');
       }
     }

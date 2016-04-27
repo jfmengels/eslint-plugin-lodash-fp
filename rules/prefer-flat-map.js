@@ -25,8 +25,8 @@ function hasConsecutiveMapAndFlatten(methodNames) {
 module.exports = function (context) {
   var info = enhance();
 
-  var isFlattenCall = info.helpers.isLodashCallOf('flatten');
-  var isMapCall = info.helpers.isLodashCallOf('map');
+  var isFlattenCall = info.helpers.isMethodCallOf('flatten');
+  var isMapCall = info.helpers.isMethodCallOf('map');
 
   function isDirectCall(node) {
     return isFlattenCall(node) && isMapCall(node.arguments[0]);

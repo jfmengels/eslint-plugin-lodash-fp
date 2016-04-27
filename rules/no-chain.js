@@ -7,17 +7,6 @@ function isLodashWrap(helpers, node) {
     helpers.isAnyLodash(node.name);
 }
 
-function isMemberChain(helpers, node) {
-  return node.type === 'MemberExpression' &&
-    node.property.name === 'chain' &&
-    helpers.isAnyLodash(node.object.name);
-}
-
-function isChain(helpers, node) {
-  return node.type === 'Identifier' &&
-    helpers.isAnyMethod('chain', node.name);
-}
-
 module.exports = function (context) {
   var info = enhance();
   var helpers = info.helpers;
@@ -25,7 +14,7 @@ module.exports = function (context) {
   return info.merge({
     CallExpression: function (node) {
       var callee = node.callee;
-      if (isLodashWrap(helpers, callee) || isMemberChain(helpers, callee) || isChain(helpers, callee)) {
+      if (isLodashWrap(helpers, callee) || info.helpers.isAnyMethodOf('chain', callee)) {
         context.report(node, 'Unallowed use of chain operations. Use flow/compose instead');
       }
     }

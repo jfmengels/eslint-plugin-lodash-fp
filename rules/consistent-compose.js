@@ -11,7 +11,7 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      var name = info.helpers.isLodashCall(node);
+      var name = info.helpers.isMethodCall(node);
       if (name !== false && name !== composeMethod) {
         context.report(node, 'Forbidden use of `' + name + '`. Use `' + composeMethod + '` instead');
       }

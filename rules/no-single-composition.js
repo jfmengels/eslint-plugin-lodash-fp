@@ -7,7 +7,7 @@ var composeMethods = ['compose', 'flow', 'flowRight', 'pipe'];
 module.exports = function (context) {
   var info = enhance();
 
-  var match = info.helpers.isLodashCallOf(composeMethods);
+  var match = info.helpers.isMethodCallOf(composeMethods);
 
   return info.merge({
     CallExpression: function (node) {
