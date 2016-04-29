@@ -14,7 +14,7 @@ module.exports = {
     'prefer-constant': require('./rules/prefer-constant'),
     'prefer-flat-map': require('./rules/prefer-flat-map'),
     'prefer-get': require('./rules/prefer-get'),
-    'prefer-identify': require('./rules/prefer-identify'),
+    'prefer-identity': require('./rules/prefer-identity'),
     'use-fp': require('./rules/use-fp')
   },
   configs: {
