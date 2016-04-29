@@ -32,6 +32,7 @@ Configure it in `package.json`.
 			"lodash-fp/consistent-name": ["error", "_"],
 			"lodash-fp/no-argumentless-calls": "error",
 			"lodash-fp/no-chain": "error",
+			"lodash-fp/no-extraneous-args": "error",
 			"lodash-fp/no-extraneous-function-wrapping": "error",
 			"lodash-fp/no-for-each": "off",
 			"lodash-fp/no-single-composition": "error",
@@ -55,6 +56,7 @@ Configure it in `package.json`.
 - [consistent-name](docs/rules/consistent-name.md) - Enforce a consistent name for Lodash.
 - [no-argumentless-calls](docs/rules/no-argumentless-calls.md) - Forbid argument-less calls of Lodash methods.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of [`_.chain`].
+- [no-extraneous-args](docs/rules/no-extraneous-args.md) - No extraneous arguments to methods with a fixed arity.
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
 - [no-for-each](docs/rules/no-for-each.md) - Forbid the use of [`_.forEach`].
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.

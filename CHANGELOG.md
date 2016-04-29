@@ -5,6 +5,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [Unreleased]
 ### Added
+- Added [`no-extraneous-args`] rule
 - Added [`no-for-each`] rule
 
 ## [1.0.2] - 2016-04-29
@@ -47,8 +48,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`consistent-name`]: ./docs/rules/consistent-name.md
 [`no-argumentless-calls`]: ./docs/rules/no-argumentless-calls.md
 [`no-chain`]: ./docs/rules/no-chain.md
-[`no-for-each`]: ./docs/rules/no-for-each.md
+[`no-extraneous-args`]: ./docs/rules/no-extraneous-args.md
 [`no-extraneous-function-wrapping`]: ./docs/rules/no-extraneous-function-wrapping.md
+[`no-for-each`]: ./docs/rules/no-for-each.md
 [`no-fp`]: ./docs/rules/no-fp.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
 [`no-submodule-destructuring`]: ./docs/rules/no-submodule-destructuring.md
