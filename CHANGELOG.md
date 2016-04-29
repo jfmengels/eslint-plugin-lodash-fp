@@ -6,6 +6,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (nothing)
 
+## [1.0.2] - 2016-04-29
+### Fixed
+- Fix typo preventing the package from loading ([#11], thanks [@izaakschroeder])
+
 ## [1.0.1] - 2016-04-28
 - Problems with `npm` while publishing, added missing files.
 
@@ -46,18 +50,23 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`no-fp`]: ./docs/rules/no-fp.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
 [`no-submodule-destructuring`]: ./docs/rules/no-submodule-destructuring.md
-[`prefer-constant`]: ./docs/rules/prefer-constant.md
+[`prefer-compact`]: ./docs/rules/prefer-compact.md
 [`prefer-composition-grouping`]: ./docs/rules/prefer-composition-grouping.md
-[`prefer-identity`]: ./docs/rules/prefer-identity.md
+[`prefer-constant`]: ./docs/rules/prefer-constant.md
 [`prefer-flat-map`]: ./docs/rules/prefer-flat-map.md
+[`prefer-identity`]: ./docs/rules/prefer-identity.md
 [`prefer-get`]: ./docs/rules/prefer-get.md
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
+
 [@jfmengels]: https://github.com/jfmengels
+[@izaakschroeder]: https://github.com/izaakschroeder
 
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.0...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.2...master
+[1.0.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v0.0.3...v0.1.0
