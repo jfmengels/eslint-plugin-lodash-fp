@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-lodash-fp",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "ESLint rules for lodash/fp",
   "license": "MIT",
   "repository": "jfmengels/eslint-plugin-lodash-fp",
