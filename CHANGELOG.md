@@ -6,6 +6,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (none)
 
+## [1.1.1] - 2016-04-30
+- Problems with `npm` while publishing, added missing files.
+
 ## [1.1.0] - 2016-04-30
 ### Added
 - Added [`no-extraneous-args`] rule
@@ -72,7 +75,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@izaakschroeder]: https://github.com/izaakschroeder
 
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.0...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.1...master
+[1.1.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.0...v1.0.1
