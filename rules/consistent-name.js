@@ -2,7 +2,7 @@
 
 var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
-var isStaticRequire = require('./core/staticRequire');
+var isStaticRequire = require('./core/static-require');
 
 function isLodash(name) {
   return name === 'lodash' || name === 'lodash/fp';

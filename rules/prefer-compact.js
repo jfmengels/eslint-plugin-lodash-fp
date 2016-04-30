@@ -1,7 +1,7 @@
 'use strict';
 
 var enhance = require('./core/enhance');
-var astUtil = require('./core/astUtil');
+var astUtil = require('./core/ast-util');
 
 module.exports = function (context) {
   var info = enhance();

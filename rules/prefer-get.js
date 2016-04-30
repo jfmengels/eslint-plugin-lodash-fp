@@ -1,6 +1,6 @@
 'use strict';
 
-var astUtil = require('./core/astUtil');
+var astUtil = require('./core/ast-util');
 
 function shouldCheckDeeper(node, nodeRight, toCompare) {
   return node.operator === '&&' &&

@@ -1,6 +1,6 @@
 'use strict';
 
-var astUtil = require('./core/astUtil');
+var astUtil = require('./core/ast-util');
 
 module.exports = function (context) {
   var options = context.options[0] || {};

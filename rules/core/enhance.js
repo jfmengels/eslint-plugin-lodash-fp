@@ -1,8 +1,8 @@
 'use strict';
 
 var _ = require('lodash/fp');
-var lodashUtil = require('./lodashUtil');
-var isStaticRequire = require('./staticRequire');
+var lodashUtil = require('./lodash-util');
+var isStaticRequire = require('./static-require');
 
 function isLodashModule(name) {
   return name.indexOf('lodash') === 0;

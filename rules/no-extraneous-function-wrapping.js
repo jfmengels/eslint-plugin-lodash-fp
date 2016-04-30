@@ -2,7 +2,7 @@
 
 var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
-var containsIdentifier = require('./core/containsIdentifier');
+var containsIdentifier = require('./core/contains-identifier');
 
 var notCurried = ['castArray', 'flow', 'pipe', 'flowRight', 'compose', 'iteratee', 'mixin', 'runInContext'];
 var isNotCurried = _.includes(_, notCurried);
