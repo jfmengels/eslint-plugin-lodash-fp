@@ -23,12 +23,12 @@ module.exports = function (context) {
   return {
     LogicalExpression: function (node) {
       var state = getState();
-      var rightMemberExp = (astUtil.isEqEqEq(node.right) && state.depth === 0) ? node.right.left : node.right;
+      var rightMemberExp = astUtil.isEqEqEq(node.right) && state.depth === 0 ? node.right.left : node.right;
 
       if (shouldCheckDeeper(node, rightMemberExp, state.node)) {
         expStates.push({depth: state.depth + 1, node: rightMemberExp.object});
         if (astUtil.isEquivalentExp(node.left, rightMemberExp.object) && state.depth >= ruleDepth - 2) {
-          context.report(node, "Prefer `_.get` or `_.has` over an `&&` chain");
+          context.report(node, 'Prefer `_.get` or `_.has` over an `&&` chain');
         }
       }
     },
