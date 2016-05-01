@@ -43,6 +43,46 @@ test(() => {
       {
         code: code(`compose(fn1, fn2)(x);`, false),
         options: ['flow']
+      },
+      // Check assignments created via composition
+      {
+        code: code(`var composed = flow(fn1, fn2); var b = composed(x);`, ['flow']),
+        options: ['flow']
+      },
+      {
+        code: code(`var composed = _.pipe(fn1, fn2); var b = composed(x);`),
+        options: ['pipe']
+      },
+      // Make sure there are no false positives on non-compose functions
+      {
+        code: code(`_.partial(fn1, args)(x);`),
+        options: ['flow']
+      },
+      {
+        code: code(`partial(fn1, args)(x);`, ['partial']),
+        options: ['flow']
+      },
+      {
+        code: code(`_.map(fn1, iterable);`),
+        options: ['flow']
+      },
+      {
+        code: code(`map(fn1, iterable);`, ['map']),
+        options: ['flow']
+      },
+      {
+        code: code(`var fn = map(fn2);`, ['map']),
+        options: ['flow']
+      },
+      {
+        code: code(`var fn = _.map(fn2);`),
+        options: ['flow']
+      },
+      // Should not warn on ambiguously renamed imports
+      // This should probably be restrictable by a seperate rule
+      {
+        code: code(`import {map as flow} from 'lodash/fp'; flow(fn1, iterable);`, false),
+        options: ['compose']
       }
     ],
     invalid: [
@@ -104,6 +144,15 @@ test(() => {
       },
       {
         code: code(`var {c: compose} = require('lodash/fp'); c(fn1, fn2)(x);`, false),
+        options: ['flow'],
+        errors: [{
+          ...error, message: 'Forbidden use of `compose`. Use `flow` instead'
+        }]
+      },
+      // Should still warn on ambiguously renamed imports
+      // This should probably be restrictable by a seperate rule
+      {
+        code: code(`import {compose as flow} from 'lodash/fp'; flow(fn1, fn2)(x);`, false),
         options: ['flow'],
         errors: [{
           ...error, message: 'Forbidden use of `compose`. Use `flow` instead'
