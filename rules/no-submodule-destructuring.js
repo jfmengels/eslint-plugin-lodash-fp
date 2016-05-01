@@ -2,6 +2,7 @@
 
 var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
+var isStaticRequire = require('./core/static-require');
 
 var isImportSpecifier = _.matches({type: 'ImportSpecifier'});
 var isObjectPattern = _.matches({type: 'ObjectPattern'});
@@ -13,7 +14,7 @@ function isLodashSubModule(source) {
 }
 
 function isRequireOfLodashSubModule(node) {
-  return node.callee.name === 'require' &&
+  return isStaticRequire(node) &&
     node.arguments.length > 0 &&
     isLodashSubModule(node.arguments[0].value);
 }

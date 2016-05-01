@@ -36,7 +36,14 @@ test(() => {
       `var {find: f} = require('lodash');`,
       `var {find: f} = require('lodash/fp');`,
       `var foo = require('foo');`,
-      `var {foo: f} = require('foo');`
+      `var {foo: f} = require('foo');`,
+      `var foo;`,
+      `var {foo} = bar;`,
+      `import 'foo'`,
+      `import 'lodash'`,
+      `require('foo')`,
+      `require('lodash')`,
+      `var {find} = require('lodash/fp/' + 'find');`
     ],
     invalid: [
       {
