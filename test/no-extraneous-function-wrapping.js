@@ -84,15 +84,15 @@ test(() => {
         }
       })(x);`),
       // Method is not curried
-      code(`x => flow(y, x);`, ['flow']),
-      code(`x => _.flow(y, x);`),
-      code(`x => _.pipe(y, x);`),
-      code(`x => _.flowRight(y, x);`),
-      code(`x => _.compose(y, x);`),
-      code(`x => _.castArray(y, x);`),
-      code(`x => _.iteratee(y, x);`),
-      code(`x => _.mixin(y, x);`),
-      code(`x => _.runInContext(y, x);`)
+      code(`_.map(x => flow(y, x));`, ['flow']),
+      code(`_.map(x => _.flow(y, x));`),
+      code(`_.map(x => _.pipe(y, x));`),
+      code(`_.map(x => _.flowRight(y, x));`),
+      code(`_.map(x => _.compose(y, x));`),
+      code(`_.map(x => _.castArray(y, x));`),
+      code(`_.map(x => _.iteratee(y, x));`),
+      code(`_.map(x => _.mixin(y, x));`),
+      code(`_.map(x => _.runInContext(y, x));`)
     ],
     invalid: [
       {
