@@ -43,7 +43,7 @@ module.exports = {
         'lodash-fp/prefer-constant': ['error', {arrowFunctions: false}],
         'lodash-fp/prefer-flat-map': 'error',
         'lodash-fp/prefer-get': 'error',
-        'lodash-fp/prefer-identify': ['error', {arrowFunctions: false}],
+        'lodash-fp/prefer-identity': ['error', {arrowFunctions: false}],
         'lodash-fp/use-fp': 'error'
       }
     }
