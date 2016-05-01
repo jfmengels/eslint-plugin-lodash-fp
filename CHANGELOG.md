@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Fixed
+- Fix false positives being returned for any Lodash method used that did not match `consistent-compose` method name option ([#14], thanks [@kavington])
 
 ## [1.1.2] - 2016-05-01
 ### Fixed
@@ -76,8 +77,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
-[#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
+[#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
 [#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
+[#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
 
 [@jfmengels]: https://github.com/jfmengels
 [@izaakschroeder]: https://github.com/izaakschroeder
