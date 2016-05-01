@@ -6,7 +6,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (none)
 
+## [1.1.2] - 2016-05-01
+### Fixed
+- Crash in `no-submodule-destructuring` when doing `var {foo} = bar;` ([#13], thanks [@kavington])
+- Typo in recommended configuration ([#13], thanks [@kavington])
+
 ## [1.1.1] - 2016-04-30
+### Fixed
 - Problems with `npm` while publishing, added missing files.
 
 ## [1.1.0] - 2016-04-30
@@ -19,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Fix typo preventing the package from loading ([#11], thanks [@izaakschroeder])
 
 ## [1.0.1] - 2016-04-28
+### Fixed
 - Problems with `npm` while publishing, added missing files.
 
 ## [1.0.0] - 2016-04-28
@@ -70,12 +77,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
+[#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
 
 [@jfmengels]: https://github.com/jfmengels
 [@izaakschroeder]: https://github.com/izaakschroeder
+[@kavington]: https://github.com/kavington
 
-
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.1...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...master
+[1.1.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.0.1...v1.0.2
