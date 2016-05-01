@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "ava": "^0.14.0",
+    "pify": "^2.3.0",
     "xo": "^*"
   },
   "peerDependencies": {
