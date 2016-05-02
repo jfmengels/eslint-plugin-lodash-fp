@@ -7,6 +7,19 @@ module.exports = function (imports) {
   var isCallExpression = _.matches({type: 'CallExpression'});
   var isMemberExpression = _.matches({type: 'MemberExpression'});
 
+  function buildInfo(node, varname, name) {
+    if (!name) {
+      return false;
+    }
+
+    return {
+      node: node,
+      varname: name,
+      name: name.replace('fp/', ''),
+      fp: _.startsWith('fp', name)
+    };
+  }
+
   // Is X the Lodash object?
 
   function isLodash(id) {
@@ -21,26 +34,26 @@ module.exports = function (imports) {
 
   // Is `X()` or `X.Y()` a Lodash method call()?
 
-  var findName = _.curry(function _findName(methods, name) {
-    return _.find(_.eq(name), methods);
+  var findName = _.curry(function _findName(methods, method) {
+    return _.find(_.eq(method.name), methods) && method;
   });
 
   function isMemberMethod(node) {
     return isMemberExpression(node) &&
       isLodash(node.object.name) &&
-      node.property.name;
+      buildInfo(node, node.property.name, node.property.name);
   }
 
   function isAnyMemberMethod(node) {
     return isMemberExpression(node) &&
       isAnyLodash(node.object.name) &&
-      node.property.name;
+      buildInfo(node, node.property.name, node.property.name);
   }
 
   function isIdentifierMethod(node) {
     return isIdentifier(node) &&
       imports[node.name] !== undefined &&
-      imports[node.name].replace('fp/', '');
+      buildInfo(node, node.name, imports[node.name]);
   }
 
   function isMethod(node) {
@@ -53,14 +66,14 @@ module.exports = function (imports) {
 
   var isMethodOf = _.curry(function _isMethodOf(_methods, node) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
-    var name = isMethod(node);
-    return name && findName(methods, name);
+    var method = isMethod(node);
+    return method && findName(methods, method);
   });
 
   var isAnyMethodOf = _.curry(function _isAnyMethodOf(_methods, node) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
-    var name = isAnyMethod(node);
-    return name && findName(methods, name);
+    var method = isAnyMethod(node);
+    return method && findName(methods, method);
   });
 
   function isMethodCall(node) {
@@ -69,8 +82,8 @@ module.exports = function (imports) {
 
   var isMethodCallOf = _.curry(function _isMethodCallOf(_methods, node) {
     var methods = _.isArray(_methods) ? _methods : [_methods];
-    var name = isMethodCall(node);
-    return name && findName(methods, name);
+    var method = isMethodCall(node);
+    return method && findName(methods, method);
   });
 
   // Is `X.Y` a Lodash method?
@@ -79,7 +92,7 @@ module.exports = function (imports) {
       isIdentifier(node.object) &&
       isIdentifier(node.property) &&
       isLodash(node.object.name) &&
-      node.property.name;
+      buildInfo(node, node.property.name, node.property.name);
   });
 
   var compositionMethods = ['compose', 'flow', 'flowRight', 'pipe'];

@@ -10,16 +10,16 @@ function findIndexByName(name) {
 var findIndexOfMap = findIndexByName('map');
 var findIndexOfFlatten = findIndexByName('flatten');
 
-function hasConsecutiveMapAndFlatten(methodNames) {
-  var mapIndex = findIndexOfMap(methodNames);
+function hasConsecutiveMapAndFlatten(methods) {
+  var mapIndex = findIndexOfMap(methods);
   if (mapIndex === -1) {
     return false;
   }
-  var flattenIndex = findIndexOfFlatten(methodNames);
+  var flattenIndex = findIndexOfFlatten(methods);
   if (mapIndex === flattenIndex - 1) {
     return true;
   }
-  return hasConsecutiveMapAndFlatten(methodNames.slice(mapIndex + 1));
+  return hasConsecutiveMapAndFlatten(methods.slice(mapIndex + 1));
 }
 
 module.exports = function (context) {
@@ -33,13 +33,13 @@ module.exports = function (context) {
   }
 
   function isCompositionCall(info, node) {
-    var name = info.helpers.isComposeMethod(node);
-    if (!name) {
-      return name;
+    var composeMethod = info.helpers.isComposeMethod(node);
+    if (!composeMethod) {
+      return composeMethod;
     }
 
-    var methodNames = info.helpers.getComposeMethodArgMethods(name, node);
-    return hasConsecutiveMapAndFlatten(methodNames);
+    var methods = info.helpers.getComposeMethodArgMethods(composeMethod.name, node);
+    return hasConsecutiveMapAndFlatten(_.map('name', methods));
   }
 
   return info.merge({

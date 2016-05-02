@@ -14,9 +14,9 @@ module.exports = function (context) {
       if (node.arguments.length > 1) {
         return;
       }
-      var name = match(node);
-      if (name) {
-        context.report(node, '`' + name + '` should have at least two arguments');
+      var method = match(node);
+      if (method) {
+        context.report(node, '`' + method.name + '` should have at least two arguments');
       }
     }
   });

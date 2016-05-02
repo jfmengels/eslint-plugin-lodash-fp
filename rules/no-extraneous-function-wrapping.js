@@ -37,12 +37,12 @@ function isExtraneous(info, argNode) {
     return false;
   }
 
-  var methodName = info.helpers.isMethodCall(callExpression);
-  if (!methodName && callExpression.callee.type !== 'CallExpression') {
+  var method = info.helpers.isMethodCall(callExpression);
+  if (!method && callExpression.callee.type !== 'CallExpression') {
     return false;
   }
 
-  if (isNotCurried(methodName)) {
+  if (isNotCurried(method.name)) {
     // If it's a lodash method that is not curried
     return false;
   }

@@ -20,14 +20,14 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      var name = info.helpers.isMethodCall(node);
-      if (!name || mapping.skipFixed[name]) {
+      var method = info.helpers.isMethodCall(node);
+      if (!method || mapping.skipFixed[method.name]) {
         return;
       }
 
-      var methodAry = aryMethod[name];
+      var methodAry = aryMethod[method.name];
       if (node.arguments.length > methodAry) {
-        context.report(node, '`' + name + '` is capped at ' + methodAry + ' arguments');
+        context.report(node, '`' + method.name + '` is capped at ' + methodAry + ' arguments');
       }
     }
   });

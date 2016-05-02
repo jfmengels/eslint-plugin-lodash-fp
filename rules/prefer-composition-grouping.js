@@ -21,13 +21,13 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      var name = info.helpers.isComposeMethod(node);
-      if (!name) {
-        return name;
+      var method = info.helpers.isComposeMethod(node);
+      if (!method) {
+        return method;
       }
 
-      var methodNames = info.helpers.getComposeMethodArgMethods(name, node);
-      if (hasConsecutiveOperations(methodNames)) {
+      var methods = info.helpers.getComposeMethodArgMethods(method.name, node);
+      if (methods && hasConsecutiveOperations(_.map('name', methods))) {
         context.report(node, 'Prefer `_.flatMap` over consecutive `_.map` and `_.flatten`');
       }
     }

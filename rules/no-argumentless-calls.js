@@ -13,8 +13,8 @@ module.exports = function (context) {
       if (node.arguments.length !== 0) {
         return;
       }
-      var methodName = info.helpers.isMethodCall(node);
-      if (methodName !== false && !_.includes(methodName, exceptions)) {
+      var method = info.helpers.isMethodCall(node);
+      if (method && !_.includes(method.name, exceptions)) {
         context.report(node, 'No call without arguments');
       }
     }
