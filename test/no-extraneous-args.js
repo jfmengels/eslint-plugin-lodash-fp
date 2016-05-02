@@ -44,6 +44,14 @@ test(() => {
       {
         code: code('_.concat(a, b, c);'),
         errors: errors('`concat` is capped at 2 arguments')
+      },
+      {
+        code: code('_.pluck(a, b, c);'),
+        errors: errors('`pluck` is capped at 2 arguments')
+      },
+      {
+        code: 'import {map as m} from "lodash/fp"; m(a, b, c);',
+        errors: errors('`map` is capped at 2 arguments')
       }
     ]
   });

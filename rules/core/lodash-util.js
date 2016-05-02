@@ -20,18 +20,22 @@ module.exports = function (imports) {
   var isCallExpression = _.matches({type: 'CallExpression'});
   var isMemberExpression = _.matches({type: 'MemberExpression'});
 
-  function buildInfo(node, varname, name) {
-    if (!name) {
+  function buildInfo(node, varname, _name) {
+    if (!_name) {
       return false;
     }
+
+    var name = _name.replace('fp/', '');
+    var realName = mapping.aliasToReal[name] || name;
 
     return {
       node: node,
       varname: varname,
-      name: name.replace('fp/', ''),
-      fp: _.startsWith('fp', name),
-      skipFixed: mapping.skipFixed[name],
-      ary: ary[name]
+      name: name,
+      realName: realName,
+      fp: _.startsWith('fp/', name), // TODO not right yet
+      skipFixed: mapping.skipFixed[name] || false,
+      ary: _.parseInt(10, ary[realName])
     };
   }
 
