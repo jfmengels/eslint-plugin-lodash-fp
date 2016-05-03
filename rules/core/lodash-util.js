@@ -34,7 +34,7 @@ module.exports = function (imports) {
       name: name,
       realName: realName,
       fp: _.startsWith('fp/', name), // TODO not right yet
-      skipFixed: mapping.skipFixed[name] || false,
+      skipFixed: mapping.skipFixed[realName] || false,
       ary: ary[realName] && _.parseInt(10, ary[realName])
     };
   }

@@ -32,57 +32,60 @@ test(() => {
       code(`_.map(function(x) { return _.get('a.b.c', y); });`),
       // Does not use function's parameter as last parameter
       code(`_.map(function(x) { return _.get('a.b.c', x, y); });`),
-      // Does not use function's parameter as last parameter
       code(`function foo(x) { return _.isArray(y); }`),
       // Does not return the value
       code(`function foo(x) { _.isArray(x); }`),
+      code(`function foo({x}) { _.isArray(x); }`),
+      code(`function foo({x}) { _.isArray({x}); }`),
+      code(`function foo(x) { _.isArray({x}); }`),
+      code(`function foo(x) { _.isArray({x})(x); }`),
       // Not a call expression body
       code(`function foo(x) { return 2; }`),
       code(`_.map(x => 2);`),
       // Calling result of call with one argument but not with function's parameter
       code(`function foo(x) { return bar(x)(y); }`),
       // Uses argument somewhere else in the arguments
-      code(`x => bar(x, x);`),
-      code(`x => x.bar(x);`),
-      code(`x => x(x);`),
-      code(`x => _.get(x)(x);`),
-      code(`x => bar(x)(x);`),
-      code(`x => bar(x.a)(x);`),
-      code(`x => bar(x * 2)(x);`),
-      code(`x => bar(v => x || 2)(x);`),
-      code(`x => bar(v => x ? 1 : 2)(x);`),
-      code(`x => bar(v => 1 ? x : 2)(x);`),
-      code(`x => bar(v => +x)(x);`),
-      code(`x => bar(v => !x)(x);`),
-      code(`x => bar(f => x)(x);`),
-      code(`x => bar(f => x())(x);`),
-      code(`x => bar(f => { x; })(x);`),
-      code('x => bar(f => { `${x}` })(x);'),
-      code(`x => bar(f => { [x]; })(x);`),
-      code(`x => bar(f => { b = {a: x}; })(x);`),
-      code(`x => bar(f => { var b = x; })(x);`),
-      code(`x => bar(f => { return x; })(x);`),
-      code(`x => bar(function() { return x; })(x);`),
-      code(`x => bar(f => {
+      code(`_.map(x => bar(x, x));`),
+      code(`_.map(x => x.bar(x));`),
+      code(`_.map(x => x(x));`),
+      code(`_.map(x => _.get(x)(x));`),
+      code(`_.map(x => bar(x)(x));`),
+      code(`_.map(x => bar(x.a)(x));`),
+      code(`_.map(x => bar(x * 2)(x));`),
+      code(`_.map(x => bar(v => x || 2)(x));`),
+      code(`_.map(x => bar(v => x ? 1 : 2)(x));`),
+      code(`_.map(x => bar(v => 1 ? x : 2)(x));`),
+      code(`_.map(x => bar(v => +x)(x));`),
+      code(`_.map(x => bar(v => !x)(x));`),
+      code(`_.map(x => bar(f => x)(x));`),
+      code(`_.map(x => bar(f => x())(x));`),
+      code(`_.map(x => bar(f => { x; })(x));`),
+      code('_.map(x => bar(f => { `${x}` })(x));'),
+      code(`_.map(x => bar(f => { [x]; })(x));`),
+      code(`_.map(x => bar(f => { b = {a: x}; })(x));`),
+      code(`_.map(x => bar(f => { var b = x; })(x));`),
+      code(`_.map(x => bar(f => { return x; })(x));`),
+      code(`_.map(x => bar(function() { return x; })(x));`),
+      code(`_.map(x => bar(f => {
         if (x) {
           2;
         }
-      })(x);`),
-      code(`x => bar(f => {
+      })(x));`),
+      code(`_.map(x => bar(f => {
         for (x in b) {
           2
         }
-      })(x);`),
-      code(`x => bar(f => {
+      })(x));`),
+      code(`_.map(x => bar(f => {
         for (x = 0; a < b; a++) {
           2
         }
-      })(x);`),
-      code(`x => bar(f => {
+      })(x));`),
+      code(`_.map(x => bar(f => {
         for (a = 0; a < b; x++) {
           2
         }
-      })(x);`),
+      })(x));`),
       // Method is not curried
       code(`_.map(x => flow(y, x));`, ['flow']),
       code(`_.map(x => _.flow(y, x));`),
@@ -137,6 +140,10 @@ test(() => {
       },
       {
         code: code(`function foo(x) { return bar(x => x)(x); }`),
+        errors: [error]
+      },
+      {
+        code: code(`_.map(x => bar(({x}) => 2)(x));`),
         errors: [error]
       }
     ]

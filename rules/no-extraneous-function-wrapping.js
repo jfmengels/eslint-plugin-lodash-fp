@@ -4,16 +4,18 @@ var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
 var containsIdentifier = require('./core/contains-identifier');
 
-var notCurried = ['castArray', 'flow', 'pipe', 'flowRight', 'compose', 'iteratee', 'mixin', 'runInContext'];
-var isNotCurried = _.includes(_, notCurried);
-
 var isFunction = _.flow(
   _.get('type'),
   _.includes(_, ['FunctionExpression', 'FunctionDeclaration', 'ArrowFunctionExpression'])
 );
 
+function hasSingleIdentifierParam(node) {
+  return node.params.length === 1 &&
+    node.params[0].type === 'Identifier';
+}
+
 function isExtraneous(info, argNode) {
-  var canBeExtraneous = isFunction(argNode) && argNode.params.length === 1;
+  var canBeExtraneous = isFunction(argNode) && hasSingleIdentifierParam(argNode);
   if (!canBeExtraneous) {
     return false;
   }
@@ -42,7 +44,7 @@ function isExtraneous(info, argNode) {
     return false;
   }
 
-  if (isNotCurried(method.name)) {
+  if (method.skipFixed) {
     // If it's a lodash method that is not curried
     return false;
   }
