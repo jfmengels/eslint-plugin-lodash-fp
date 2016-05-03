@@ -15,6 +15,7 @@ module.exports = {
     'prefer-composition-grouping': require('./rules/prefer-composition-grouping'),
     'prefer-constant': require('./rules/prefer-constant'),
     'prefer-flat-map': require('./rules/prefer-flat-map'),
+    'preferred-alias': require('./rules/preferred-alias'),
     'prefer-get': require('./rules/prefer-get'),
     'prefer-identity': require('./rules/prefer-identity'),
     'use-fp': require('./rules/use-fp')
@@ -42,6 +43,7 @@ module.exports = {
         'lodash-fp/prefer-composition-grouping': 'error',
         'lodash-fp/prefer-constant': ['error', {arrowFunctions: false}],
         'lodash-fp/prefer-flat-map': 'error',
+        'lodash-fp/preferred-alias': 'off',
         'lodash-fp/prefer-get': 'error',
         'lodash-fp/prefer-identity': ['error', {arrowFunctions: false}],
         'lodash-fp/use-fp': 'error'

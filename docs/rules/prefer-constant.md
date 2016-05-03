@@ -21,7 +21,7 @@ function three() {
   return 3;
 }
 
-// When including arrow functions
+/* eslint "lodash-fp/prefer-constant": ["error", {"arrowFunctions": true}] */
 var pi = () => 3.1415;
 ```
 
@@ -32,7 +32,6 @@ var three = _.constant(3);
 
 var pi = _.constant(3.1415);
 
-// When not including arrow functions
 var pi = () => 3.1415;
 
 function identity(x) {

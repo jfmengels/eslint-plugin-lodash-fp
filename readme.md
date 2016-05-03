@@ -43,6 +43,7 @@ Configure it in `package.json`.
 			"lodash-fp/prefer-flat-map": "error",
 			"lodash-fp/prefer-get": "error",
 			"lodash-fp/prefer-identity": ["error", {"arrowFunctions": false}],
+			"lodash-fp/preferred-alias": "off",
 			"lodash-fp/use-fp": "error"
 		}
 	}
@@ -67,6 +68,7 @@ Configure it in `package.json`.
 - [prefer-flat-map](docs/rules/prefer-flat-map.md) - Prefer [`_.flatMap`] over consecutive [`_.map`] and [`_.flatten`].
 - [prefer-get](docs/rules/prefer-get.md) - Prefer [`_.get`] over multiple `&&`.
 - [prefer-identity](docs/rules/prefer-identity.md) - Prefer [`_.identity`] over functions returning their argument.
+- [preferred-alias](docs/rules/preferred-alias.md) - Limit the use of aliases.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
 
 ## Recommended configuration

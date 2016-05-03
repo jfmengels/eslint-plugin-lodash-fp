@@ -4,7 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Added
+- Added [`preferred-alias`] rule
+### Fixed
+- [`no-extraneous-args`] now handles aliases.
 
 ## [1.1.3] - 2016-05-02
 ### Fixed
@@ -77,6 +80,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`prefer-flat-map`]: ./docs/rules/prefer-flat-map.md
 [`prefer-get`]: ./docs/rules/prefer-get.md
 [`prefer-identity`]: ./docs/rules/prefer-identity.md
+[`preferred-alias`]: ./docs/rules/preferred-alias.md
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
