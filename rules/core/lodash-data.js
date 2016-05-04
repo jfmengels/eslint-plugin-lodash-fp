@@ -15,7 +15,7 @@ function methodArities() {
 
 var ary = methodArities();
 
-function fpIterateePosition() {
+function iterateePos() {
   return _.keys(mapping.iterateeAry)
     .reduce(function (res, name) {
       var methodAry = ary[name];
@@ -27,5 +27,5 @@ function fpIterateePosition() {
 
 module.exports = _.assign({
   ary: ary,
-  fpIterateePosition: fpIterateePosition()
+  iterateePos: iterateePos()
 }, mapping);
