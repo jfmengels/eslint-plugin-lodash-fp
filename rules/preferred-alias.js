@@ -1,14 +1,14 @@
 'use strict';
 
 var _ = require('lodash/fp');
-var mapping = require('lodash/fp/_mapping');
+var data = require('./core/lodash-data');
 var enhance = require('./core/enhance');
 
 function checkOverrides(overrides) {
   overrides.map(function (override) {
     return {
       override: override,
-      target: mapping.aliasToReal[override] || override
+      target: data.aliasToReal[override] || override
     };
   }).reduce(function (res, item) {
     if (res[item.target]) {
@@ -20,7 +20,7 @@ function checkOverrides(overrides) {
 }
 
 function wantedAlias(overrides, method) {
-  return _.intersection(mapping.realToAlias[method.realName], overrides)[0] || method.realName;
+  return _.intersection(data.realToAlias[method.realName], overrides)[0] || method.realName;
 }
 
 module.exports = function (context) {

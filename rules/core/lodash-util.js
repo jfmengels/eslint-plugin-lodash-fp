@@ -1,19 +1,7 @@
 'use strict';
 
 var _ = require('lodash/fp');
-var mapping = require('lodash/fp/_mapping');
-
-function methodArities() {
-  return _.keys(mapping.aryMethod)
-    .reduce(function (res, ary) {
-      mapping.aryMethod[ary].forEach(function (name) {
-        res[name] = ary;
-      });
-      return res;
-    }, {});
-}
-
-var ary = methodArities();
+var data = require('./lodash-data');
 
 module.exports = function (imports) {
   var isIdentifier = _.matches({type: 'Identifier'});
@@ -26,7 +14,7 @@ module.exports = function (imports) {
     }
 
     var name = _name.replace('fp/', '');
-    var realName = mapping.aliasToReal[name] || name;
+    var realName = data.aliasToReal[name] || name;
 
     return {
       node: node,
@@ -34,8 +22,8 @@ module.exports = function (imports) {
       name: name,
       realName: realName,
       fp: _.startsWith('fp/', name), // TODO not right yet
-      skipFixed: mapping.skipFixed[realName] || false,
-      ary: ary[realName] && _.parseInt(10, ary[realName])
+      skipFixed: data.skipFixed[realName] || false,
+      ary: data.ary[realName] && _.parseInt(10, data.ary[realName])
     };
   }
 
