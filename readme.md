@@ -64,6 +64,7 @@ Configure it in `package.json`.
 - [no-for-each](docs/rules/no-for-each.md) - Forbid the use of [`_.forEach`].
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.
 - [no-submodule-destructuring](docs/rules/no-submodule-destructuring.md) - Forbid destructuring of Lodash submodules.
+- [no-partial-of-curried](docs/rules/no-partial-of-curried.md) - No use of [`_.partial`] on curried Lodash methods.
 - [prefer-compact](docs/rules/prefer-compact.md) - Prefer [`_.compact`] over [`_.filter`] with identity function.
 - [prefer-composition-grouping](docs/rules/prefer-composition-grouping.md) - Prefer grouping similar methods in composition methods.
 - [prefer-constant](docs/rules/prefer-constant.md) - Prefer [`_.constant`] over functions returning literals.
@@ -105,3 +106,4 @@ MIT © [Jeroen Engels](https://github.com/jfmengels)
 [`_.get`]: (https://lodash.com/docs#get)
 [`_.identity`]: (https://lodash.com/docs#identity)
 [`_.map`]: (https://lodash.com/docs#map)
+[`_.partial`]: (https://lodash.com/docs#partial)

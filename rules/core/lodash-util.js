@@ -21,7 +21,6 @@ module.exports = function (imports) {
       varname: varname,
       name: name,
       realName: realName,
-      fp: _.startsWith('fp/', name), // TODO not right yet
       skipFixed: data.skipFixed[realName] || false,
       ary: data.ary[realName] && _.parseInt(10, data.ary[realName]),
       iterateePos: data.iterateePos[realName],

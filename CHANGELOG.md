@@ -6,6 +6,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 ### Added
 - Added [`no-extraneous-iteratee-args`] rule
+- Added [`no-partial-of-curried`] rule
 - Added [`preferred-alias`] rule
 ### Fixed
 - [`no-extraneous-args`] now also handles aliases.
@@ -77,6 +78,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`no-extraneous-iteratee-args`]: ./docs/rules/no-extraneous-iteratee-args.md
 [`no-for-each`]: ./docs/rules/no-for-each.md
 [`no-fp`]: ./docs/rules/no-fp.md
+[`no-partial-of-curried`]: ./docs/rules/no-partial-of-curried.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
 [`no-submodule-destructuring`]: ./docs/rules/no-submodule-destructuring.md
 [`prefer-compact`]: ./docs/rules/prefer-compact.md
