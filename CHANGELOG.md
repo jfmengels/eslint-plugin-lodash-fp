@@ -8,7 +8,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Added [`no-extraneous-iteratee-args`] rule
 - Added [`preferred-alias`] rule
 ### Fixed
-- [`no-extraneous-args`] now handles aliases.
+- [`no-extraneous-args`] now also handles aliases.
+### Changed
+- [`no-extraneous-args`] now recommends an alternative whenever possible.
 
 ## [1.1.3] - 2016-05-02
 ### Fixed

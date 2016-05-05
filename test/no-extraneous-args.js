@@ -25,33 +25,39 @@ test(() => {
     valid: [
       code('_.get(a, b);'),
       code('_.getOr(a, b, c);'),
-      // Should not report when there are not enough arguments
+      // Should ignore when there are not enough arguments
       code('_.get(a);'),
-      // Should not report methods that are not capped
+      // Should ignore methods that are not capped
       code('_.flow(a, b, c, d, e, f, g);'),
       // should ignore unknown methods
-      code('_.foo(a, b, c, d, e, f, g);')
+      code('_.foo(a, b, c, d, e, f, g);'),
+      // should ignore non-Lodash methods
+      code('foo(a, b, c, d, e, f, g);')
     ],
     invalid: [
       {
         code: code('_.get(a, b, c);'),
-        errors: errors('`get` is capped at 2 arguments')
+        errors: errors('`get` is capped at 2 arguments. Did you mean to use `getOr`?')
+      },
+      {
+        code: code('_.get(a, b, c, d);'),
+        errors: errors('`get` is capped at 2 arguments.')
       },
       {
         code: code('_.getOr(a, b, c, d);'),
-        errors: errors('`getOr` is capped at 3 arguments')
+        errors: errors('`getOr` is capped at 3 arguments.')
       },
       {
         code: code('_.concat(a, b, c);'),
-        errors: errors('`concat` is capped at 2 arguments')
+        errors: errors('`concat` is capped at 2 arguments.')
       },
       {
         code: code('_.pluck(a, b, c);'),
-        errors: errors('`pluck` is capped at 2 arguments')
+        errors: errors('`pluck` is capped at 2 arguments.')
       },
       {
         code: 'import {map as m} from "lodash/fp"; m(a, b, c);',
-        errors: errors('`map` is capped at 2 arguments')
+        errors: errors('`map` is capped at 2 arguments.')
       }
     ]
   });

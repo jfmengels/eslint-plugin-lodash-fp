@@ -5,9 +5,10 @@ var mapping = require('lodash/fp/_mapping');
 
 function methodArities() {
   return _.keys(mapping.aryMethod)
-    .reduce(function (res, ary) {
-      mapping.aryMethod[ary].forEach(function (name) {
-        res[name] = ary;
+    .map(_.parseInt(10))
+    .reduce(function (res, n) {
+      mapping.aryMethod[n].forEach(function (name) {
+        res[name] = n;
       });
       return res;
     }, {});
