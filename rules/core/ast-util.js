@@ -289,10 +289,13 @@ function isIndexOfCall(node) {
   return isMethodCall(node) && getMethodName(node) === 'indexOf';
 }
 
-var isFunction = _.includes(_, ['FunctionExpression', 'FunctionDeclaration', 'ArrowFunctionExpression']);
+var isFunction = _.flow(
+  _.get('type'),
+  _.includes(_, ['FunctionExpression', 'FunctionDeclaration', 'ArrowFunctionExpression'])
+);
 
 function isIdentityFunction(node) {
-  if (!isFunction(node.type) || node.params.length !== 1 || !node.body) {
+  if (!isFunction(node) || node.params.length !== 1 || !node.body) {
     return false;
   }
   var returnedElement;
@@ -332,5 +335,6 @@ module.exports = {
   comparisonType: comparisonType,
   getExpressionComparedToInt: getExpressionComparedToInt,
   isIndexOfCall: isIndexOfCall,
+  isFunction: isFunction,
   isIdentityFunction: isIdentityFunction
 };

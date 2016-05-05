@@ -5,6 +5,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [Unreleased]
 ### Added
+- Added [`no-extraneous-iteratee-args`] rule
 - Added [`preferred-alias`] rule
 ### Fixed
 - [`no-extraneous-args`] now handles aliases.
@@ -70,6 +71,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`no-chain`]: ./docs/rules/no-chain.md
 [`no-extraneous-args`]: ./docs/rules/no-extraneous-args.md
 [`no-extraneous-function-wrapping`]: ./docs/rules/no-extraneous-function-wrapping.md
+[`no-extraneous-iteratee-args`]: ./docs/rules/no-extraneous-iteratee-args.md
 [`no-for-each`]: ./docs/rules/no-for-each.md
 [`no-fp`]: ./docs/rules/no-fp.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md

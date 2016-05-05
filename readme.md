@@ -34,6 +34,7 @@ Configure it in `package.json`.
 			"lodash-fp/no-chain": "error",
 			"lodash-fp/no-extraneous-args": "error",
 			"lodash-fp/no-extraneous-function-wrapping": "error",
+			"lodash-fp/no-extraneous-iteratee-args": "error",
 			"lodash-fp/no-for-each": "off",
 			"lodash-fp/no-single-composition": "error",
 			"lodash-fp/no-submodule-destructuring": "error",
@@ -59,6 +60,7 @@ Configure it in `package.json`.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of [`_.chain`].
 - [no-extraneous-args](docs/rules/no-extraneous-args.md) - No extraneous arguments to methods with a fixed arity.
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
+- [no-extraneous-iteratee-args](docs/rules/no-extraneous-iteratee-args.md) - No extraneous parameters in iteratees.
 - [no-for-each](docs/rules/no-for-each.md) - Forbid the use of [`_.forEach`].
 - [no-single-composition](docs/rules/no-single-composition.md) - Enforce at least two methods arguments for composition methods.
 - [no-submodule-destructuring](docs/rules/no-submodule-destructuring.md) - Forbid destructuring of Lodash submodules.
