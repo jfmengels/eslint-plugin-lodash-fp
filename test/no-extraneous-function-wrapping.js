@@ -36,6 +36,7 @@ test(() => {
       // Does not return the value
       code(`function foo(x) { _.isArray(x); }`),
       code(`function foo({x}) { _.isArray(x); }`),
+      code(`function foo({x}) { _.isArray(x); }`),
       code(`function foo({x}) { _.isArray({x}); }`),
       code(`function foo(x) { _.isArray({x}); }`),
       code(`function foo(x) { _.isArray({x})(x); }`),
@@ -49,6 +50,7 @@ test(() => {
       code(`_.map(x => x.bar(x));`),
       code(`_.map(x => x(x));`),
       code(`_.map(x => _.get(x)(x));`),
+      code(`_.map(x => bar(x)());`),
       code(`_.map(x => bar(x)(x));`),
       code(`_.map(x => bar(x.a)(x));`),
       code(`_.map(x => bar(x * 2)(x));`),
@@ -95,7 +97,8 @@ test(() => {
       code(`_.map(x => _.castArray(y, x));`),
       code(`_.map(x => _.iteratee(y, x));`),
       code(`_.map(x => _.mixin(y, x));`),
-      code(`_.map(x => _.runInContext(y, x));`)
+      code(`_.map(x => _.runInContext(y, x));`),
+      code(`_.map(x => fn()());`)
     ],
     invalid: [
       {

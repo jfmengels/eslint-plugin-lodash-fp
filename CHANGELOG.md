@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Added [`preferred-alias`] rule
 ### Fixed
 - [`no-extraneous-args`] now also handles aliases.
+- Fixed crash in [`no-extraneous-function-wrapping`].
 ### Changed
 - [`no-extraneous-args`] now recommends an alternative whenever possible.
 

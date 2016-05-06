@@ -50,7 +50,8 @@ function isExtraneous(info, argNode) {
   }
   var calleeArgs = callExpression.arguments;
   var lastCalleeArg = calleeArgs[calleeArgs.length - 1];
-  return lastCalleeArg.type === 'Identifier' &&
+  return lastCalleeArg &&
+    lastCalleeArg.type === 'Identifier' &&
     lastCalleeArg.name === lastArgName;
 }
 
