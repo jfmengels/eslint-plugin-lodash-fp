@@ -24,7 +24,8 @@ module.exports = function (imports) {
       skipFixed: data.skipFixed[realName] || false,
       ary: data.ary[realName] && _.parseInt(10, data.ary[realName]),
       iterateePos: data.iterateePos[realName],
-      iterateeAry: data.iterateeAry[realName]
+      iterateeAry: data.iterateeAry[realName],
+      spread: data.methodSpread[realName]
     };
   }
 

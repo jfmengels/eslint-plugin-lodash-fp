@@ -5,16 +5,19 @@ var enhance = require('./core/enhance');
 var data = require('./core/lodash-data');
 
 function reportMessage(method, alternative) {
-  var baseMessage = '`' + method.name + '` is capped at ' + method.ary + ' arguments.';
+  var baseMessage = '`' + method.name + '` is capped at ' + method.ary + ' arguments';
   if (alternative) {
-    return baseMessage + ' Did you mean to use `' + alternative + '`?';
+    return baseMessage + '. Did you mean to use `' + alternative + '`?';
   }
-  return baseMessage;
+  if (method.spread) {
+    return baseMessage + ' and takes an array as its last argument.';
+  }
+  return baseMessage + '.';
 }
 
 function getAlternative(method, nArgs) {
   var alternative = _.findKey(_.eq(method.realName), data.remap);
-  if (alternative && data.ary[alternative] === nArgs) {
+  if (alternative && data.ary[alternative] <= nArgs) {
     return alternative;
   }
   return false;

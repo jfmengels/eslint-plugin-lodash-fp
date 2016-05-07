@@ -12,7 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - [`no-extraneous-args`] now also handles aliases.
 - Fixed crash in [`no-extraneous-function-wrapping`].
 ### Changed
-- [`no-extraneous-args`] now recommends an alternative whenever possible.
+- [`no-extraneous-args`] now recommends an alternative whenever possible, and tells when to use an array for method that used rest args.
 
 ## [1.1.3] - 2016-05-02
 ### Fixed
