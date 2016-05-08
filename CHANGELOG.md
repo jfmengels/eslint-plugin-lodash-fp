@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- (none)
+
+## [1.2.0] - 2016-05-08
 ### Added
 - Added [`no-extraneous-iteratee-args`] rule
 - Added [`no-partial-of-curried`] rule
@@ -99,7 +102,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@izaakschroeder]: https://github.com/izaakschroeder
 [@kavington]: https://github.com/kavington
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.3...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...master
+[1.2.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.2.0
 [1.1.3]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.0...v1.1.1
