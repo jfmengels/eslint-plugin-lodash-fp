@@ -1,10 +1,7 @@
 'use strict';
 
-var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
-
-var knownComposeMethods = ['flow', 'flowRight', 'compose', 'pipe'];
-var isKnownComposeMethod = _.includes(_, knownComposeMethods);
+var constants = require('./core/constants');
 
 module.exports = function (context) {
   var info = enhance();
@@ -15,8 +12,8 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      var method = info.helpers.isMethodCall(node);
-      if (method && isKnownComposeMethod(method.name) && method.name !== composeMethod) {
+      var method = info.helpers.isComposeMethod(node);
+      if (method && method.name !== composeMethod) {
         context.report(node, 'Forbidden use of `' + method.name + '`. Use `' + composeMethod + '` instead');
       }
     }
@@ -25,5 +22,5 @@ module.exports = function (context) {
 
 module.exports.schema = [{
   type: 'string',
-  enum: knownComposeMethods
+  enum: constants.COMPOSITION_METHODS
 }];
