@@ -82,6 +82,15 @@ test(() => {
       {
         code: code(`import {map as flow} from 'lodash/fp'; flow(fn1, iterable);`, false),
         options: ['compose']
+      },
+      // Should not warn if no compose function name specified
+      {
+        code: code(`compose(fn1, fn2); pipe(fn1, fn2);`, ['compose', 'pipe']),
+        options: []
+      },
+      {
+        code: code(`_.compose(fn1, fn2); _.pipe(fn1, fn2);`),
+        options: []
       }
     ],
     invalid: [
