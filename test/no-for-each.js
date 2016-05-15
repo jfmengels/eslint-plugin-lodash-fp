@@ -13,9 +13,9 @@ const ruleTester = new RuleTester({
   }
 });
 
-const errors = [{
+const errors = (name) => [{
   ruleId: 'no-for-each',
-  message: 'Forbidden use of `_.forEach`'
+  message: 'Forbidden use of `_.' + name + '`'
 }];
 
 test(() => {
@@ -35,28 +35,44 @@ test(() => {
     invalid: [
       {
         code: code(`_.forEach(fn, array);`),
-        errors
+        errors: errors('forEach')
       },
       {
         code: code(`_.forEach(fn, array);`),
         options: [{noNative: false}],
-        errors
+        errors: errors('forEach')
       },
       {
         code: code(`_.forEachRight(fn, array);`),
-        errors
+        errors: errors('forEachRight')
       },
       {
         code: code(`_.each(fn, array);`),
-        errors
+        errors: errors('forEach')
       },
       {
         code: code(`_.eachRight(fn, array);`),
-        errors
+        errors: errors('forEachRight')
+      },
+      {
+        code: code(`_.forIn(fn, array);`),
+        errors: errors('forIn')
+      },
+      {
+        code: code(`_.forInRight(fn, array);`),
+        errors: errors('forInRight')
+      },
+      {
+        code: code(`_.forOwn(fn, array);`),
+        errors: errors('forOwn')
+      },
+      {
+        code: code(`_.forOwnRight(fn, array);`),
+        errors: errors('forOwnRight')
       },
       {
         code: code(`_.flow(_.forEach(fn));`),
-        errors
+        errors: errors('forEach')
       },
       {
         code: code(`array.forEach(fn);`),

@@ -5,10 +5,6 @@ var enhance = require('./core/enhance');
 
 var isForEachCall = _.matches({type: 'MemberExpression', property: {name: 'forEach'}});
 
-var forbiddenMethods = [
-  'forEach', 'forEachRight', 'each', 'eachRight'
-];
-
 module.exports = function (context) {
   var info = enhance();
   var options = context.options[0] || {};
@@ -16,9 +12,9 @@ module.exports = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      var name = info.helpers.isMethodCallOf(forbiddenMethods, node);
-      if (name) {
-        context.report(node, 'Forbidden use of `_.forEach`');
+      var method = info.helpers.isForEachMethod(node);
+      if (method) {
+        context.report(node, 'Forbidden use of `_.' + method.realName + '`');
         return;
       }
 

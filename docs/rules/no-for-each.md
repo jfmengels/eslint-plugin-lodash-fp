@@ -1,6 +1,6 @@
 # Forbid the use of [`_.forEach`]
 
-If you aim for your project to avoid side-effects as much as possible, then you might want to forbid the of methods like [`_.forEach`]. By default, it will also report any call to methods named `forEach`.
+If you aim for your project to avoid side-effects as much as possible, then you might want to forbid the of methods like [`_.forEach`], [`_.forIn`] or [`_.forOwn`]. By default, it will also report any call to methods named `forEach`.
 
 ## Options
 
@@ -19,8 +19,12 @@ You can set the options like this:
 ```js
 _.forEach(fn, array);
 _.each(fn, array);
+_.forIn(fn, array);
+_.forOwn(fn, array);
 _.forEachRight(fn, array);
 _.eachRight(fn, array);
+_.forInRight(fn, array);
+_.forOwnRight(fn, array);
 
 _.flow(
   _.filter(fn1),
@@ -45,3 +49,5 @@ array.forEach(fn);
 ```
 
 [`_.forEach`]: (https://lodash.com/docs#forEach)
+[`_.forOwn`]: (https://lodash.com/docs#forOwn)
+[`_.forIn`]: (https://lodash.com/docs#forIn)

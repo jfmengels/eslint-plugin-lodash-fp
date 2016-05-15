@@ -132,6 +132,7 @@ module.exports = function (imports) {
     isAnyMethodOf: isAnyMethodOf,
 
     isComposeMethod: isMethodCallOf(constants.COMPOSITION_METHODS),
+    isForEachMethod: isMethodCallOf(constants.FOREACH_METHODS),
     getComposeMethodArgMethods: getComposeMethodArgMethods
   };
 };

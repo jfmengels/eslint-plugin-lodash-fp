@@ -2,11 +2,11 @@
 
 var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
+var constants = require('./core/constants');
 
-var forEachMethods = ['forEach', 'forEachRight', 'forIn', 'forInRight', 'forOwn', 'forOwnRight'];
 var isForEach = _.flow(
   _.get('realName'),
-  _.includes(_, forEachMethods)
+  _.includes(_, constants.FOREACH_METHODS)
 );
 
 function isMethodCall(info, node) {

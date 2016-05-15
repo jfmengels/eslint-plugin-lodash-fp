@@ -6,6 +6,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 ### Added
 - Added [`no-unused-result`] rule
+### Changed
+- [`no-for-each`] now also reports uses of [`_.forIn`] and [`_.forOwn`].
 
 ## [1.2.0] - 2016-05-08
 ### Added
