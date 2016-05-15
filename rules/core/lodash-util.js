@@ -2,6 +2,7 @@
 
 var _ = require('lodash/fp');
 var data = require('./lodash-data');
+var constants = require('./constants');
 
 module.exports = function (imports) {
   var isIdentifier = _.matches({type: 'Identifier'});
@@ -104,8 +105,6 @@ module.exports = function (imports) {
       buildInfo(node, node.property.name, node.property.name);
   });
 
-  var compositionMethods = ['compose', 'flow', 'flowRight', 'pipe'];
-
   var getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
     var methodNames = node.arguments.map(function (arg) {
       return isMethodCall(arg) || isMember(arg);
@@ -132,7 +131,7 @@ module.exports = function (imports) {
     isMethodOf: isMethodOf,
     isAnyMethodOf: isAnyMethodOf,
 
-    isComposeMethod: isMethodCallOf(compositionMethods),
+    isComposeMethod: isMethodCallOf(constants.COMPOSITION_METHODS),
     getComposeMethodArgMethods: getComposeMethodArgMethods
   };
 };
