@@ -9,17 +9,17 @@ module.exports = function (imports) {
   var isCallExpression = _.matches({type: 'CallExpression'});
   var isMemberExpression = _.matches({type: 'MemberExpression'});
 
-  function buildInfo(node, varname, _name) {
-    if (!_name) {
+  function buildInfo(info) {
+    if (!info.name) {
       return false;
     }
 
-    var name = _name.replace('fp/', '');
+    var name = info.name.replace('fp/', '');
     var realName = data.aliasToReal[name] || name;
 
     return {
-      node: node,
-      varname: varname,
+      node: info.node,
+      varname: info.varname || info.name,
       name: name,
       realName: realName,
       skipFixed: data.skipFixed[realName] || false,
@@ -45,25 +45,35 @@ module.exports = function (imports) {
   // Is `X()` or `X.Y()` a Lodash method call()?
 
   var findName = _.curry(function _findName(methods, method) {
-    return _.find(_.eq(method.name), methods) && method;
+    return _.find(_.eq(method.name), _.isArray(methods) ? methods : [methods]) && method;
   });
 
   function isMemberMethod(node) {
     return isMemberExpression(node) &&
       isLodash(node.object.name) &&
-      buildInfo(node, node.property.name, node.property.name);
+      buildInfo({
+        node: node,
+        name: node.property.name
+      });
   }
 
   function isAnyMemberMethod(node) {
     return isMemberExpression(node) &&
       isAnyLodash(node.object.name) &&
-      buildInfo(node, node.property.name, node.property.name);
+      buildInfo({
+        node: node,
+        name: node.property.name
+      });
   }
 
   function isIdentifierMethod(node) {
     return isIdentifier(node) &&
       imports[node.name] !== undefined &&
-      buildInfo(node, node.name, imports[node.name]);
+      buildInfo({
+        node: node,
+        varname: node.name,
+        name: imports[node.name]
+      });
   }
 
   function isMethod(node) {
@@ -74,14 +84,12 @@ module.exports = function (imports) {
     return isAnyMemberMethod(node) || isIdentifierMethod(node);
   }
 
-  var isMethodOf = _.curry(function _isMethodOf(_methods, node) {
-    var methods = _.isArray(_methods) ? _methods : [_methods];
+  var isMethodOf = _.curry(function _isMethodOf(methods, node) {
     var method = isMethod(node);
     return method && findName(methods, method);
   });
 
-  var isAnyMethodOf = _.curry(function _isAnyMethodOf(_methods, node) {
-    var methods = _.isArray(_methods) ? _methods : [_methods];
+  var isAnyMethodOf = _.curry(function _isAnyMethodOf(methods, node) {
     var method = isAnyMethod(node);
     return method && findName(methods, method);
   });
@@ -90,8 +98,7 @@ module.exports = function (imports) {
     return isCallExpression(node) && isMethod(node.callee);
   }
 
-  var isMethodCallOf = _.curry(function _isMethodCallOf(_methods, node) {
-    var methods = _.isArray(_methods) ? _methods : [_methods];
+  var isMethodCallOf = _.curry(function _isMethodCallOf(methods, node) {
     var method = isMethodCall(node);
     return method && findName(methods, method);
   });
@@ -102,7 +109,10 @@ module.exports = function (imports) {
       isIdentifier(node.object) &&
       isIdentifier(node.property) &&
       isLodash(node.object.name) &&
-      buildInfo(node, node.property.name, node.property.name);
+      buildInfo({
+        node: node,
+        name: node.property.name
+      });
   });
 
   var getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
