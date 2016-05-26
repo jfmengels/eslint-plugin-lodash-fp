@@ -13,10 +13,10 @@ const ruleTester = new RuleTester({
   }
 });
 
-const errors = [{
-  ruleId: 'no-extraneous-iteratee-args',
-  message: 'Prefer `_.flatMap` over consecutive `_.map` and `_.flatten`'
-}];
+const error = (message) => ({
+  ruleId: 'prefer-composition-grouping',
+  message
+});
 
 test(() => {
   ruleTester.run('no-extraneous-iteratee-args', rule, {
@@ -36,27 +36,27 @@ test(() => {
     invalid: [
       {
         code: code('_.map((x, y) => x + y);'),
-        errors: errors
+        errors: [error('Too many parameters in `map`\'s iteratee, it is only given 1 argument.')]
       },
       {
         code: code('_.map((x, y, z) => x + y);'),
-        errors: errors
+        errors: [error('Too many parameters in `map`\'s iteratee, it is only given 1 argument.')]
       },
       {
         code: code('_.map((x, y) => x + y, array);'),
-        errors: errors
+        errors: [error('Too many parameters in `map`\'s iteratee, it is only given 1 argument.')]
       },
       {
         code: code('_.map((x, y) => {}, array);'),
-        errors: errors
+        errors: [error('Too many parameters in `map`\'s iteratee, it is only given 1 argument.')]
       },
       {
         code: code('_.map(function (x, y) {}, array);'),
-        errors: errors
+        errors: [error('Too many parameters in `map`\'s iteratee, it is only given 1 argument.')]
       },
       {
         code: code('_.reduce((x, y, z) => {}, array);'),
-        errors: errors
+        errors: [error('Too many parameters in `reduce`\'s iteratee, it is only given 2 argument.')]
       }
     ]
   });

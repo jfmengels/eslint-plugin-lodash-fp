@@ -7,7 +7,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 - Added [`no-unused-result`] rule
 ### Fixed
-- Fixed [`prefer-composition-grouping`] error message ([#30], thanks [@gunar]).
+- Fixed [`prefer-composition-grouping`]'s error message ([#30], thanks [@gunar]).
+- Fixed [`no-extraneous-iteratee-args`]'s error message.
 - [`prefer-composition-grouping`] now handles aliases, and can report multiple errors in the same flow construct.
 ### Changed
 - [`no-for-each`] now also reports uses of [`_.forIn`] and [`_.forOwn`].

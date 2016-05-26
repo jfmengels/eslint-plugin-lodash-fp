@@ -23,7 +23,8 @@ module.exports = function (context) {
 
       var nArgs = getFunctionArgumentsLength(node.arguments[method.iterateePos]);
       if (nArgs > method.iterateeAry) {
-        context.report(node, 'Prefer `_.flatMap` over consecutive `_.map` and `_.flatten`');
+        context.report(node,
+          'Too many parameters in `' + method.name + '`\'s iteratee, it is only given ' + method.iterateeAry + ' argument.');
       }
     }
   });
