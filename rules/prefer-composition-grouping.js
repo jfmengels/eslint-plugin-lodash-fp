@@ -3,17 +3,20 @@
 var _ = require('lodash/fp');
 var enhance = require('./core/enhance');
 
+var realName = _.property('realName');
 var groupableMethods = ['map', 'filter', 'reject'];
 
-function hasConsecutiveOperations(methodNames) {
-  var index = _.findIndex(_.includes(_, groupableMethods), methodNames);
+function consecutiveOperations(methods) {
+  var names = _.map(realName, methods);
+  var index = _.findIndex(_.includes(_, groupableMethods), names);
   if (index === -1) {
-    return false;
+    return [];
   }
-  if (methodNames[index] === methodNames[index + 1]) {
-    return true;
+  var operations = [];
+  if (realName(methods[index]) === realName(methods[index + 1])) {
+    operations = [methods[index + 1]];
   }
-  return hasConsecutiveOperations(methodNames.slice(index + 1));
+  return operations.concat(consecutiveOperations(methods.slice(index + 1)));
 }
 
 module.exports = function (context) {
@@ -23,13 +26,15 @@ module.exports = function (context) {
     CallExpression: function (node) {
       var method = info.helpers.isComposeMethod(node);
       if (!method) {
-        return method;
+        return;
       }
-
       var methods = info.helpers.getComposeMethodArgMethods(method.name, node);
-      if (methods && hasConsecutiveOperations(_.map('name', methods))) {
-        context.report(node, 'Prefer `_.flatMap` over consecutive `_.map` and `_.flatten`');
+      if (!methods) {
+        return;
       }
+      consecutiveOperations(methods).forEach(function (operation) {
+        context.report(node, 'Prefer regrouping successive calls of `' + operation.name + '` into one function or function call');
+      });
     }
   });
 };

@@ -6,6 +6,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 ### Added
 - Added [`no-unused-result`] rule
+### Fixed
+- Fixed [`prefer-composition-grouping`] error message ([#30], thanks [@gunar]).
+- [`prefer-composition-grouping`] now handles aliases, and can report multiple errors in the same flow construct.
 ### Changed
 - [`no-for-each`] now also reports uses of [`_.forIn`] and [`_.forOwn`].
 
@@ -98,6 +101,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/30
 [#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
 [#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
@@ -105,6 +109,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@jfmengels]: https://github.com/jfmengels
 [@izaakschroeder]: https://github.com/izaakschroeder
 [@kavington]: https://github.com/kavington
+[@gunar]: https://github.com/gunar
 
 [Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...master
 [1.2.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.2.0
