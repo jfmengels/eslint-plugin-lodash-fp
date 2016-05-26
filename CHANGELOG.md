@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- (none)
+
+## [1.3.0] - 2016-05-26
 ### Added
 - Added [`no-unused-result`] rule
 ### Fixed
@@ -112,7 +115,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@kavington]: https://github.com/kavington
 [@gunar]: https://github.com/gunar
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.3.0...master
+[1.3.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.2.0
 [1.1.3]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.1...v1.1.2
