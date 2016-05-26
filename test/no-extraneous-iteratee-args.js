@@ -26,6 +26,11 @@ test(() => {
       code('_.map(f, a);'),
       code('_.map(x => x, a);'),
       code('_.map(function(x) { x }, a);'),
+      code('_.pluck();'),
+      code('_.pluck(f);'),
+      code('_.pluck(f, a);'),
+      code('_.pluck(x => x, a);'),
+      code('_.pluck(function(x) { x }, a);'),
       code('_.reduce(x => x, a);'),
       code('_.reduce((x, y) => x, a);'),
       code('_.times(() => 1, n);'),
@@ -57,6 +62,10 @@ test(() => {
       {
         code: code('_.reduce((x, y, z) => {}, array);'),
         errors: [error('Too many parameters in `reduce`\'s iteratee, it is only given 2 argument.')]
+      },
+      {
+        code: code('_.pluck((x, y) => x + y);'),
+        errors: [error('Too many parameters in `pluck`\'s iteratee, it is only given 1 argument.')]
       }
     ]
   });
