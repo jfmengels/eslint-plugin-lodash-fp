@@ -53,10 +53,6 @@ test(() => {
         ]
       },
       {
-        code: code('_.flow(_.whereEq(f1), _.whereEq(f2));'),
-        errors: [error('Prefer regrouping successive calls of `whereEq` into one function or function call')]
-      },
-      {
         code: code('_.flow(_.pluck(f1), _.pluck(f2));'),
         errors: [error('Prefer regrouping successive calls of `pluck` into one function or function call')]
       },
