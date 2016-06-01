@@ -29,9 +29,6 @@ module.exports = function (context) {
         return;
       }
       var methods = info.helpers.getComposeMethodArgMethods(method.name, node);
-      if (!methods) {
-        return;
-      }
       consecutiveOperations(methods).forEach(function (operation) {
         context.report(node, 'Prefer regrouping successive calls of `' + operation.name + '` into one function or function call');
       });

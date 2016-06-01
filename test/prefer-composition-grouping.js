@@ -26,7 +26,9 @@ test(() => {
       code('_.flow(_.filter(f1), _.reject(f2));'),
       code('_.flow(_.map(f1), _.filter(f2), _.map(f3));'),
       code('_.flow(_.map(f1), f2, _.map(f3));'),
-      code('_.flow(_.flatten, _.flatten);')
+      code('_.flow(_.flatten, _.flatten);'),
+      code('_.flow(fn1, fn2);'),
+      code('_.flow((a) => a - 1, (b) => b + 1);')
     ],
     invalid: [
       {
