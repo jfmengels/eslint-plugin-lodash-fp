@@ -37,10 +37,10 @@
     "lodash": "^4.11.1"
   },
   "devDependencies": {
-    "ava": "^0.14.0",
+    "ava": "^0.15.1",
     "nyc": "^6.4.0",
     "pify": "^2.3.0",
-    "xo": "^*"
+    "xo": "*"
   },
   "peerDependencies": {
     "eslint": ">=2"
