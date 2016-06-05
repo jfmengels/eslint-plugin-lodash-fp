@@ -1,8 +1,8 @@
 import test from 'ava';
-import {RuleTester} from 'eslint';
+import avaRuleTester from 'eslint-ava-rule-tester';
 import rule from '../rules/use-fp';
 
-const ruleTester = new RuleTester({
+const ruleTester = avaRuleTester(test, {
   env: {
     es6: true
   },
@@ -16,37 +16,35 @@ const errors = [{
   message: 'Unallowed import of `lodash`. Use `lodash/fp` instead'
 }];
 
-test(() => {
-  ruleTester.run('use-fp', rule, {
-    valid: [
-      `import _ from 'lodash/fp';`,
-      `import {bindAll} from 'lodash/fp';`,
-      `import _, {bindAll} from 'lodash/fp';`,
-      `import _, {bindAll as b} from 'lodash/fp';`,
-      `import _ from 'lodash/fp/bindAll';`,
-      `var _ = require('lodash/fp');`,
-      `var _ = require('lodash/fp/bindAll');`,
-      `import foo from 'foo';`,
-      `var foo = require('foo');`,
-      `var foo = require(fooName);`
-    ],
-    invalid: [
-      {
-        code: `import _ from 'lodash';`,
-        errors
-      },
-      {
-        code: `import _ from 'lodash/bindAll';`,
-        errors
-      },
-      {
-        code: `var _ = require('lodash');`,
-        errors
-      },
-      {
-        code: `var bindAll = require('lodash/bindAll');`,
-        errors
-      }
-    ]
-  });
+ruleTester.run('use-fp', rule, {
+  valid: [
+    `import _ from 'lodash/fp';`,
+    `import {bindAll} from 'lodash/fp';`,
+    `import _, {bindAll} from 'lodash/fp';`,
+    `import _, {bindAll as b} from 'lodash/fp';`,
+    `import _ from 'lodash/fp/bindAll';`,
+    `var _ = require('lodash/fp');`,
+    `var _ = require('lodash/fp/bindAll');`,
+    `import foo from 'foo';`,
+    `var foo = require('foo');`,
+    `var foo = require(fooName);`
+  ],
+  invalid: [
+    {
+      code: `import _ from 'lodash';`,
+      errors
+    },
+    {
+      code: `import _ from 'lodash/bindAll';`,
+      errors
+    },
+    {
+      code: `var _ = require('lodash');`,
+      errors
+    },
+    {
+      code: `var bindAll = require('lodash/bindAll');`,
+      errors
+    }
+  ]
 });
