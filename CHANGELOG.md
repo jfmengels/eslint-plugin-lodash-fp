@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+- Removed eslint as a dependency.
 
 ## [1.3.0] - 2016-05-26
 ### Added

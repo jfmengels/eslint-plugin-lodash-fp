@@ -33,7 +33,6 @@
     "programming"
   ],
   "dependencies": {
-    "eslint": "^2.7.0",
     "lodash": "^4.11.1"
   },
   "devDependencies": {
