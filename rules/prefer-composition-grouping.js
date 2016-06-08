@@ -19,6 +19,16 @@ function consecutiveOperations(methods) {
   return operations.concat(consecutiveOperations(methods.slice(index + 1)));
 }
 
+function errorMessage(operation) {
+  var baseMessage = 'Prefer regrouping successive calls of `' + operation.name + '` into one function or function call';
+  var name = realName(operation);
+  if (name === 'map') {
+    return baseMessage;
+  }
+  var suggestedMethod = name === 'filter' ? 'overEvery' : 'overSome';
+  return baseMessage + '. You might want to use `' + suggestedMethod + '`';
+}
+
 module.exports = function (context) {
   var info = enhance();
 
@@ -30,7 +40,7 @@ module.exports = function (context) {
       }
       var methods = info.helpers.getComposeMethodArgMethods(method.name, node);
       consecutiveOperations(methods).forEach(function (operation) {
-        context.report(node, 'Prefer regrouping successive calls of `' + operation.name + '` into one function or function call');
+        context.report(node, errorMessage(operation));
       });
     }
   });

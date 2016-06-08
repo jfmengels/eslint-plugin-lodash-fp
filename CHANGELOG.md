@@ -4,7 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- Removed eslint as a dependency.
+### Fixed
+- Fixed documentation for [`prefer-composition-grouping`].
+- Added suggestion in [`prefer-composition-grouping`] to use [`_.overEvery`]/[`_.overSome`] to replace multiple [`_.filter`]/[`_.reject`].
+### Changed
+- Removed [`eslint`] as a dependency.
 
 ## [1.3.0] - 2016-05-26
 ### Added
@@ -105,6 +109,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`prefer-identity`]: ./docs/rules/prefer-identity.md
 [`preferred-alias`]: ./docs/rules/preferred-alias.md
 
+[`_.filter`]: https://lodash.com/docs#filter
+[`_.forIn`]: https://lodash.com/docs#forIn
+[`_.forOwn`]: https://lodash.com/docs#forOwn
+[`_.overEvery`]: https://lodash.com/docs#overEvery
+[`_.overSome`]: https://lodash.com/docs#overSome
+[`_.reject`]: https://lodash.com/docs#reject
+
+[`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
 [#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/30

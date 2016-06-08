@@ -36,21 +36,21 @@ ruleTester.run('prefer-composition-grouping', rule, {
     },
     {
       code: code('_.flow(_.filter(f1), _.filter(f2));'),
-      errors: [error('Prefer regrouping successive calls of `filter` into one function or function call')]
+      errors: [error('Prefer regrouping successive calls of `filter` into one function or function call. You might want to use `overEvery`')]
     },
     {
       code: code('_.flow(_.reject(f1), _.reject(f2));'),
-      errors: [error('Prefer regrouping successive calls of `reject` into one function or function call')]
+      errors: [error('Prefer regrouping successive calls of `reject` into one function or function call. You might want to use `overSome`')]
     },
     {
       code: code('_.flow(_.map(f1), _.filter(f2), _.filter(f3));'),
-      errors: [error('Prefer regrouping successive calls of `filter` into one function or function call')]
+      errors: [error('Prefer regrouping successive calls of `filter` into one function or function call. You might want to use `overEvery`')]
     },
     {
       code: code('_.flow(_.map(f1), _.map(f2), _.filter(f3), _.filter(f4));'),
       errors: [
         error('Prefer regrouping successive calls of `map` into one function or function call'),
-        error('Prefer regrouping successive calls of `filter` into one function or function call')
+        error('Prefer regrouping successive calls of `filter` into one function or function call. You might want to use `overEvery`')
       ]
     },
     {

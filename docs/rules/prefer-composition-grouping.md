@@ -1,7 +1,7 @@
 # Prefer grouping similar methods in composition methods
 
 When using composition methods like [`_.flow`] or [`_.compose`], it can be preferred to regroup similar methods in a new composition method call.
-The methods for which this rule will create an error are [`_.map`], [`_.filter`] and [`_.reject`];
+The methods for which this rule will create an error are [`_.map`], [`_.filter`] and [`_.reject`]. When using [`_.filter`] and [`_.reject`] and shorthands, you might want to use [`_.overEvery`] and [`_.overSome`].
 
 ```js
 _.flow(
@@ -23,16 +23,29 @@ _.flow(
   _.map(_.flow(fn1, fn2)),
   _.filter(fn3)
 )(a);
+
+_.flow(
+  _.filter(fn1),
+  _.filter('property'),
+  _.map(fn2)
+)(a);
+// -->
+_.flow(
+  _.filter(_.overEvery([fn1, 'property'])),
+  _.map(fn2)
+)(a);
+
+_.flow(
+  _.reject(fn1),
+  _.reject('property'),
+  _.map(fn2)
+)(a);
+// -->
+_.flow(
+  _.reject(_.overSome([fn1, 'property'])),
+  _.map(fn2)
+)(a);
 ```
-
-
-using [`_.get`] or [`_.has`] over expression chains like `a && a.b && a.b.c`
-
-When writing an expression like `a && a.b && a.b.c` just to make sure the path exists, it is more readable to use the functions [`_.get`], [`_.set`] and [`_.has`] instead.
-
-## Rule Details
-
-This rule takes one argument - the minimal depth (default is `3`).
 
 ### Fail
 
@@ -62,13 +75,10 @@ _.flow(
 )(a);
 ```
 
-
-## When Not To Use It
-
-If you do not want to enforce using [`_.get`], you should not use this rule.
-
 [`_.map`]: https://lodash.com/docs#map
 [`_.filter`]: https://lodash.com/docs#filter
 [`_.reject`]: https://lodash.com/docs#reject
 [`_.flow`]: https://lodash.com/docs#flow
 [`_.compose`]: https://lodash.com/docs#flowRight
+[`_.overEvery`]: https://lodash.com/docs#overEvery
+[`_.overSome`]: https://lodash.com/docs#overSome
