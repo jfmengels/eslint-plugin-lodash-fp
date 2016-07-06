@@ -42,6 +42,8 @@ const create = function (context) {
 module.exports = {
   create,
   meta: {
-    docs: {}
+    docs: {
+      recommended: 'error'
+    }
   }
 };

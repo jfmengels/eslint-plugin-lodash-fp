@@ -52,6 +52,8 @@ module.exports = {
   create,
   meta: {
     schema,
-    docs: {}
+    docs: {
+      recommended: 'error'
+    }
   }
 };

@@ -33,7 +33,8 @@
     "programming"
   ],
   "dependencies": {
-    "lodash": "^4.11.1"
+    "lodash": "^4.11.1",
+    "req-all": "^0.1.0"
   },
   "devDependencies": {
     "ava": "^0.15.1",
