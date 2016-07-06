@@ -22,7 +22,7 @@ function hasConsecutiveMapAndFlatten(methods) {
   return hasConsecutiveMapAndFlatten(methods.slice(mapIndex + 1));
 }
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
 
   const isFlattenCall = info.helpers.isMethodCallOf('flatten');
@@ -49,4 +49,11 @@ module.exports = function (context) {
       }
     }
   });
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {}
+  }
 };

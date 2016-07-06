@@ -7,7 +7,7 @@ function isLodashWrap(helpers, node) {
     helpers.isAnyLodash(node.name);
 }
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
   const helpers = info.helpers;
 
@@ -19,4 +19,11 @@ module.exports = function (context) {
       }
     }
   });
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {}
+  }
 };

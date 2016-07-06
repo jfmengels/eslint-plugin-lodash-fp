@@ -3,7 +3,7 @@
 const enhance = require('./core/enhance');
 const astUtil = require('./core/ast-util');
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
 
   const isFilterCall = info.helpers.isMethodCallOf('filter');
@@ -24,4 +24,11 @@ module.exports = function (context) {
       }
     }
   });
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {}
+  }
 };

@@ -57,7 +57,7 @@ function isExtraneous(info, argNode) {
 
 const errorMessage = 'Found extraneous function wrap around curried method. Pass inner function directly';
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
 
   return info.merge({
@@ -76,4 +76,11 @@ module.exports = function (context) {
         });
     }
   });
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {}
+  }
 };

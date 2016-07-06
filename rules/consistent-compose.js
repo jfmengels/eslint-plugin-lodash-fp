@@ -3,7 +3,7 @@
 const enhance = require('./core/enhance');
 const constants = require('./core/constants');
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
   const composeMethod = context.options[0];
   if (!composeMethod) {
@@ -20,7 +20,15 @@ module.exports = function (context) {
   });
 };
 
-module.exports.schema = [{
+const schema = [{
   type: 'string',
   enum: constants.COMPOSITION_METHODS
 }];
+
+module.exports = {
+  create,
+  meta: {
+    schema,
+    docs: {}
+  }
+};

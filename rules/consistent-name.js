@@ -15,7 +15,7 @@ function hasDefaultSpecifier(node) {
 }
 
 /* eslint quote-props: [2, "as-needed"] */
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
   const expectedName = context.options[0] || '_';
   let importNode = null;
@@ -46,6 +46,14 @@ module.exports = function (context) {
   });
 };
 
-module.exports.schema = [{
+const schema = [{
   type: 'string'
 }];
+
+module.exports = {
+  create,
+  meta: {
+    schema,
+    docs: {}
+  }
+};

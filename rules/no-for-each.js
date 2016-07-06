@@ -5,7 +5,7 @@ const enhance = require('./core/enhance');
 
 const isForEachCall = _.matches({type: 'MemberExpression', property: {name: 'forEach'}});
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
   const options = context.options[0] || {};
   const noNative = options.noNative !== false;
@@ -25,7 +25,7 @@ module.exports = function (context) {
   });
 };
 
-module.exports.schema = [
+const schema = [
   {
     type: 'object',
     properties: {
@@ -35,3 +35,11 @@ module.exports.schema = [
     }
   }
 ];
+
+module.exports = {
+  create,
+  meta: {
+    schema,
+    docs: {}
+  }
+};

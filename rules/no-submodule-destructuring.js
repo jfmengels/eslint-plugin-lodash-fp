@@ -19,7 +19,7 @@ function isRequireOfLodashSubModule(node) {
     isLodashSubModule(node.arguments[0].value);
 }
 
-module.exports = function (context) {
+const create = function (context) {
   const info = enhance();
 
   return info.merge({
@@ -37,4 +37,11 @@ module.exports = function (context) {
       }
     }
   });
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {}
+  }
 };

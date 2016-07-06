@@ -23,7 +23,7 @@ function wantedAlias(overrides, method) {
   return _.intersection(data.realToAlias[method.realName], overrides)[0] || method.realName;
 }
 
-module.exports = function (context) {
+const create = function (context) {
   const options = context.options[0] || {};
   const overrides = options.overrides || [];
   checkOverrides(overrides);
@@ -43,7 +43,7 @@ module.exports = function (context) {
   });
 };
 
-module.exports.schema = [
+const schema = [
   {
     type: 'object',
     properties: {
@@ -57,3 +57,11 @@ module.exports.schema = [
     }
   }
 ];
+
+module.exports = {
+  create,
+  meta: {
+    schema,
+    docs: {}
+  }
+};

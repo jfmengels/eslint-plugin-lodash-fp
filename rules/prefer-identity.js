@@ -2,7 +2,7 @@
 
 const astUtil = require('./core/ast-util');
 
-module.exports = function (context) {
+const create = function (context) {
   const options = context.options[0] || {};
   const shouldCheckArrowFunctions = options.arrowFunctions === true;
 
@@ -23,7 +23,7 @@ module.exports = function (context) {
   };
 };
 
-module.exports.schema = [
+const schema = [
   {
     type: 'object',
     properties: {
@@ -33,3 +33,11 @@ module.exports.schema = [
     }
   }
 ];
+
+module.exports = {
+  create,
+  meta: {
+    schema,
+    docs: {}
+  }
+};

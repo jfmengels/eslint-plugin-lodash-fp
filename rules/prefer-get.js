@@ -10,7 +10,7 @@ function shouldCheckDeeper(node, nodeRight, toCompare) {
     (!toCompare || astUtil.isEquivalentExp(nodeRight, toCompare));
 }
 
-module.exports = function (context) {
+const create = function (context) {
   const DEFAULT_LENGTH = 3;
   const ruleDepth = parseInt(context.options[0], 10) || DEFAULT_LENGTH;
 
@@ -41,9 +41,17 @@ module.exports = function (context) {
   };
 };
 
-module.exports.schema = [
+const schema = [
   {
     type: 'integer',
     minimum: 2
   }
 ];
+
+module.exports = {
+  create,
+  meta: {
+    schema,
+    docs: {}
+  }
+};
