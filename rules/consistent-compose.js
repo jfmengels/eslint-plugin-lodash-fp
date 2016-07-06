@@ -14,7 +14,7 @@ const create = function (context) {
     CallExpression: function (node) {
       const method = info.helpers.isComposeMethod(node);
       if (method && method.name !== composeMethod) {
-        context.report(node, 'Forbidden use of `' + method.name + '`. Use `' + composeMethod + '` instead');
+        context.report(node, `Forbidden use of \`${method.name}\`. Use \`${composeMethod}\` instead`);
       }
     }
   });

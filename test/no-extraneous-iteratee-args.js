@@ -60,7 +60,7 @@ ruleTester.run('no-extraneous-iteratee-args', rule, {
     },
     {
       code: code('_.reduce((x, y, z) => {}, array);'),
-      errors: [error('Too many parameters in `reduce`\'s iteratee, it is only given 2 argument.')]
+      errors: [error('Too many parameters in `reduce`\'s iteratee, it is only given 2 arguments.')]
     },
     {
       code: code('_.pluck((x, y) => x + y);'),

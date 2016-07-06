@@ -14,7 +14,7 @@ const create = function (context) {
     CallExpression: function (node) {
       const method = info.helpers.isForEachMethod(node);
       if (method) {
-        context.report(node, 'Forbidden use of `_.' + method.realName + '`');
+        context.report(node, `Forbidden use of \`_.${method.realName}\``);
         return;
       }
 

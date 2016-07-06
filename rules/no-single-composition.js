@@ -12,7 +12,7 @@ const create = function (context) {
       }
       const method = info.helpers.isComposeMethod(node);
       if (method) {
-        context.report(node, '`' + method.name + '` should have at least two arguments');
+        context.report(node, `\`${method.name}\` should have at least two arguments`);
       }
     }
   });

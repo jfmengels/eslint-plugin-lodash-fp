@@ -5,14 +5,14 @@ const enhance = require('./core/enhance');
 const data = require('./core/lodash-data');
 
 function reportMessage(method, alternative) {
-  const baseMessage = '`' + method.name + '` is capped at ' + method.ary + ' arguments';
+  const baseMessage = `\`${method.name}\` is capped at ${method.ary} arguments`;
   if (alternative) {
-    return baseMessage + '. Did you mean to use `' + alternative + '`?';
+    return `${baseMessage}. Did you mean to use \`${alternative}\`?`;
   }
   if (method.spread) {
-    return baseMessage + ' and takes an array as its last argument.';
+    return `${baseMessage} and takes an array as its last argument.`;
   }
-  return baseMessage + '.';
+  return `${baseMessage}.`;
 }
 
 function getAlternative(method, nArgs) {

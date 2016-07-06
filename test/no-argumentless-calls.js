@@ -23,7 +23,7 @@ ruleTester.run('no-argumentless-calls', rule, {
     code('foo()'),
     code('_.map(foo)'),
     code(`_.flow(_.map(f1), _.flatten)`),
-      // Exceptions
+    // Exceptions
     code('_.uniqueId()'),
     code('_.now()'),
     code('_.noConflict()'),

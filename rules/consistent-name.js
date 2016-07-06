@@ -40,7 +40,7 @@ const create = function (context) {
         // but <expectedName> does not refer to either `lodash` or `lodash/fp`
         !info.helpers.isAnyLodash(expectedName)
       ) {
-        context.report(importNode, 'Lodash should be imported as `' + expectedName + '`');
+        context.report(importNode, `Lodash should be imported as \`${expectedName}\``);
       }
     }
   });

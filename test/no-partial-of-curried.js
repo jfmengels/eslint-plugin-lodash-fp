@@ -13,12 +13,10 @@ const ruleTester = avaRuleTester(test, {
   }
 });
 
-function errors(message) {
-  return [{
-    ruleId: 'no-partial-of-curried',
-    message: message
-  }];
-}
+const errors = [{
+  ruleId: 'no-partial-of-curried',
+  message: `Don't use partial on a curried method`
+}];
 
 ruleTester.run('no-partial-of-curried', rule, {
   valid: [
@@ -39,51 +37,51 @@ ruleTester.run('no-partial-of-curried', rule, {
   invalid: [
     {
       code: code('_.partial(_.get, [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partial(_.map, [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partial(_.map, [_, a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partialRight(_.get, [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partialRight(_.map, [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partialRight(_.map, [_, a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partial(_.get(b), [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partial(_.map(b), [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partial(_.map(b), [_, a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partialRight(_.get(b), [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partialRight(_.map(b), [a]);'),
-      errors: errors('Foo')
+      errors
     },
     {
       code: code('_.partialRight(_.map(b), [_, a]);'),
-      errors: errors('Foo')
+      errors
     }
   ]
 });

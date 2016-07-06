@@ -20,13 +20,13 @@ function consecutiveOperations(methods) {
 }
 
 function errorMessage(operation) {
-  const baseMessage = 'Prefer regrouping successive calls of `' + operation.name + '` into one function or function call';
+  const baseMessage = `Prefer regrouping successive calls of \`${operation.name}\` into one function or function call`;
   const name = realName(operation);
   if (name === 'map') {
     return baseMessage;
   }
   const suggestedMethod = name === 'filter' ? 'overEvery' : 'overSome';
-  return baseMessage + '. You might want to use `' + suggestedMethod + '`';
+  return `${baseMessage}. You might want to use \`${suggestedMethod}\``;
 }
 
 const create = function (context) {

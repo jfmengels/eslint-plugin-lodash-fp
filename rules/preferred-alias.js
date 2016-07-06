@@ -12,7 +12,7 @@ function checkOverrides(overrides) {
     };
   }).reduce(function (res, item) {
     if (res[item.target]) {
-      throw new Error('`override` contains `' + res[item.target] + '` and `' + item.override + '` that target `' + item.target + '`');
+      throw new Error(`\`override\` contains \`${res[item.target]}\` and \`${item.override}\` that target \`${item.target}\``);
     }
     res[item.target] = item.override;
     return res;
@@ -37,7 +37,7 @@ const create = function (context) {
       }
       const alias = wantedAlias(overrides, method);
       if (alias !== method.name) {
-        context.report(node, 'Use `' + alias + '` instead of `' + method.name + '`.');
+        context.report(node, `Use \`${alias}\` instead of \`${method.name}\`.`);
       }
     }
   });

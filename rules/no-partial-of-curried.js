@@ -14,7 +14,7 @@ const create = function (context) {
 
       const func = info.helpers.isMethod(node.arguments[0]) || info.helpers.isMethodCall(node.arguments[0]);
       if (func && !func.skipFixed) {
-        context.report(node, 'Foo');
+        context.report(node, `Don't use partial on a curried method`);
       }
     }
   });

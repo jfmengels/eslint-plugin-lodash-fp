@@ -24,7 +24,8 @@ const create = function (context) {
       const nArgs = getFunctionArgumentsLength(node.arguments[method.iterateePos]);
       if (nArgs > method.iterateeAry) {
         context.report(node,
-          'Too many parameters in `' + method.name + '`\'s iteratee, it is only given ' + method.iterateeAry + ' argument.');
+          `Too many parameters in \`${method.name}\`'s iteratee, it is only given ` +
+          `${method.iterateeAry} argument${method.iterateeAry === 1 ? '' : 's'}.`);
       }
     }
   });
