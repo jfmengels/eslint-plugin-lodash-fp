@@ -2,27 +2,6 @@
 const _ = require('lodash/fp');
 
 /**
- * Gets the object that called the method in a CallExpression
- * @param {Object} node
- * @returns {Object|undefined}
- */
-const getCaller = _.property(['callee', 'object']);
-
-/**
- * Gets the name of a method in a CallExpression
- * @param {Object} node
- * @returns {string|undefined}
- */
-const getMethodName = _.property(['callee', 'property', 'name']);
-
-/**
- * Returns whether the node is a method call
- * @param {Object} node
- * @returns {boolean}
- */
-const isMethodCall = _.matches({type: 'CallExpression', callee: {type: 'MemberExpression'}});
-
-/**
  * Returns whether the node is a function declaration that has a block
  * @param {Object} node
  * @returns {boolean}
@@ -44,120 +23,11 @@ const getFirstFunctionLine = _.cond([
 ]);
 
 /**
- *
- * @param {Object} node
- * @returns {boolean|undefined}
- */
-const isPropAccess = _.overSome([
-  _.matches({computed: false}),
-  _.matchesProperty(['property', 'type'], 'Literal')
-]);
-
-/**
- * Returns whether the node is a member expression starting with the same object, up to the specified length
- * @param {Object} node
- * @param {string} objectName
- * @param {number} maxPropertyPathLength
- * @param {boolean} allowComputed
- * @returns {boolean|undefined}
- */
-function isMemberExpOf(node, objectName, maxPropertyPathLength, allowComputed) {
-  if (objectName) {
-    let curr = node;
-    let depth = maxPropertyPathLength;
-    while (curr && depth) {
-      if (curr.type === 'MemberExpression' && curr.object.name === objectName) {
-        return allowComputed || isPropAccess(node);
-      }
-      curr = curr.object;
-      depth--;
-    }
-  }
-}
-
-/**
- * Returns the name of the first parameter of a function, if it exists
- * @param {Object} func
- * @returns {string|undefined}
- */
-const getFirstParamName = _.property(['params', 0, 'name']);
-
-/**
  * Returns whether or not the expression is a return statement
  * @param {Object} exp
  * @returns {boolean|undefined}
  */
 const isReturnStatement = _.matchesProperty('type', 'ReturnStatement');
-
-/**
- * Returns whether the node specified has only one statement
- * @param {Object} func
- * @returns {boolean}
- */
-function hasOnlyOneStatement(func) {
-  return func.type === 'ArrowFunctionExpression' ? !_.get('body.body', func) : _.get('body.body.length', func) === 1;
-}
-
-/**
- * Returns whether the node is an object of a method call
- * @param {Object} node
- * @returns {boolean}
- */
-function isObjectOfMethodCall(node) {
-  return _.get('parent.object', node) === node && _.get('parent.parent.type', node) === 'CallExpression';
-}
-
-/**
- * Returns whether the node is a literal
- * @param {Object} node
- * @returns {boolean}
- */
-const isLiteral = _.matchesProperty('type', 'ReturnStatement');
-
-/**
- * Returns whether the expression specified is a binary expression with the specified operator and one of its sides is a member expression of the specified object name
- * @param {string} operator
- * @param {Object} exp
- * @param {string} objectName
- * @param {number} maxPropertyPathLength
- * @param {boolean} allowComputed
- * @param {boolean} onlyLiterals
- * @returns {boolean|undefined}
- */
-function isBinaryExpWithMemberOf(operator, exp, objectName, maxPropertyPathLength, allowComputed, onlyLiterals) {
-  return exp && exp.type === 'BinaryExpression' && exp.operator === operator &&
-          (isMemberExpOf(exp.left, objectName, maxPropertyPathLength, allowComputed) ||
-          isMemberExpOf(exp.right, objectName, maxPropertyPathLength, allowComputed)) &&
-          (!onlyLiterals || (isLiteral(exp.left) || isLiteral(exp.right)));
-}
-
-/**
- * Returns whether the specified expression is a negation.
- * @param {Object} exp
- * @returns {boolean|undefined}
- */
-const isNegationExpression = _.matches({type: 'UnaryExpression', operator: '!'});
-
-/**
- * Returns whether the expression is a negation of a member of objectName, in the specified depth.
- * @param {Object} exp
- * @param {string} objectName
- * @param {number} maxPropertyPathLength
- * @returns {boolean|undefined}
- */
-function isNegationOfMemberOf(exp, objectName, maxPropertyPathLength) {
-  return isNegationExpression(exp) && isMemberExpOf(exp.argument, objectName, maxPropertyPathLength, false);
-}
-
-/**
- *
- * @param {Object} exp
- * @param {string} paramName
- * @returns {boolean|undefined}
- */
-function isIdentifierOfParam(exp, paramName) {
-  return exp && paramName && exp.type === 'Identifier' && exp.name === paramName;
-}
 
 /**
  * Returns the node of the value returned in the first line, if any
@@ -175,16 +45,6 @@ function getValueReturnedInFirstLine(func) {
     }
   }
   return null;
-}
-
-/**
- * Returns whether the node is a call from the specified object name
- * @param {Object} node
- * @param {string} objName
- * @returns {boolean|undefined}
- */
-function isCallFromObject(node, objName) {
-  return node && node.type === 'CallExpression' && _.get('callee.object.name', node) === objName;
 }
 
 /**
@@ -225,70 +85,6 @@ function isEquivalentExp(a, b) {
  */
 const isEqEqEq = _.matches({type: 'BinaryExpression', operator: '==='});
 
-function isMinus(node) {
-  return node.type === 'UnaryExpression' && node.operator === '-';
-}
-
-/**
- * Enum for type of comparison to int literal
- * @readonly
- * @enum {number}
- */
-const comparisonType = {
-  exact: 0,
-  over: 1,
-  under: 2,
-  any: 3
-};
-const comparisonOperators = ['==', '!=', '===', '!=='];
-
-function getIsValue(value) {
-  return value < 0 ? _.overEvery(isMinus, _.matches({argument: {value: -value}})) : _.matches({value: value});
-}
-
-/**
- * Returns the expression compared to the value in a binary expression, or undefined if there isn't one
- * @param {Object} node
- * @param {number} value
- * @param {boolean} [checkOver=false]
- * @returns {Object|undefined}
- */
-function getExpressionComparedToInt(node, value, checkOver) {
-  const isValue = getIsValue(value);
-  if (_.includes(comparisonOperators, node.operator)) {
-    if (isValue(node.right)) {
-      return node.left;
-    }
-    if (isValue(node.left)) {
-      return node.right;
-    }
-  }
-  if (checkOver) {
-    if (node.operator === '>' && isValue(node.right)) {
-      return node.left;
-    }
-    if (node.operator === '<' && isValue(node.left)) {
-      return node.right;
-    }
-    const isNext = getIsValue(value + 1);
-    if ((node.operator === '>=' || node.operator === '<') && isNext(node.right)) {
-      return node.left;
-    }
-    if ((node.operator === '<=' || node.operator === '>') && isNext(node.left)) {
-      return node.right;
-    }
-  }
-}
-
-/**
- * Returns whether the node is a call to indexOf
- * @param {Object} node
- * @returns {boolean}
- */
-function isIndexOfCall(node) {
-  return isMethodCall(node) && getMethodName(node) === 'indexOf';
-}
-
 const isFunction = _.flow(
   _.get('type'),
   _.includes(_, ['FunctionExpression', 'FunctionDeclaration', 'ArrowFunctionExpression'])
@@ -314,27 +110,10 @@ function isIdentityFunction(node) {
 }
 
 module.exports = {
-  getCaller: getCaller,
-  getMethodName: getMethodName,
-  isMethodCall: isMethodCall,
-  getFirstFunctionLine: getFirstFunctionLine,
-  isMemberExpOf: isMemberExpOf,
-  getFirstParamName: getFirstParamName,
-  hasOnlyOneStatement: hasOnlyOneStatement,
-  isObjectOfMethodCall: isObjectOfMethodCall,
-  isEqEqEqToMemberOf: isBinaryExpWithMemberOf.bind(null, '==='),
-  isNotEqEqToMemberOf: isBinaryExpWithMemberOf.bind(null, '!=='),
-  isNegationOfMemberOf: isNegationOfMemberOf,
-  isIdentifierOfParam: isIdentifierOfParam,
-  isNegationExpression: isNegationExpression,
-  getValueReturnedInFirstLine: getValueReturnedInFirstLine,
-  isCallFromObject: isCallFromObject,
-  isComputed: isComputed,
-  isEquivalentExp: isEquivalentExp,
-  isEqEqEq: isEqEqEq,
-  comparisonType: comparisonType,
-  getExpressionComparedToInt: getExpressionComparedToInt,
-  isIndexOfCall: isIndexOfCall,
-  isFunction: isFunction,
-  isIdentityFunction: isIdentityFunction
+  getValueReturnedInFirstLine,
+  isComputed,
+  isEquivalentExp,
+  isEqEqEq,
+  isFunction,
+  isIdentityFunction
 };
