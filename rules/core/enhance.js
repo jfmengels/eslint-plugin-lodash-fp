@@ -1,6 +1,6 @@
 'use strict';
 
-const _ = require('lodash/fp');
+const enhance = require('enhance-visitors');
 const lodashUtil = require('./lodash-util');
 const isStaticRequire = require('./static-require');
 
@@ -20,7 +20,7 @@ function strippedModuleName(strippedName, name) {
   return name;
 }
 
-module.exports = function enhance() {
+module.exports = function () {
   const imports = {};
 
   // `ImportDeclaration` and `VariableDeclarator` will find Lodash imports and require()
@@ -72,24 +72,6 @@ module.exports = function enhance() {
   return {
     imports,
     helpers: lodashUtil(imports),
-    merge: function (customHandlers) {
-      Object.keys(predefinedRules).forEach(function (key) {
-        const predef = predefinedRules[key];
-
-        if (typeof customHandlers[key] === 'function') {
-          predefinedRules[key] = function (node) {
-            if (/:exit$/.test(key)) {
-              customHandlers[key](node);
-              predef(node); // append predefined rules on exit
-            } else {
-              predef(node); // prepend predefined rules on enter
-              customHandlers[key](node);
-            }
-          };
-        }
-      });
-
-      return _.assign(customHandlers, predefinedRules);
-    }
+    merge: customHandlers => enhance.mergeVisitors([predefinedRules, customHandlers])
   };
 };
