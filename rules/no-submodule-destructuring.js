@@ -1,13 +1,13 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var enhance = require('./core/enhance');
-var isStaticRequire = require('./core/static-require');
+const _ = require('lodash/fp');
+const enhance = require('./core/enhance');
+const isStaticRequire = require('./core/static-require');
 
-var isImportSpecifier = _.matches({type: 'ImportSpecifier'});
-var isObjectPattern = _.matches({type: 'ObjectPattern'});
+const isImportSpecifier = _.matches({type: 'ImportSpecifier'});
+const isObjectPattern = _.matches({type: 'ObjectPattern'});
 
-var errorMessage = 'Import of Lodash submodule should not be destructured';
+const errorMessage = 'Import of Lodash submodule should not be destructured';
 
 function isLodashSubModule(source) {
   return _.startsWith('lodash/', source) && source !== 'lodash/fp';
@@ -20,12 +20,12 @@ function isRequireOfLodashSubModule(node) {
 }
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     ImportDeclaration: function (node) {
       if (isLodashSubModule(node.source.value)) {
-        var importSpecifier = _.find(isImportSpecifier, node.specifiers);
+        const importSpecifier = _.find(isImportSpecifier, node.specifiers);
         if (importSpecifier) {
           context.report(importSpecifier, errorMessage);
         }

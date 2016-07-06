@@ -1,6 +1,6 @@
 'use strict';
 
-var astUtil = require('./core/ast-util');
+const astUtil = require('./core/ast-util');
 
 function shouldCheckDeeper(node, nodeRight, toCompare) {
   return node.operator === '&&' &&
@@ -11,10 +11,10 @@ function shouldCheckDeeper(node, nodeRight, toCompare) {
 }
 
 module.exports = function (context) {
-  var DEFAULT_LENGTH = 3;
-  var ruleDepth = parseInt(context.options[0], 10) || DEFAULT_LENGTH;
+  const DEFAULT_LENGTH = 3;
+  const ruleDepth = parseInt(context.options[0], 10) || DEFAULT_LENGTH;
 
-  var expStates = [];
+  const expStates = [];
   function getState() {
     return expStates[expStates.length - 1] || {depth: 0};
   }
@@ -22,8 +22,8 @@ module.exports = function (context) {
   /* eslint quote-props: [2, "as-needed"] */
   return {
     LogicalExpression: function (node) {
-      var state = getState();
-      var rightMemberExp = astUtil.isEqEqEq(node.right) && state.depth === 0 ? node.right.left : node.right;
+      const state = getState();
+      const rightMemberExp = astUtil.isEqEqEq(node.right) && state.depth === 0 ? node.right.left : node.right;
 
       if (shouldCheckDeeper(node, rightMemberExp, state.node)) {
         expStates.push({depth: state.depth + 1, node: rightMemberExp.object});
@@ -33,7 +33,7 @@ module.exports = function (context) {
       }
     },
     'LogicalExpression:exit': function (node) {
-      var state = getState();
+      const state = getState();
       if (state && state.node === node.right.object) {
         expStates.pop();
       }

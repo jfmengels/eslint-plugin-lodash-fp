@@ -37,7 +37,8 @@
   },
   "devDependencies": {
     "ava": "^0.15.1",
-    "eslint-ava-rule-tester": "^0.1.1",
+    "eslint": "^3.0.1",
+    "eslint-ava-rule-tester": "^2.0.0",
     "nyc": "^6.4.0",
     "pify": "^2.3.0",
     "xo": "*"
@@ -46,6 +47,7 @@
     "eslint": ">=3"
   },
   "xo": {
+    "exnext": true,
     "space": 2
   }
 }

@@ -1,12 +1,12 @@
 'use strict';
 
-var enhance = require('./core/enhance');
-var astUtil = require('./core/ast-util');
+const enhance = require('./core/enhance');
+const astUtil = require('./core/ast-util');
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
-  var isFilterCall = info.helpers.isMethodCallOf('filter');
+  const isFilterCall = info.helpers.isMethodCallOf('filter');
 
   function isIdentity(node) {
     return info.helpers.isMethodOf('identity', node) ||

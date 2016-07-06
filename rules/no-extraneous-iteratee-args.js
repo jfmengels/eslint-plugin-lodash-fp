@@ -1,7 +1,7 @@
 'use strict';
 
-var enhance = require('./core/enhance');
-var astUtil = require('./core/ast-util');
+const enhance = require('./core/enhance');
+const astUtil = require('./core/ast-util');
 
 function getFunctionArgumentsLength(node) {
   if (!node || !astUtil.isFunction(node)) {
@@ -12,16 +12,16 @@ function getFunctionArgumentsLength(node) {
 }
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     CallExpression: function (node) {
-      var method = info.helpers.isMethodCall(node);
+      const method = info.helpers.isMethodCall(node);
       if (!method) {
         return;
       }
 
-      var nArgs = getFunctionArgumentsLength(node.arguments[method.iterateePos]);
+      const nArgs = getFunctionArgumentsLength(node.arguments[method.iterateePos]);
       if (nArgs > method.iterateeAry) {
         context.report(node,
           'Too many parameters in `' + method.name + '`\'s iteratee, it is only given ' + method.iterateeAry + ' argument.');

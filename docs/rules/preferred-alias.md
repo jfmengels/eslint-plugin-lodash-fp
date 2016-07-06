@@ -18,18 +18,18 @@ You can set the options like this:
 ### Fail
 
 ```js
-var ids = _.collect(users, 'id'); // Prefer to use `map`
+const ids = _.collect(users, 'id'); // Prefer to use `map`
 
 /* eslint lodash-fp/preferred-alias: ["error", {"overrides": ["collect"]}] */
-var ids = _.map(users, 'id'); // Prefer to use `collect`
+const ids = _.map(users, 'id'); // Prefer to use `collect`
 ```
 
 
 ### Pass
 
 ```js
-var ids = _.map(users, 'id');
+const ids = _.map(users, 'id');
 
 /* eslint lodash-fp/preferred-alias: ["error", {"overrides": ["collect"]}] */
-var ids = _.collect(users, 'id');
+const ids = _.collect(users, 'id');
 ```

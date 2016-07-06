@@ -1,10 +1,10 @@
 'use strict';
 
-var astUtil = require('./core/ast-util');
+const astUtil = require('./core/ast-util');
 
 module.exports = function (context) {
-  var options = context.options[0] || {};
-  var shouldCheckArrowFunctions = options.arrowFunctions === true;
+  const options = context.options[0] || {};
+  const shouldCheckArrowFunctions = options.arrowFunctions === true;
 
   function handleFunctionExpression(node) {
     if (astUtil.isIdentityFunction(node)) {

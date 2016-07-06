@@ -17,8 +17,8 @@ You can set the option in configuration like this:
 ```js
 import lodash from 'lodash';
 import foo from 'lodash/fp';
-var bar = require('lodash');
-var baz = require('lodash/fp');
+const bar = require('lodash');
+const baz = require('lodash/fp');
 ```
 
 ### Pass
@@ -27,9 +27,9 @@ var baz = require('lodash/fp');
 import _ from 'lodash';
 import _ from 'lodash/fp';
 import find from 'lodash/fp/find';
-var _ = require('lodash');
-var _ = require('lodash/fp');
+const _ = require('lodash');
+const _ = require('lodash/fp');
 
 /* eslint lodash-fp/consistent-name: ["error", "fp"] */
-var fp = require('lodash/fp');
+const fp = require('lodash/fp');
 ```

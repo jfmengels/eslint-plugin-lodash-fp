@@ -8,8 +8,8 @@ This rule disallows the use of vanilla Lodash in your code. The aim for this is 
 import _ from 'lodash';
 import _ from 'lodash/bindAll';
 
-var _ = require('lodash');
-var _ = require('lodash/bindAll');
+const _ = require('lodash');
+const _ = require('lodash/bindAll');
 ```
 
 ### Pass
@@ -18,6 +18,6 @@ var _ = require('lodash/bindAll');
 import _ from 'lodash/fp';
 import _ from 'lodash/fp/bindAll';
 
-var _ = require('lodash');
-var _ = require('lodash/fp/bindAll');
+const _ = require('lodash');
+const _ = require('lodash/fp/bindAll');
 ```

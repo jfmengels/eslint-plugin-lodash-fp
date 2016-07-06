@@ -9,7 +9,7 @@ This rule takes one argument - the minimal depth (default is `3`).
 ### Fail
 
 ```js
-var isThree = a && a.b && a.b.c === 3;
+const isThree = a && a.b && a.b.c === 3;
 
 if (a && a.b && a.b.c) {
   // ...
@@ -19,7 +19,7 @@ if (a && a.b && a.b.c) {
 ### Pass
 
 ```js
-var isThree = _.get(a, 'b.c') === 3;
+const isThree = _.get(a, 'b.c') === 3;
 
 if (_.has(a, 'b.c')) {
   // ...

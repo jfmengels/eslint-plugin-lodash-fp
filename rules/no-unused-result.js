@@ -1,16 +1,16 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var enhance = require('./core/enhance');
-var constants = require('./core/constants');
+const _ = require('lodash/fp');
+const enhance = require('./core/enhance');
+const constants = require('./core/constants');
 
-var isForEach = _.flow(
+const isForEach = _.flow(
   _.get('realName'),
   _.includes(_, constants.FOREACH_METHODS)
 );
 
 function isMethodCall(info, node) {
-  var method = info.helpers.isMethodCall(node);
+  const method = info.helpers.isMethodCall(node);
   if (method) {
     return method;
   }
@@ -21,11 +21,11 @@ function isMethodCall(info, node) {
 }
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     ExpressionStatement: function (node) {
-      var method = isMethodCall(info, node.expression);
+      const method = isMethodCall(info, node.expression);
       if (method && !isForEach(method)) {
         context.report(node, 'Unused expression');
       }

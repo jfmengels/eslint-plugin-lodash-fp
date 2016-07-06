@@ -1,10 +1,10 @@
 'use strict';
 
-var astUtil = require('./core/ast-util');
+const astUtil = require('./core/ast-util');
 
 module.exports = function (context) {
-  var options = context.options[0] || {};
-  var shouldCheckArrowFunctions = options.arrowFunctions === true;
+  const options = context.options[0] || {};
+  const shouldCheckArrowFunctions = options.arrowFunctions === true;
 
   function isCompletelyLiteral(node) {
     switch (node.type) {
@@ -22,7 +22,7 @@ module.exports = function (context) {
   }
 
   function handleFunctionExpression(node) {
-    var valueReturnedInFirstLine = astUtil.getValueReturnedInFirstLine(node);
+    const valueReturnedInFirstLine = astUtil.getValueReturnedInFirstLine(node);
     if (valueReturnedInFirstLine && isCompletelyLiteral(valueReturnedInFirstLine)) {
       context.report(node, 'Prefer `_.constant` over a function returning a literal');
     }

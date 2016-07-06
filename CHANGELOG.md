@@ -39,7 +39,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [1.1.2] - 2016-05-01
 ### Fixed
-- Crash in [`no-submodule-destructuring`] when doing `var {foo} = bar;` ([#13], thanks [@kavington])
+- Crash in [`no-submodule-destructuring`] when doing `const {foo} = bar;` ([#13], thanks [@kavington])
 - Typo in recommended configuration ([#13], thanks [@kavington])
 
 ## [1.1.1] - 2016-04-30

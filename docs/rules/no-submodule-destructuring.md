@@ -10,10 +10,10 @@ import {find} from 'lodash/find';
 import {find as f} from 'lodash/fp/find';
 import {find as f} from 'lodash/find';
 
-var {find} = require('lodash/fp/find');
-var {find} = require('lodash/find');
-var {find: f} = require('lodash/fp/find');
-var {find: f} = require('lodash/find');
+const {find} = require('lodash/fp/find');
+const {find} = require('lodash/find');
+const {find: f} = require('lodash/fp/find');
+const {find: f} = require('lodash/find');
 ```
 
 ### Pass
@@ -28,12 +28,12 @@ import {find} from 'lodash';
 import {find as f} from 'lodash/fp';
 import {find as f} from 'lodash';
 
-var _ = require('lodash');
-var _ = require('lodash/fp');
-var find = require('lodash/fp/find');
-var find = require('lodash/find');
-var {find} = require('lodash/fp');
-var {find} = require('lodash');
-var {find: f} = require('lodash');
-var {find: f} = require('lodash/fp');
+const _ = require('lodash');
+const _ = require('lodash/fp');
+const find = require('lodash/fp/find');
+const find = require('lodash/find');
+const {find} = require('lodash/fp');
+const {find} = require('lodash');
+const {find: f} = require('lodash');
+const {find: f} = require('lodash/fp');
 ```

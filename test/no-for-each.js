@@ -13,7 +13,7 @@ const ruleTester = avaRuleTester(test, {
   }
 });
 
-const errors = (name) => [{
+const errors = name => [{
   ruleId: 'no-for-each',
   message: 'Forbidden use of `_.' + name + '`'
 }];

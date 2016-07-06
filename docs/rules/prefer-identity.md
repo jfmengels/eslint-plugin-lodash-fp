@@ -26,8 +26,8 @@ _.filter(function id(x) {
 }, array);
 
 // When including arrow functions
-var id = (x) => x;
-var id = (x) => { return x; };
+const id = (x) => x;
+const id = (x) => { return x; };
 ```
 
 ### Pass

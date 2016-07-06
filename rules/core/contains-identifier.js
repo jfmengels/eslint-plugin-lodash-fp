@@ -1,6 +1,6 @@
 'use strict';
 
-function containsIdentifier(name, node) {
+function containsIdentifier(name, node) { // eslint-disable-line complexity
   switch (node.type) {
     case 'Identifier':
       return node.name === name;

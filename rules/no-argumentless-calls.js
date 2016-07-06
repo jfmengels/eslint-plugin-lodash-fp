@@ -1,19 +1,19 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var enhance = require('./core/enhance');
+const _ = require('lodash/fp');
+const enhance = require('./core/enhance');
 
-var exceptions = ['uniqueId', 'now', 'noConflict', 'runInContext'];
+const exceptions = ['uniqueId', 'now', 'noConflict', 'runInContext'];
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     CallExpression: function (node) {
       if (node.arguments.length !== 0) {
         return;
       }
-      var method = info.helpers.isMethodCall(node);
+      const method = info.helpers.isMethodCall(node);
       if (method && !_.includes(method.name, exceptions)) {
         context.report(node, 'No call without arguments');
       }

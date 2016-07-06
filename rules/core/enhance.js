@@ -1,15 +1,15 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var lodashUtil = require('./lodash-util');
-var isStaticRequire = require('./static-require');
+const _ = require('lodash/fp');
+const lodashUtil = require('./lodash-util');
+const isStaticRequire = require('./static-require');
 
 function isLodashModule(name) {
   return name.indexOf('lodash') === 0;
 }
 
 function stripLodash(name) {
-  var lodashPath = 'lodash/';
+  const lodashPath = 'lodash/';
   return name.slice(lodashPath.length);
 }
 
@@ -21,16 +21,16 @@ function strippedModuleName(strippedName, name) {
 }
 
 module.exports = function enhance() {
-  var imports = {};
+  const imports = {};
 
   // `ImportDeclaration` and `VariableDeclarator` will find Lodash imports and require()
   // and fill `imports` with what is found
   // The result is a collection of identifier and (method or Lodash) pairs
-  var predefinedRules = {
+  const predefinedRules = {
     ImportDeclaration: function (node) {
-      var name = node.source.value;
+      const name = node.source.value;
       if (isLodashModule(name)) {
-        var strippedName = stripLodash(name);
+        const strippedName = stripLodash(name);
         node.specifiers.forEach(function (specifier) {
           if (specifier.type === 'ImportDefaultSpecifier') {
             // `import _ from 'lodash';` --> {'_': ''}
@@ -48,19 +48,19 @@ module.exports = function enhance() {
     },
     VariableDeclarator: function (node) {
       if (node.init && isStaticRequire(node.init)) {
-        var name = node.init.arguments[0].value;
+        const name = node.init.arguments[0].value;
         if (isLodashModule(name)) {
-          var strippedName = stripLodash(name);
+          const strippedName = stripLodash(name);
           if (node.id.type === 'Identifier') {
-            // `var _ = require('lodash');` --> {'_': ''}
-            // `var _ = require('lodash/fp');` --> {'_': 'fp'}
-            // `var find = require('lodash/find');` --> {'find': 'find'}
-            // `var find = require('lodash/fp/find');` --> {'find': 'fp/find'}
+            // `const _ = require('lodash');` --> {'_': ''}
+            // `const _ = require('lodash/fp');` --> {'_': 'fp'}
+            // `const find = require('lodash/find');` --> {'find': 'find'}
+            // `const find = require('lodash/fp/find');` --> {'find': 'fp/find'}
             imports[node.id.name] = strippedName;
           } else if (node.id.type === 'ObjectPattern') {
             node.id.properties.forEach(function (prop) {
-              // `var {find, invoke: i} = require('lodash');` --> {'find': 'find', 'i': 'invoke'}
-              // `var {find, invoke: i} = require('lodash/fp');` --> {'find': 'fp/find', 'i': 'fp/invoke'}
+              // `const {find, invoke: i} = require('lodash');` --> {'find': 'find', 'i': 'invoke'}
+              // `const {find, invoke: i} = require('lodash/fp');` --> {'find': 'fp/find', 'i': 'fp/invoke'}
               imports[prop.key.name] = strippedModuleName(strippedName, prop.value.name);
             });
           }
@@ -70,11 +70,11 @@ module.exports = function enhance() {
   };
 
   return {
-    imports: imports,
+    imports,
     helpers: lodashUtil(imports),
     merge: function (customHandlers) {
       Object.keys(predefinedRules).forEach(function (key) {
-        var predef = predefinedRules[key];
+        const predef = predefinedRules[key];
 
         if (typeof customHandlers[key] === 'function') {
           predefinedRules[key] = function (node) {

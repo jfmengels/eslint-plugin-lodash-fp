@@ -1,8 +1,8 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var enhance = require('./core/enhance');
-var isStaticRequire = require('./core/static-require');
+const _ = require('lodash/fp');
+const enhance = require('./core/enhance');
+const isStaticRequire = require('./core/static-require');
 
 function isLodash(name) {
   return name === 'lodash' || name === 'lodash/fp';
@@ -16,9 +16,9 @@ function hasDefaultSpecifier(node) {
 
 /* eslint quote-props: [2, "as-needed"] */
 module.exports = function (context) {
-  var info = enhance();
-  var expectedName = context.options[0] || '_';
-  var importNode = null;
+  const info = enhance();
+  const expectedName = context.options[0] || '_';
+  let importNode = null;
 
   return info.merge({
     ImportDeclaration: function (node) {
@@ -34,7 +34,7 @@ module.exports = function (context) {
       }
     },
     'Program:exit': function () {
-      var importValues = _.values(info.imports);
+      const importValues = _.values(info.imports);
       if (// `lodash`/`lodash/fp` was imported
         (importValues.indexOf('') !== -1 || importValues.indexOf('fp') !== -1) &&
         // but <expectedName> does not refer to either `lodash` or `lodash/fp`

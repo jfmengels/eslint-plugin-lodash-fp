@@ -22,17 +22,17 @@ function three() {
 }
 
 /* eslint "lodash-fp/prefer-constant": ["error", {"arrowFunctions": true}] */
-var pi = () => 3.1415;
+const pi = () => 3.1415;
 ```
 
 ### Pass
 
 ```js
-var three = _.constant(3);
+const three = _.constant(3);
 
-var pi = _.constant(3.1415);
+const pi = _.constant(3.1415);
 
-var pi = () => 3.1415;
+const pi = () => 3.1415;
 
 function identity(x) {
   return x;
@@ -45,7 +45,7 @@ function getObj() {
 
 The last example is not a warning because it does not return a primitive value: it is therefore not equivalent to `_.constant({a: 1})`, which always returns the same instance. Consider:
 ```js
-var getObj = _.constant({a: 1});
+const getObj = _.constant({a: 1});
 x = getObj();
 x.a = 2;
 getObj()

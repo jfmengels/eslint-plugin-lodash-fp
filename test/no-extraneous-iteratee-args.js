@@ -13,7 +13,7 @@ const ruleTester = avaRuleTester(test, {
   }
 });
 
-const error = (message) => ({
+const error = message => ({
   ruleId: 'prefer-composition-grouping',
   message
 });

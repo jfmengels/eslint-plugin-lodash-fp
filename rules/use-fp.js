@@ -1,7 +1,7 @@
 'use strict';
 
-var enhance = require('./core/enhance');
-var isStaticRequire = require('./core/static-require');
+const enhance = require('./core/enhance');
+const isStaticRequire = require('./core/static-require');
 
 function reportIfLodashButNotFp(context, node, name) {
   if (name && name.indexOf('lodash') === 0 && name.indexOf('lodash/fp') === -1) {
@@ -10,7 +10,7 @@ function reportIfLodashButNotFp(context, node, name) {
 }
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     ImportDeclaration: function (node) {

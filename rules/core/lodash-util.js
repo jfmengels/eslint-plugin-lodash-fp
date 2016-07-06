@@ -1,27 +1,27 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var data = require('./lodash-data');
-var constants = require('./constants');
+const _ = require('lodash/fp');
+const data = require('./lodash-data');
+const constants = require('./constants');
 
 module.exports = function (imports) {
-  var isIdentifier = _.matches({type: 'Identifier'});
-  var isCallExpression = _.matches({type: 'CallExpression'});
-  var isMemberExpression = _.matches({type: 'MemberExpression'});
+  const isIdentifier = _.matches({type: 'Identifier'});
+  const isCallExpression = _.matches({type: 'CallExpression'});
+  const isMemberExpression = _.matches({type: 'MemberExpression'});
 
   function buildInfo(info) {
     if (!info.name) {
       return false;
     }
 
-    var name = info.name.replace('fp/', '');
-    var realName = data.aliasToReal[name] || name;
+    const name = info.name.replace('fp/', '');
+    const realName = data.aliasToReal[name] || name;
 
     return {
+      name,
+      realName,
       node: info.node,
       varname: info.varname || info.name,
-      name: name,
-      realName: realName,
       skipFixed: data.skipFixed[realName] || false,
       ary: data.ary[realName] && _.parseInt(10, data.ary[realName]),
       iterateePos: data.iterateePos[realName],
@@ -40,11 +40,11 @@ module.exports = function (imports) {
     return imports[id] === '';
   }
 
-  var isAnyLodash = _.overSome([isLodash, isVanillaLodash]);
+  const isAnyLodash = _.overSome([isLodash, isVanillaLodash]);
 
   // Is `X()` or `X.Y()` a Lodash method call()?
 
-  var findName = _.curry(function _findName(methods, method) {
+  const findName = _.curry(function _findName(methods, method) {
     return _.find(_.eq(method.name), _.isArray(methods) ? methods : [methods]) && method;
   });
 
@@ -52,7 +52,7 @@ module.exports = function (imports) {
     return isMemberExpression(node) &&
       isLodash(node.object.name) &&
       buildInfo({
-        node: node,
+        node,
         name: node.property.name
       });
   }
@@ -61,7 +61,7 @@ module.exports = function (imports) {
     return isMemberExpression(node) &&
       isAnyLodash(node.object.name) &&
       buildInfo({
-        node: node,
+        node,
         name: node.property.name
       });
   }
@@ -70,7 +70,7 @@ module.exports = function (imports) {
     return isIdentifier(node) &&
       imports[node.name] !== undefined &&
       buildInfo({
-        node: node,
+        node,
         varname: node.name,
         name: imports[node.name]
       });
@@ -84,13 +84,13 @@ module.exports = function (imports) {
     return isAnyMemberMethod(node) || isIdentifierMethod(node);
   }
 
-  var isMethodOf = _.curry(function _isMethodOf(methods, node) {
-    var method = isMethod(node);
+  const isMethodOf = _.curry(function _isMethodOf(methods, node) {
+    const method = isMethod(node);
     return method && findName(methods, method);
   });
 
-  var isAnyMethodOf = _.curry(function _isAnyMethodOf(methods, node) {
-    var method = isAnyMethod(node);
+  const isAnyMethodOf = _.curry(function _isAnyMethodOf(methods, node) {
+    const method = isAnyMethod(node);
     return method && findName(methods, method);
   });
 
@@ -98,25 +98,25 @@ module.exports = function (imports) {
     return isCallExpression(node) && isMethod(node.callee);
   }
 
-  var isMethodCallOf = _.curry(function _isMethodCallOf(methods, node) {
-    var method = isMethodCall(node);
+  const isMethodCallOf = _.curry(function _isMethodCallOf(methods, node) {
+    const method = isMethodCall(node);
     return method && findName(methods, method);
   });
 
   // Is `X.Y` a Lodash method?
-  var isMember = _.curry(function _isMember(node) {
+  const isMember = _.curry(function _isMember(node) {
     return isMemberExpression(node) &&
       isIdentifier(node.object) &&
       isIdentifier(node.property) &&
       isLodash(node.object.name) &&
       buildInfo({
-        node: node,
+        node,
         name: node.property.name
       });
   });
 
-  var getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
-    var methodNames = node.arguments.map(function (arg) {
+  const getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
+    const methodNames = node.arguments.map(function (arg) {
       return isMethodCall(arg) || isMember(arg);
     });
     if (name === 'flowRight' || name === 'compose') {
@@ -126,23 +126,23 @@ module.exports = function (imports) {
   });
 
   return {
-    isIdentifier: isIdentifier,
-    isCallExpression: isCallExpression,
-    isMemberExpression: isMemberExpression,
+    isIdentifier,
+    isCallExpression,
+    isMemberExpression,
 
-    isAnyLodash: isAnyLodash,
-    isLodash: isLodash,
-    isVanillaLodash: isVanillaLodash,
+    isAnyLodash,
+    isLodash,
+    isVanillaLodash,
 
-    isMethodCall: isMethodCall,
-    isMethodCallOf: isMethodCallOf,
+    isMethodCall,
+    isMethodCallOf,
 
-    isMethod: isMethod,
-    isMethodOf: isMethodOf,
-    isAnyMethodOf: isAnyMethodOf,
+    isMethod,
+    isMethodOf,
+    isAnyMethodOf,
 
     isComposeMethod: isMethodCallOf(constants.COMPOSITION_METHODS),
     isForEachMethod: isMethodCallOf(constants.FOREACH_METHODS),
-    getComposeMethodArgMethods: getComposeMethodArgMethods
+    getComposeMethodArgMethods
   };
 };

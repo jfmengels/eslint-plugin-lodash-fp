@@ -1,8 +1,8 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var data = require('./core/lodash-data');
-var enhance = require('./core/enhance');
+const _ = require('lodash/fp');
+const data = require('./core/lodash-data');
+const enhance = require('./core/enhance');
 
 function checkOverrides(overrides) {
   overrides.map(function (override) {
@@ -24,18 +24,18 @@ function wantedAlias(overrides, method) {
 }
 
 module.exports = function (context) {
-  var options = context.options[0] || {};
-  var overrides = options.overrides || [];
+  const options = context.options[0] || {};
+  const overrides = options.overrides || [];
   checkOverrides(overrides);
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     CallExpression: function (node) {
-      var method = info.helpers.isMethodCall(node);
+      const method = info.helpers.isMethodCall(node);
       if (!method) {
         return;
       }
-      var alias = wantedAlias(overrides, method);
+      const alias = wantedAlias(overrides, method);
       if (alias !== method.name) {
         context.report(node, 'Use `' + alias + '` instead of `' + method.name + '`.');
       }

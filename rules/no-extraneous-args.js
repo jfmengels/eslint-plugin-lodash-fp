@@ -1,11 +1,11 @@
 'use strict';
 
-var _ = require('lodash/fp');
-var enhance = require('./core/enhance');
-var data = require('./core/lodash-data');
+const _ = require('lodash/fp');
+const enhance = require('./core/enhance');
+const data = require('./core/lodash-data');
 
 function reportMessage(method, alternative) {
-  var baseMessage = '`' + method.name + '` is capped at ' + method.ary + ' arguments';
+  const baseMessage = '`' + method.name + '` is capped at ' + method.ary + ' arguments';
   if (alternative) {
     return baseMessage + '. Did you mean to use `' + alternative + '`?';
   }
@@ -16,7 +16,7 @@ function reportMessage(method, alternative) {
 }
 
 function getAlternative(method, nArgs) {
-  var alternative = _.findKey(_.eq(method.realName), data.remap);
+  const alternative = _.findKey(_.eq(method.realName), data.remap);
   if (alternative && data.ary[alternative] <= nArgs) {
     return alternative;
   }
@@ -24,14 +24,14 @@ function getAlternative(method, nArgs) {
 }
 
 module.exports = function (context) {
-  var info = enhance();
+  const info = enhance();
 
   return info.merge({
     CallExpression: function (node) {
-      var method = info.helpers.isMethodCall(node);
+      const method = info.helpers.isMethodCall(node);
 
       if (method && !method.skipFixed && node.arguments.length > method.ary) {
-        var alternative = getAlternative(method, node.arguments.length);
+        const alternative = getAlternative(method, node.arguments.length);
         context.report(node, reportMessage(method, alternative));
       }
     }

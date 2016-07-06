@@ -1,33 +1,33 @@
 'use strict';
-var _ = require('lodash/fp');
+const _ = require('lodash/fp');
 
 /**
  * Gets the object that called the method in a CallExpression
  * @param {Object} node
  * @returns {Object|undefined}
  */
-var getCaller = _.property(['callee', 'object']);
+const getCaller = _.property(['callee', 'object']);
 
 /**
  * Gets the name of a method in a CallExpression
  * @param {Object} node
  * @returns {string|undefined}
  */
-var getMethodName = _.property(['callee', 'property', 'name']);
+const getMethodName = _.property(['callee', 'property', 'name']);
 
 /**
  * Returns whether the node is a method call
  * @param {Object} node
  * @returns {boolean}
  */
-var isMethodCall = _.matches({type: 'CallExpression', callee: {type: 'MemberExpression'}});
+const isMethodCall = _.matches({type: 'CallExpression', callee: {type: 'MemberExpression'}});
 
 /**
  * Returns whether the node is a function declaration that has a block
  * @param {Object} node
  * @returns {boolean}
  */
-var isFunctionDefinitionWithBlock = _.overSome([
+const isFunctionDefinitionWithBlock = _.overSome([
   _.matchesProperty('type', 'FunctionExpression'),
   _.matchesProperty('type', 'FunctionDeclaration'),
   _.matches({type: 'ArrowFunctionExpression', body: {type: 'BlockStatement'}})
@@ -38,7 +38,7 @@ var isFunctionDefinitionWithBlock = _.overSome([
  * @param {Object} node
  * @returns {node|undefined}
  */
-var getFirstFunctionLine = _.cond([
+const getFirstFunctionLine = _.cond([
     [isFunctionDefinitionWithBlock, _.property(['body', 'body', 0])],
     [_.matches({type: 'ArrowFunctionExpression'}), _.property('body')]
 ]);
@@ -48,7 +48,7 @@ var getFirstFunctionLine = _.cond([
  * @param {Object} node
  * @returns {boolean|undefined}
  */
-var isPropAccess = _.overSome([
+const isPropAccess = _.overSome([
   _.matches({computed: false}),
   _.matchesProperty(['property', 'type'], 'Literal')
 ]);
@@ -63,8 +63,8 @@ var isPropAccess = _.overSome([
  */
 function isMemberExpOf(node, objectName, maxPropertyPathLength, allowComputed) {
   if (objectName) {
-    var curr = node;
-    var depth = maxPropertyPathLength;
+    let curr = node;
+    let depth = maxPropertyPathLength;
     while (curr && depth) {
       if (curr.type === 'MemberExpression' && curr.object.name === objectName) {
         return allowComputed || isPropAccess(node);
@@ -80,14 +80,14 @@ function isMemberExpOf(node, objectName, maxPropertyPathLength, allowComputed) {
  * @param {Object} func
  * @returns {string|undefined}
  */
-var getFirstParamName = _.property(['params', 0, 'name']);
+const getFirstParamName = _.property(['params', 0, 'name']);
 
 /**
  * Returns whether or not the expression is a return statement
  * @param {Object} exp
  * @returns {boolean|undefined}
  */
-var isReturnStatement = _.matchesProperty('type', 'ReturnStatement');
+const isReturnStatement = _.matchesProperty('type', 'ReturnStatement');
 
 /**
  * Returns whether the node specified has only one statement
@@ -112,7 +112,7 @@ function isObjectOfMethodCall(node) {
  * @param {Object} node
  * @returns {boolean}
  */
-var isLiteral = _.matchesProperty('type', 'ReturnStatement');
+const isLiteral = _.matchesProperty('type', 'ReturnStatement');
 
 /**
  * Returns whether the expression specified is a binary expression with the specified operator and one of its sides is a member expression of the specified object name
@@ -136,7 +136,7 @@ function isBinaryExpWithMemberOf(operator, exp, objectName, maxPropertyPathLengt
  * @param {Object} exp
  * @returns {boolean|undefined}
  */
-var isNegationExpression = _.matches({type: 'UnaryExpression', operator: '!'});
+const isNegationExpression = _.matches({type: 'UnaryExpression', operator: '!'});
 
 /**
  * Returns whether the expression is a negation of a member of objectName, in the specified depth.
@@ -165,7 +165,7 @@ function isIdentifierOfParam(exp, paramName) {
  * @returns {Object|null}
  */
 function getValueReturnedInFirstLine(func) {
-  var firstLine = getFirstFunctionLine(func);
+  const firstLine = getFirstFunctionLine(func);
   if (func) {
     if (isFunctionDefinitionWithBlock(func)) {
       return isReturnStatement(firstLine) ? firstLine.argument : null;
@@ -211,8 +211,8 @@ function isEquivalentExp(a, b) {
       return false;
     }
     if (key === 'property') {
-      var leftValue = left.name || left.value;
-      var rightValue = right.name || right.value;
+      const leftValue = left.name || left.value;
+      const rightValue = right.name || right.value;
       return leftValue === rightValue;
     }
   }, a, b);
@@ -223,7 +223,7 @@ function isEquivalentExp(a, b) {
  * @param {Object} node
  * @returns {boolean}
  */
-var isEqEqEq = _.matches({type: 'BinaryExpression', operator: '==='});
+const isEqEqEq = _.matches({type: 'BinaryExpression', operator: '==='});
 
 function isMinus(node) {
   return node.type === 'UnaryExpression' && node.operator === '-';
@@ -234,13 +234,13 @@ function isMinus(node) {
  * @readonly
  * @enum {number}
  */
-var comparisonType = {
+const comparisonType = {
   exact: 0,
   over: 1,
   under: 2,
   any: 3
 };
-var comparisonOperators = ['==', '!=', '===', '!=='];
+const comparisonOperators = ['==', '!=', '===', '!=='];
 
 function getIsValue(value) {
   return value < 0 ? _.overEvery(isMinus, _.matches({argument: {value: -value}})) : _.matches({value: value});
@@ -254,7 +254,7 @@ function getIsValue(value) {
  * @returns {Object|undefined}
  */
 function getExpressionComparedToInt(node, value, checkOver) {
-  var isValue = getIsValue(value);
+  const isValue = getIsValue(value);
   if (_.includes(comparisonOperators, node.operator)) {
     if (isValue(node.right)) {
       return node.left;
@@ -270,7 +270,7 @@ function getExpressionComparedToInt(node, value, checkOver) {
     if (node.operator === '<' && isValue(node.left)) {
       return node.right;
     }
-    var isNext = getIsValue(value + 1);
+    const isNext = getIsValue(value + 1);
     if ((node.operator === '>=' || node.operator === '<') && isNext(node.right)) {
       return node.left;
     }
@@ -289,7 +289,7 @@ function isIndexOfCall(node) {
   return isMethodCall(node) && getMethodName(node) === 'indexOf';
 }
 
-var isFunction = _.flow(
+const isFunction = _.flow(
   _.get('type'),
   _.includes(_, ['FunctionExpression', 'FunctionDeclaration', 'ArrowFunctionExpression'])
 );
@@ -298,9 +298,9 @@ function isIdentityFunction(node) {
   if (!isFunction(node) || node.params.length !== 1 || !node.body) {
     return false;
   }
-  var returnedElement;
+  let returnedElement;
   if (node.body.type === 'BlockStatement') {
-    var subBody = node.body.body;
+    const subBody = node.body.body;
     if (subBody.length !== 1 || subBody[0].type !== 'ReturnStatement') {
       return false;
     }

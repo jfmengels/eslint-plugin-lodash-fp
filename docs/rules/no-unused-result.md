@@ -9,7 +9,7 @@ This rule reports when the result does not get used. Methods like [`_.forEach`] 
 ```js
 _.set('name', 'John Doe', user);
 
-var array = [1, 2, 3];
+const array = [1, 2, 3];
 _.pullAt(1, array)
 foo(array);
 ```
@@ -17,9 +17,9 @@ foo(array);
 ### Pass
 
 ```js
-var updatedUser = _.set('name', 'John Doe', user);
+const updatedUser = _.set('name', 'John Doe', user);
 
-var array = [1, 2, 3];
+const array = [1, 2, 3];
 foo(_.pullAt(1, array));
 
 _.forEach(fn, array);
