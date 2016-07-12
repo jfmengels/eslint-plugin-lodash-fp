@@ -22,7 +22,15 @@ const updatedUser = _.set('name', 'John Doe', user);
 const array = [1, 2, 3];
 foo(_.pullAt(1, array));
 
+
+// Exceptions
 _.forEach(fn, array);
+
+const object = {
+  value: 2,
+  getValue: function() { return this.value; })
+};
+_.bindAll(object, ['getValue']);
 ```
 
 [`_.forEach`]: https://lodash.com/docs#forEach

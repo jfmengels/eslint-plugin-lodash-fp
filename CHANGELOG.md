@@ -4,9 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+
+### Removed
+- **Breaking**: Removed support for Node.js versions < v4.
 ### Fixed
 - Fixed documentation for [`prefer-composition-grouping`].
 - Added suggestion in [`prefer-composition-grouping`] to use [`_.overEvery`]/[`_.overSome`] to replace multiple [`_.filter`]/[`_.reject`].
+- Added an exception for [`_.bindAll`] in [`no-unused-result`] ([#36], thanks [@dfadler]).
 ### Changed
 - Removed [`eslint`] as a dependency.
 
@@ -109,6 +113,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`prefer-identity`]: ./docs/rules/prefer-identity.md
 [`preferred-alias`]: ./docs/rules/preferred-alias.md
 
+[`_.bindAll`]: https://lodash.com/docs#filter
 [`_.filter`]: https://lodash.com/docs#filter
 [`_.forIn`]: https://lodash.com/docs#forIn
 [`_.forOwn`]: https://lodash.com/docs#forOwn
@@ -119,15 +124,17 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#36]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/36
 [#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/30
 [#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
 [#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
 
-[@jfmengels]: https://github.com/jfmengels
-[@izaakschroeder]: https://github.com/izaakschroeder
-[@kavington]: https://github.com/kavington
+[@dfadler]: https://github.com/dfadler
 [@gunar]: https://github.com/gunar
+[@izaakschroeder]: https://github.com/izaakschroeder
+[@jfmengels]: https://github.com/jfmengels
+[@kavington]: https://github.com/kavington
 
 [Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.3.0...master
 [1.3.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...v1.3.0

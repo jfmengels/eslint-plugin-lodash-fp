@@ -35,7 +35,8 @@ ruleTester.run('no-unused-result', rule, {
     code(`_.forIn(fn);`),
     code(`_.forInRight(fn);`),
     code(`_.forOwn(fn);`),
-    code(`_.forOwnRight(fn);`)
+    code(`_.forOwnRight(fn);`),
+    code(`_.bindAll(object, ['method']);`)
   ],
   invalid: [
     {
