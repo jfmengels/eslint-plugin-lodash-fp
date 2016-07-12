@@ -6,7 +6,7 @@ const constants = require('./core/constants');
 
 const isForEach = _.flow(
   _.get('realName'),
-  _.includes(_, constants.FOREACH_METHODS)
+  _.includes(_, constants.SIDE_EFFECT_METHODS)
 );
 
 function isMethodCall(info, node) {
