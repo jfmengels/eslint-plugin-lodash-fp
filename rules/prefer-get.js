@@ -53,6 +53,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: 'Prefer [`_.get`](https://lodash.com/docs#get) over multiple `&&`.',
       recommended: 'error'
     }
   }

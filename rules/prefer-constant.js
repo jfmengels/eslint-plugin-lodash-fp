@@ -55,6 +55,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: 'Prefer [`_.constant`](https://lodash.com/docs#constant) over functions returning literals.',
       recommended: ['error', {arrowFunctions: false}]
     }
   }

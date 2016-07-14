@@ -37,6 +37,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Enforce that the result of a Lodash method call gets used.',
       recommended: 'error'
     }
   }

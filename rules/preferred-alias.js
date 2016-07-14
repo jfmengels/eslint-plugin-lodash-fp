@@ -63,6 +63,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: 'Limit the use of aliases.',
       recommended: 'off'
     }
   }

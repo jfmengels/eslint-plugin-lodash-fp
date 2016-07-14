@@ -55,6 +55,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Prefer [`_.flatMap`](https://lodash.com/docs#flatMap) over consecutive [`_.map`](https://lodash.com/docs#map) and [`_.flatten`](https://lodash.com/docs#flatten).',
       recommended: 'error'
     }
   }

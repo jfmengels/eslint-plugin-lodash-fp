@@ -25,6 +25,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Forbid argument-less calls of Lodash methods.',
       recommended: 'error'
     }
   }

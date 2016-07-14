@@ -35,6 +35,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'No extraneous parameters in iteratees.',
       recommended: 'error'
     }
   }

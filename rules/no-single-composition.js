@@ -22,6 +22,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Enforce at least two methods arguments for composition methods.',
       recommended: 'error'
     }
   }

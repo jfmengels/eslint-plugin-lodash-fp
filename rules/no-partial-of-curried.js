@@ -24,6 +24,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'No use of [`_.partial`](https://lodash.com/docs#partial) on curried Lodash methods.',
       recommended: 'error'
     }
   }

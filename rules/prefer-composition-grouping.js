@@ -50,6 +50,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Prefer grouping similar methods in composition methods.',
       recommended: 'error'
     }
   }

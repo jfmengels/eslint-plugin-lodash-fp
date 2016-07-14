@@ -39,6 +39,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: 'Prefer [`_.identity`](https://lodash.com/docs#identity) over functions returning their argument.',
       recommended: ['error', {arrowFunctions: false}]
     }
   }

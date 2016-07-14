@@ -41,6 +41,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: ' Forbid the use of [`_.forEach`](https://lodash.com/docs#forEach)',
       recommended: 'off'
     }
   }

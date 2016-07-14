@@ -43,6 +43,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Forbid destructuring of Lodash submodules.',
       recommended: 'error'
     }
   }

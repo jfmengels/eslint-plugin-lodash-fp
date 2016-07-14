@@ -30,6 +30,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: 'Enforce a consistent composition method.',
       recommended: 'off'
     }
   }

@@ -82,6 +82,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Avoid unnecessary function wrapping.',
       recommended: 'error'
     }
   }

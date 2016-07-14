@@ -28,6 +28,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Use lodash/fp instead of Lodash.',
       recommended: 'error'
     }
   }

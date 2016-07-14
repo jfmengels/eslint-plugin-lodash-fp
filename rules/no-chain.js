@@ -25,6 +25,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Forbid the use of [`_.chain`](https://lodash.com/docs#chain)',
       recommended: 'error'
     }
   }

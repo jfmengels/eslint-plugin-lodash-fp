@@ -30,6 +30,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'Prefer [`_.compact`](https://lodash.com/docs#compact) over [`_.filter`](https://lodash.com/docs#filter) with identity function.',
       recommended: 'error'
     }
   }

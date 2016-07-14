@@ -42,6 +42,7 @@ module.exports = {
   create,
   meta: {
     docs: {
+      description: 'No extraneous arguments to methods with a fixed arity.',
       recommended: 'error'
     }
   }

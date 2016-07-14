@@ -55,6 +55,7 @@ module.exports = {
   meta: {
     schema,
     docs: {
+      description: 'Enforce a consistent name for Lodash.',
       recommended: ['error', '_']
     }
   }
