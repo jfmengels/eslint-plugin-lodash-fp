@@ -13,7 +13,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "xo && nyc ava"
+    "test": "xo && nyc ava",
+    "update-md": "inject-in-tag ./rule-description.js readme.md"
   },
   "files": [
     "index.js",
@@ -42,6 +43,7 @@
     "ava": "^0.15.1",
     "eslint": "^3.0.1",
     "eslint-ava-rule-tester": "^2.0.0",
+    "inject-in-tag": "^1.1.1",
     "nyc": "^6.4.0",
     "pify": "^2.3.0",
     "xo": "*"
