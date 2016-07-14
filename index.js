@@ -1,27 +1,19 @@
 'use strict';
 
 const reqAll = require('req-all');
+const createIndex = require('create-eslint-index');
 
 const rules = reqAll('rules', {camelize: false});
 
-const recommendedRules = Object.keys(rules)
-  .map(key => [[`lodash-fp/${key}`], rules[key].meta.docs.recommended])
-  .reduce((res, item) => {
-    res[item[0]] = item[1];
-    return res;
-  }, {});
+const recommendedRules = createIndex.createConfig({
+  plugin: 'lodash-fp',
+  field: 'meta.docs.recommended'
+}, rules);
 
 module.exports = {
   rules,
   configs: {
     recommended: {
-      env: {
-        es6: true
-      },
-      parserOptions: {
-        ecmaVersion: 7,
-        sourceType: 'module'
-      },
       rules: recommendedRules
     }
   }
