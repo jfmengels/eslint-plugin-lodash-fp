@@ -41,6 +41,7 @@ ruleTester.run('no-extraneous-function-wrapping', rule, {
     code(`function foo(x) { _.isArray({x})(x); }`),
       // Not a call expression body
     code(`function foo(x) { return 2; }`),
+    code(`function foo(x) { return; }`),
     code(`_.map(x => 2);`),
       // Calling result of call with one argument but not with function's parameter
     code(`function foo(x) { return bar(x)(y); }`),
@@ -87,7 +88,7 @@ ruleTester.run('no-extraneous-function-wrapping', rule, {
           2
         }
       })(x));`),
-      // Method is not curried
+    // Method is not curried
     code(`_.map(x => flow(y, x));`, ['flow']),
     code(`_.map(x => _.flow(y, x));`),
     code(`_.map(x => _.pipe(y, x));`),

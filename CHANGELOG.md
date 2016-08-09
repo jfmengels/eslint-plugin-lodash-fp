@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Fixed
+- Fixed crash in `no-extraneous-function-wrapping` when using `return` without an argument.
 
 ## [2.0.0] - 2016-07-15
 ### Removed
