@@ -6,6 +6,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 ### Fixed
 - Fixed crash in `no-extraneous-function-wrapping` when using `return` without an argument.
+- Fixed false report in `no-extraneous-function-wrapping` when using the last argument twice in the arguments ([#38], thanks [@godu]).
 
 ## [2.0.0] - 2016-07-15
 ### Removed
@@ -128,19 +129,22 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
 [#36]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/36
-[#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/30
 [#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
-[#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
 
+[#38]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/38
+[#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/30
+[#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
+
 [@dfadler]: https://github.com/dfadler
+[@godu]: https://github.com/godu
 [@gunar]: https://github.com/gunar
 [@izaakschroeder]: https://github.com/izaakschroeder
 [@jfmengels]: https://github.com/jfmengels
 [@kavington]: https://github.com/kavington
 
 [Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.0...master
-[1.3.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.3.0...v2.0.0
+[2.0.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.3.0...v2.0.0
 [1.3.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.2.0
 [1.1.3]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.1.3

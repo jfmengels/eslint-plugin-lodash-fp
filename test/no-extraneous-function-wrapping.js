@@ -98,7 +98,9 @@ ruleTester.run('no-extraneous-function-wrapping', rule, {
     code(`_.map(x => _.iteratee(y, x));`),
     code(`_.map(x => _.mixin(y, x));`),
     code(`_.map(x => _.runInContext(y, x));`),
-    code(`_.map(x => fn()());`)
+    code(`_.map(x => fn()());`),
+    code(`fn(foo => _.set(foo, foo))`),
+    code(`fn(foo => _.set('foo', foo, foo))`)
   ],
   invalid: [
     {

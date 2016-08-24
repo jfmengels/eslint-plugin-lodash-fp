@@ -66,4 +66,7 @@ function someContainsIdentifier(name, array) {
   });
 }
 
-module.exports = containsIdentifier;
+module.exports = {
+  containsIdentifier,
+  someContainsIdentifier
+};
