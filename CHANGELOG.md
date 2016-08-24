@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- (none)
+
+## [2.0.1] - 2016-08-24
 ### Fixed
 - Fixed crash in `no-extraneous-function-wrapping` when using `return` without an argument.
 - Fixed false report in `no-extraneous-function-wrapping` when using the last argument twice in the arguments ([#38], thanks [@godu]).
@@ -143,7 +146,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@jfmengels]: https://github.com/jfmengels
 [@kavington]: https://github.com/kavington
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.0...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.1...master
+[2.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.3.0...v2.0.0
 [1.3.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.1.2...v1.2.0
