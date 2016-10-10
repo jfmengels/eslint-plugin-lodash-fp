@@ -3,8 +3,10 @@
 const enhance = require('./core/enhance');
 const isStaticRequire = require('./core/static-require');
 
+const lodashRegex = /^lodash($|\/(?!fp))/;
+
 function reportIfLodashButNotFp(context, node, name) {
-  if (name && name.indexOf('lodash') === 0 && name.indexOf('lodash/fp') === -1) {
+  if (lodashRegex.test(name)) {
     context.report(node, 'Unallowed import of `lodash`. Use `lodash/fp` instead');
   }
 }

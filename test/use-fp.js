@@ -23,6 +23,8 @@ ruleTester.run('use-fp', rule, {
     `import _, {bindAll} from 'lodash/fp';`,
     `import _, {bindAll as b} from 'lodash/fp';`,
     `import _ from 'lodash/fp/bindAll';`,
+    `import _ from 'lodash-fp';`,
+    `import _ from 'lodash-webpack-plugin';`,
     `var _ = require('lodash/fp');`,
     `var _ = require('lodash/fp/bindAll');`,
     `import foo from 'foo';`,

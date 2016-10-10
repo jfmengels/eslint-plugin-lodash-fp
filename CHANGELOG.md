@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Fixed
+- Fixed incorrect errors for [`use-fp`] on package names starting with `lodash-` ([#41, thanks [@penny-five])
 
 ## [2.0.1] - 2016-08-24
 ### Fixed
@@ -97,7 +98,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## 0.0.1 - 2016-04-12
 ### Added
 - Added [`no-chain`] rule
-- Added [`no-fp`] rule
+- Added [`use-fp`] rule
 
 [`consistent-compose`]: ./docs/rules/consistent-compose.md
 [`consistent-name`]: ./docs/rules/consistent-name.md
@@ -107,7 +108,6 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`no-extraneous-function-wrapping`]: ./docs/rules/no-extraneous-function-wrapping.md
 [`no-extraneous-iteratee-args`]: ./docs/rules/no-extraneous-iteratee-args.md
 [`no-for-each`]: ./docs/rules/no-for-each.md
-[`no-fp`]: ./docs/rules/no-fp.md
 [`no-partial-of-curried`]: ./docs/rules/no-partial-of-curried.md
 [`no-single-composition`]: ./docs/rules/no-single-composition.md
 [`no-submodule-destructuring`]: ./docs/rules/no-submodule-destructuring.md
@@ -119,6 +119,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`prefer-get`]: ./docs/rules/prefer-get.md
 [`prefer-identity`]: ./docs/rules/prefer-identity.md
 [`preferred-alias`]: ./docs/rules/preferred-alias.md
+[`use-fp`]: ./docs/rules/use-fp.md
 
 [`_.bindAll`]: https://lodash.com/docs#filter
 [`_.filter`]: https://lodash.com/docs#filter
@@ -135,6 +136,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
 
+[#41]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/41
 [#38]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/38
 [#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/30
 [#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
@@ -145,6 +147,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@izaakschroeder]: https://github.com/izaakschroeder
 [@jfmengels]: https://github.com/jfmengels
 [@kavington]: https://github.com/kavington
+[@penny-five]: https://github.com/penny-five
 
 [Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.1...master
 [2.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.0...v2.0.1
