@@ -92,6 +92,7 @@ Configure it in `package.json`.
 - [prefer-identity](docs/rules/prefer-identity.md) - Prefer [`_.identity`](https://lodash.com/docs#identity) over functions returning their argument.
 - [preferred-alias](docs/rules/preferred-alias.md) - Limit the use of aliases.
 - [use-fp](docs/rules/use-fp.md) - Use lodash/fp instead of Lodash.
+
 <!-- RULES:END -->
 
 ## Recommended configuration
