@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
 
 const create = function (context) {
@@ -7,7 +8,7 @@ const create = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
-      if (node.arguments.length > 1) {
+      if (node.arguments.length > 1 || _.get([0, 'type'], node.arguments) === 'SpreadElement') {
         return;
       }
       const method = info.helpers.isComposeMethod(node);

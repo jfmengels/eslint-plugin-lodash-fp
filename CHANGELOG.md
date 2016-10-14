@@ -6,8 +6,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (none)
 
+## [2.1.1] - 2016-10-14
+- Fixed [`no-single-composition`] triggering errors when using spread arguments.
+
 ## [2.1.0] - 2016-10-10
 - NOTE: This was published as a `minor` version by accident. It should have been a `patch`.
+### Fixed
 - Fixed incorrect errors for [`use-fp`] on package names starting with `lodash-` ([#41, thanks [@penny-five])
 
 ## [2.0.1] - 2016-08-24
@@ -152,7 +156,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@kavington]: https://github.com/kavington
 [@penny-five]: https://github.com/penny-five
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.0...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.1...master
+[2.1.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v1.3.0...v2.0.0
