@@ -62,7 +62,7 @@ ruleTester.run('no-extraneous-function-wrapping', rule, {
     code(`_.map(x => bar(f => x)(x));`),
     code(`_.map(x => bar(f => x())(x));`),
     code(`_.map(x => bar(f => { x; })(x));`),
-    code('_.map(x => bar(f => { `${x}` })(x));'),
+    code('_.map(x => bar(f => { `${x}` })(x));'), // eslint-disable-line no-template-curly-in-string
     code(`_.map(x => bar(f => { [x]; })(x));`),
     code(`_.map(x => bar(f => { b = {a: x}; })(x));`),
     code(`_.map(x => bar(f => { var b = x; })(x));`),

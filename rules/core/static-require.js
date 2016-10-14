@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function isStaticRequire(node) {
+module.exports = function (node) {
   return node &&
     node.callee &&
     node.callee.type === 'Identifier' &&

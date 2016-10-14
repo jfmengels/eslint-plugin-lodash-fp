@@ -44,7 +44,7 @@ module.exports = function (imports) {
 
   // Is `X()` or `X.Y()` a Lodash method call()?
 
-  const findName = _.curry(function _findName(methods, method) {
+  const findName = _.curry(function (methods, method) {
     return _.find(_.eq(method.name), _.isArray(methods) ? methods : [methods]) && method;
   });
 
@@ -84,12 +84,12 @@ module.exports = function (imports) {
     return isAnyMemberMethod(node) || isIdentifierMethod(node);
   }
 
-  const isMethodOf = _.curry(function _isMethodOf(methods, node) {
+  const isMethodOf = _.curry(function (methods, node) {
     const method = isMethod(node);
     return method && findName(methods, method);
   });
 
-  const isAnyMethodOf = _.curry(function _isAnyMethodOf(methods, node) {
+  const isAnyMethodOf = _.curry(function (methods, node) {
     const method = isAnyMethod(node);
     return method && findName(methods, method);
   });
@@ -98,13 +98,13 @@ module.exports = function (imports) {
     return isCallExpression(node) && isMethod(node.callee);
   }
 
-  const isMethodCallOf = _.curry(function _isMethodCallOf(methods, node) {
+  const isMethodCallOf = _.curry(function (methods, node) {
     const method = isMethodCall(node);
     return method && findName(methods, method);
   });
 
   // Is `X.Y` a Lodash method?
-  const isMember = _.curry(function _isMember(node) {
+  const isMember = _.curry(function (node) {
     return isMemberExpression(node) &&
       isIdentifier(node.object) &&
       isIdentifier(node.property) &&
@@ -115,7 +115,7 @@ module.exports = function (imports) {
       });
   });
 
-  const getComposeMethodArgMethods = _.curry(function _getComposeMethodArgMethods(name, node) {
+  const getComposeMethodArgMethods = _.curry(function (name, node) {
     const methodNames = node.arguments.map(function (arg) {
       return isMethodCall(arg) || isMember(arg);
     });
