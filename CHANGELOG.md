@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Fixed
+- Fixed [`no-single-composition`] by allowing array expressions with multiple elements ([#42], thanks [@iam4x]).
 
 ### Misc
 - Replaced [`ast-utils`] by [`eslint-ast-utils`] (package was renamed).
@@ -156,6 +157,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#42]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/42
 [#36]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/36
 [#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
@@ -172,6 +174,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@jfmengels]: https://github.com/jfmengels
 [@kavington]: https://github.com/kavington
 [@penny-five]: https://github.com/penny-five
+[@iam4x]: https://github.com/iam4x
 
 [Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.2...master
 [2.1.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.1...v2.1.2

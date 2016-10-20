@@ -22,15 +22,19 @@ ruleTester.run('no-single-composition', rule, {
     code(`flow(fn1, fn2);`, ['flow']),
     code(`_.flow(fn1, fn2);`),
     code(`_.flow(...fns);`),
+    code(`_.flow([fn1, fn2]);`),
     code(`pipe(fn1, fn2);`, ['pipe']),
     code(`_.pipe(fn1, fn2);`),
     code(`_.pipe(...fns);`),
+    code(`_.pipe([fn1, fn2]);`),
     code(`flowRight(fn1, fn2);`, ['flowRight']),
     code(`_.flowRight(fn1, fn2);`),
     code(`_.flowRight(...fns);`),
+    code(`_.flowRight([fn1, fn2]);`),
     code(`compose(fn1, fn2);`, ['compose']),
     code(`_.compose(fn1, fn2);`),
     code(`_.compose(...fns);`),
+    code(`_.compose([fn1, fn2]);`),
     code(`flow(fn);`),
     code(`pipe(fn);`),
     code(`flowRight(fn);`),
@@ -126,6 +130,12 @@ ruleTester.run('no-single-composition', rule, {
       code: `var compose = require('lodash/compose'); compose(fn);`,
       errors: [{
         ...error, message: '`compose` should have at least two arguments'
+      }]
+    },
+    {
+      code: code(`_.flow([fn]);`),
+      errors: [{
+        ...error, message: '`flow` should have at least two functions'
       }]
     }
   ]
