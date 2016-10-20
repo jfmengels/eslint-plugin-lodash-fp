@@ -15,7 +15,6 @@ const error = {
   ruleId: 'consistent-name'
 };
 
-
 ruleTester.run('consistent-name', rule, {
   valid: [
     `import _ from 'lodash';`,
