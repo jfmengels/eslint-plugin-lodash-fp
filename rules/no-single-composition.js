@@ -8,6 +8,12 @@ const create = function (context) {
 
   return info.merge({
     CallExpression: function (node) {
+      // _.flow accepts array of Functions, check that we have more than one Function
+      if (_.get([0, 'type'], node.arguments) === 'Array' &&
+          _.get([0, 'length'], node.arguments) > 1) {
+        return;
+      }
+
       if (node.arguments.length > 1 || _.get([0, 'type'], node.arguments) === 'SpreadElement') {
         return;
       }
