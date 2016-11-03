@@ -6,11 +6,18 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (none)
 
+## [2.1.2] - 2016-11-03
+### Fixed
+- Fixed [`no-extraneous-function-wrapping`] not handling some constructs (now uses [ast-utils](https://github.com/jfmengels/ast-utils)).
+
 ## [2.1.1] - 2016-10-14
+### Fixed
 - Fixed [`no-single-composition`] triggering errors when using spread arguments.
 
 ## [2.1.0] - 2016-10-10
-- NOTE: This was published as a `minor` version by accident. It should have been a `patch`.
+### NOTE
+- This was published as a `minor` version by accident. It should have been a `patch`.
+
 ### Fixed
 - Fixed incorrect errors for [`use-fp`] on package names starting with `lodash-` ([#41, thanks [@penny-five])
 
@@ -22,10 +29,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [2.0.0] - 2016-07-15
 ### Removed
 - **Breaking**: Removed support for Node.js versions < v4.
+
 ### Fixed
 - Fixed documentation for [`prefer-composition-grouping`].
 - Added suggestion in [`prefer-composition-grouping`] to use [`_.overEvery`]/[`_.overSome`] to replace multiple [`_.filter`]/[`_.reject`].
 - Added an exception for [`_.bindAll`] in [`no-unused-result`] ([#36], thanks [@dfadler]).
+
 ### Changed
 - Removed [`eslint`] as a dependency.
 
@@ -46,9 +55,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Added [`no-extraneous-iteratee-args`] rule
 - Added [`no-partial-of-curried`] rule
 - Added [`preferred-alias`] rule
+
 ### Fixed
 - [`no-extraneous-args`] now also handles aliases.
 - Fixed crash in [`no-extraneous-function-wrapping`].
+
 ### Changed
 - [`no-extraneous-args`] now recommends an alternative whenever possible, and tells when to use an array for method that used rest args.
 
@@ -156,7 +167,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@kavington]: https://github.com/kavington
 [@penny-five]: https://github.com/penny-five
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.1...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.2...master
+[2.1.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.0...v2.0.1

@@ -1,8 +1,8 @@
 'use strict';
 
 const _ = require('lodash/fp');
+const astUtils = require('ast-utils');
 const enhance = require('./core/enhance');
-const ci = require('./core/contains-identifier');
 
 const isFunction = _.flow(
   _.get('type'),
@@ -34,9 +34,9 @@ function isExtraneous(info, argNode) {
   // If <SOMETHING> is not a call expression
   if (callExpression.type !== 'CallExpression' ||
     // or if `lastArgName` is used somewhere else in the function
-    ci.containsIdentifier(lastArgName, callExpression.callee) ||
+    astUtils.containsIdentifier(lastArgName, callExpression.callee) ||
     // or in `lastArgName` is used among the other arguments
-    ci.someContainsIdentifier(lastArgName, _.initial(callExpression.arguments))
+    astUtils.someContainIdentifier(lastArgName, _.initial(callExpression.arguments))
   ) {
     return false;
   }

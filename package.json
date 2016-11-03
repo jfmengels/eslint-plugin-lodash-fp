@@ -34,6 +34,7 @@
     "programming"
   ],
   "dependencies": {
+    "ast-utils": "^1.0.0",
     "create-eslint-index": "^1.0.0",
     "enhance-visitors": "^1.0.0",
     "lodash": "^4.11.1",
