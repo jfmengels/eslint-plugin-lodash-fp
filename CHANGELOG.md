@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+- (none)
+
+## [2.1.3] - 2016-11-08
 ### Fixed
 - Fixed [`no-single-composition`] by allowing array expressions with multiple elements ([#42], thanks [@iam4x]).
 
@@ -176,7 +179,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [@penny-five]: https://github.com/penny-five
 [@iam4x]: https://github.com/iam4x
 
-[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.2...master
+[Unreleased]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.3...master
+[2.1.3]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/jfmengels/eslint-plugin-lodash-fp/compare/v2.0.1...v2.1.0
