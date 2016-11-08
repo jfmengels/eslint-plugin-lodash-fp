@@ -1,8 +1,8 @@
 'use strict';
 
 const _ = require('lodash/fp');
+const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
-const isStaticRequire = require('./core/static-require');
 
 function isLodash(name) {
   return name === 'lodash' || name === 'lodash/fp';
@@ -27,7 +27,7 @@ const create = function (context) {
       }
     },
     VariableDeclarator: function (node) {
-      if (node.init && isStaticRequire(node.init)) {
+      if (node.init && astUtils.isStaticRequire(node.init)) {
         if (isLodash(node.init.arguments[0].value)) {
           importNode = node;
         }

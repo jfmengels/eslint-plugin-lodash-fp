@@ -1,7 +1,7 @@
 'use strict';
 
+const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
-const isStaticRequire = require('./core/static-require');
 
 const lodashRegex = /^lodash($|\/(?!fp))/;
 
@@ -19,7 +19,7 @@ const create = function (context) {
       reportIfLodashButNotFp(context, node, node.source.value);
     },
     CallExpression: function (node) {
-      if (isStaticRequire(node)) {
+      if (astUtils.isStaticRequire(node)) {
         reportIfLodashButNotFp(context, node, node.arguments[0].value);
       }
     }

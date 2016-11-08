@@ -1,8 +1,8 @@
 'use strict';
 
 const _ = require('lodash/fp');
+const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
-const isStaticRequire = require('./core/static-require');
 
 const isImportSpecifier = _.matches({type: 'ImportSpecifier'});
 const isObjectPattern = _.matches({type: 'ObjectPattern'});
@@ -14,7 +14,7 @@ function isLodashSubModule(source) {
 }
 
 function isRequireOfLodashSubModule(node) {
-  return isStaticRequire(node) &&
+  return astUtils.isStaticRequire(node) &&
     node.arguments.length > 0 &&
     isLodashSubModule(node.arguments[0].value);
 }

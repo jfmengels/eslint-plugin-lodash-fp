@@ -6,9 +6,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 - (none)
 
+### Misc
+- Replaced [`ast-utils`] by [`eslint-ast-utils`] (package was renamed).
+- Replaced `isStaticRequire` function by the similarly named function in [`eslint-ast-utils`].
+
 ## [2.1.2] - 2016-11-03
 ### Fixed
-- Fixed [`no-extraneous-function-wrapping`] not handling some constructs (now uses [ast-utils](https://github.com/jfmengels/ast-utils)).
+- Fixed [`no-extraneous-function-wrapping`] not handling some constructs (now uses [ast-utils]).
 
 ## [2.1.1] - 2016-10-14
 ### Fixed
@@ -147,6 +151,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`_.overSome`]: https://lodash.com/docs#overSome
 [`_.reject`]: https://lodash.com/docs#reject
 
+[`ast-utils`]: https://github.com/jfmengels/eslint-ast-utils
+[`eslint-ast-utils`]: https://github.com/jfmengels/eslint-ast-utils
 [`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 

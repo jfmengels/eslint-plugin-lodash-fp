@@ -1,8 +1,8 @@
 'use strict';
 
 const enhance = require('enhance-visitors');
+const astUtils = require('eslint-ast-utils');
 const lodashUtil = require('./lodash-util');
-const isStaticRequire = require('./static-require');
 
 function isLodashModule(name) {
   return name.indexOf('lodash') === 0;
@@ -47,7 +47,7 @@ module.exports = function () {
       }
     },
     VariableDeclarator: function (node) {
-      if (node.init && isStaticRequire(node.init)) {
+      if (node.init && astUtils.isStaticRequire(node.init)) {
         const name = node.init.arguments[0].value;
         if (isLodashModule(name)) {
           const strippedName = stripLodash(name);
