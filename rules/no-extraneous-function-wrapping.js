@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash/fp');
-const astUtils = require('ast-utils');
+const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
 
 const isFunction = _.flow(
