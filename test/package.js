@@ -4,7 +4,7 @@ import pify from 'pify';
 import index from '../';
 
 test('Every rule is defined in index file', async t => {
-  const files = await pify(fs.readdir, Promise)('../rules/');
+  const files = await pify(fs.readdir, Promise)('rules/');
   const rules = files.filter(file => file.indexOf('.js') === file.length - 3);
 
   rules.forEach(file => {
