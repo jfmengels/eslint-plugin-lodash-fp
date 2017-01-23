@@ -18,6 +18,6 @@ const _ = require('lodash/bindAll');
 import _ from 'lodash/fp';
 import _ from 'lodash/fp/bindAll';
 
-const _ = require('lodash');
+const _ = require('lodash/fp');
 const _ = require('lodash/fp/bindAll');
 ```
