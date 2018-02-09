@@ -42,12 +42,12 @@
   },
   "devDependencies": {
     "ava": "^0.17.0",
-    "eslint": "^3.0.1",
+    "eslint": "^4.17.0",
     "eslint-ava-rule-tester": "^2.0.0",
     "inject-in-tag": "^1.1.1",
-    "nyc": "^6.4.0",
-    "pify": "^2.3.0",
-    "xo": "^0.17.0"
+    "nyc": "^11.4.1",
+    "pify": "^3.0.0",
+    "xo": "^0.18.2"
   },
   "peerDependencies": {
     "eslint": ">=3"
