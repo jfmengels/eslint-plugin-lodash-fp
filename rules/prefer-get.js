@@ -21,7 +21,7 @@ const create = function (context) {
 
   /* eslint quote-props: [2, "as-needed"] */
   return {
-    LogicalExpression: function (node) {
+    LogicalExpression(node) {
       const state = getState();
       const rightMemberExp = astUtil.isEqEqEq(node.right) && state.depth === 0 ? node.right.left : node.right;
 
@@ -32,7 +32,7 @@ const create = function (context) {
         }
       }
     },
-    'LogicalExpression:exit': function (node) {
+    'LogicalExpression:exit'(node) {
       const state = getState();
       if (state && state.node === node.right.object) {
         expStates.pop();

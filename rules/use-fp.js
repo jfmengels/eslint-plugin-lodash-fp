@@ -15,10 +15,10 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    ImportDeclaration: function (node) {
+    ImportDeclaration(node) {
       reportIfLodashButNotFp(context, node, node.source.value);
     },
-    CallExpression: function (node) {
+    CallExpression(node) {
       if (astUtils.isStaticRequire(node)) {
         reportIfLodashButNotFp(context, node, node.arguments[0].value);
       }

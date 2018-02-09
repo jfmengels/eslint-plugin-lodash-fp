@@ -18,7 +18,7 @@ const create = function (context) {
   }
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       if (isFilterWithIdentity(node)) {
         context.report(node, 'Prefer `_.compact` over `_.filter` with identity function');
       }

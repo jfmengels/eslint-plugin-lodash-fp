@@ -7,7 +7,7 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       const method = info.helpers.isComposeMethod(node);
       if (!method || node.arguments.length > 1 || _.get([0, 'type'], node.arguments) === 'SpreadElement') {
         return;

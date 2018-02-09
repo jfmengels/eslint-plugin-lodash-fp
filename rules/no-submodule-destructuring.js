@@ -23,7 +23,7 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    ImportDeclaration: function (node) {
+    ImportDeclaration(node) {
       if (isLodashSubModule(node.source.value)) {
         const importSpecifier = _.find(isImportSpecifier, node.specifiers);
         if (importSpecifier) {
@@ -31,7 +31,7 @@ const create = function (context) {
         }
       }
     },
-    VariableDeclarator: function (node) {
+    VariableDeclarator(node) {
       if (node.init && isObjectPattern(node.id) && isRequireOfLodashSubModule(node.init)) {
         context.report(node.init, errorMessage);
       }
