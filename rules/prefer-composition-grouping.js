@@ -33,13 +33,13 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       const method = info.helpers.isComposeMethod(node);
       if (!method) {
         return;
       }
       const methods = info.helpers.getComposeMethodArgMethods(method.name, node);
-      consecutiveOperations(methods).forEach(function (operation) {
+      consecutiveOperations(methods).forEach(operation => {
         context.report(node, errorMessage(operation));
       });
     }

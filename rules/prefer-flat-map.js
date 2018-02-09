@@ -43,7 +43,7 @@ const create = function (context) {
   }
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       if (isDirectCall(node) || isCompositionCall(info, node)) {
         context.report(node, 'Prefer `_.flatMap` over consecutive `_.map` and `_.flatten`');
       }

@@ -63,7 +63,7 @@ function isComputed(node) {
  * @returns {boolean}
  */
 function isEquivalentExp(a, b) {
-  return _.isEqualWith(function (left, right, key) {
+  return _.isEqualWith((left, right, key) => {
     if (_.includes(key, ['loc', 'range', 'computed', 'start', 'end'])) {
       return true;
     }

@@ -5,7 +5,7 @@ function importHeader(name) {
 }
 
 module.exports = {
-  code: function (content, header) {
+  code(content, header) {
     if (header === false) {
       return content;
     }

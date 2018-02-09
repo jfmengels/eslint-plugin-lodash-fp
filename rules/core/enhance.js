@@ -27,11 +27,11 @@ module.exports = function () {
   // and fill `imports` with what is found
   // The result is a collection of identifier and (method or Lodash) pairs
   const predefinedRules = {
-    ImportDeclaration: function (node) {
+    ImportDeclaration(node) {
       const name = node.source.value;
       if (isLodashModule(name)) {
         const strippedName = stripLodash(name);
-        node.specifiers.forEach(function (specifier) {
+        node.specifiers.forEach(specifier => {
           if (specifier.type === 'ImportDefaultSpecifier') {
             // `import _ from 'lodash';` --> {'_': ''}
             // `import _ from 'lodash/fp';` --> {'_': 'fp'}
@@ -46,7 +46,7 @@ module.exports = function () {
         });
       }
     },
-    VariableDeclarator: function (node) {
+    VariableDeclarator(node) {
       if (node.init && astUtils.isStaticRequire(node.init)) {
         const name = node.init.arguments[0].value;
         if (isLodashModule(name)) {
@@ -58,7 +58,7 @@ module.exports = function () {
             // `const find = require('lodash/fp/find');` --> {'find': 'fp/find'}
             imports[node.id.name] = strippedName;
           } else if (node.id.type === 'ObjectPattern') {
-            node.id.properties.forEach(function (prop) {
+            node.id.properties.forEach(prop => {
               // `const {find, invoke: i} = require('lodash');` --> {'find': 'find', 'i': 'invoke'}
               // `const {find, invoke: i} = require('lodash/fp');` --> {'find': 'fp/find', 'i': 'fp/invoke'}
               imports[prop.key.name] = strippedModuleName(strippedName, prop.value.name);

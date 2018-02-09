@@ -9,7 +9,7 @@ function isLodash(name) {
 }
 
 function hasDefaultSpecifier(node) {
-  return node.specifiers.some(function (specifier) {
+  return node.specifiers.some(specifier => {
     return specifier.type === 'ImportDefaultSpecifier';
   });
 }
@@ -21,23 +21,23 @@ const create = function (context) {
   let importNode = null;
 
   return info.merge({
-    ImportDeclaration: function (node) {
+    ImportDeclaration(node) {
       if (isLodash(node.source.value) && hasDefaultSpecifier(node)) {
         importNode = node;
       }
     },
-    VariableDeclarator: function (node) {
+    VariableDeclarator(node) {
       if (node.init && astUtils.isStaticRequire(node.init)) {
         if (isLodash(node.init.arguments[0].value)) {
           importNode = node;
         }
       }
     },
-    'Program:exit': function () {
+    'Program:exit'() {
       const importValues = _.values(info.imports);
       if (// `lodash`/`lodash/fp` was imported
         (importValues.indexOf('') !== -1 || importValues.indexOf('fp') !== -1) &&
-        // but <expectedName> does not refer to either `lodash` or `lodash/fp`
+        // But <expectedName> does not refer to either `lodash` or `lodash/fp`
         !info.helpers.isAnyLodash(expectedName)
       ) {
         context.report(importNode, `Lodash should be imported as \`${expectedName}\``);

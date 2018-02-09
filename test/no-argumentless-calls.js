@@ -32,19 +32,19 @@ ruleTester.run('no-argumentless-calls', rule, {
   invalid: [
     {
       code: code(`_.flatten()`),
-      errors: errors
+      errors
     },
     {
       code: code(`_.map()`),
-      errors: errors
+      errors
     },
     {
       code: code(`map()`, ['map']),
-      errors: errors
+      errors
     },
     {
       code: code(`_.flow(_.map(f1), _.flatten())`),
-      errors: errors
+      errors
     }
   ]
 });

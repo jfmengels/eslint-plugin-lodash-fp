@@ -27,35 +27,35 @@ ruleTester.run('prefer-compact', rule, {
   invalid: [
     {
       code: code('_.filter(_.identity, a);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f1), _.filter(_.identity));'),
-      errors: errors
+      errors
     },
     {
       code: code('_.filter(x => x, a);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f1), _.filter(x => x));'),
-      errors: errors
+      errors
     },
     {
       code: code('_.filter((x) => { return x; }, a);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f1), _.filter((x) => { return x; }));'),
-      errors: errors
+      errors
     },
     {
       code: code('_.filter(function(x) { return x; }, a);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f1), _.filter(function(x) { return x; }));'),
-      errors: errors
+      errors
     }
   ]
 });

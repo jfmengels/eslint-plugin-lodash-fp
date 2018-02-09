@@ -11,7 +11,7 @@ const create = function (context) {
   }
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       const method = info.helpers.isComposeMethod(node);
       if (method && method.name !== composeMethod) {
         context.report(node, `Forbidden use of \`${method.name}\`. Use \`${composeMethod}\` instead`);

@@ -11,7 +11,7 @@ const create = function (context) {
   const noNative = options.noNative !== false;
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       const method = info.helpers.isForEachMethod(node);
       if (method) {
         context.report(node, `Forbidden use of \`_.${method.realName}\``);

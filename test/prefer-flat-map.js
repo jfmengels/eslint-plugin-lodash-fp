@@ -31,47 +31,47 @@ ruleTester.run('prefer-flat-map', rule, {
   invalid: [
     {
       code: code('_.flatten(_.map(f, a));'),
-      errors: errors
+      errors
     },
     {
       code: code('flatten(map(f, a));', ['flatten', 'map']),
-      errors: errors
+      errors
     },
     {
       code: `import {flatten as f, map as m} from 'lodash/fp'; f(m(f1, a));`,
-      errors: errors
+      errors
     },
     {
       code: code('_.flatten(_.map(f));'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flatten(_.map(f))(a);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f), _.flatten);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.compose(_.flatten, _.map(f));'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f), _.map(f1), _.flatten);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f), _.filter(f1), _.map(f2), _.flatten);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.map(f), foo, _.map(f1), _.flatten);'),
-      errors: errors
+      errors
     },
     {
       code: code('_.flow(_.flatten, _.map(f), _.map(f1), _.flatten);'),
-      errors: errors
+      errors
     }
   ]
 });

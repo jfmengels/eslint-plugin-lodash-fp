@@ -16,7 +16,7 @@ const ruleTester = avaRuleTester(test, {
 function errors(message) {
   return [{
     ruleId: 'no-extraneous-args',
-    message: message
+    message
   }];
 }
 
@@ -29,9 +29,9 @@ ruleTester.run('no-extraneous-args', rule, {
     code('_.get(a);'),
       // Should ignore methods that are not capped
     code('_.flow(a, b, c, d, e, f, g);'),
-      // should ignore unknown methods
+      // Should ignore unknown methods
     code('_.foo(a, b, c, d, e, f, g);'),
-      // should ignore non-Lodash methods
+      // Should ignore non-Lodash methods
     code('foo(a, b, c, d, e, f, g);')
   ],
   invalid: [
