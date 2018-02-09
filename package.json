@@ -38,7 +38,7 @@
     "enhance-visitors": "^1.0.0",
     "eslint-ast-utils": "^1.0.0",
     "lodash": "^4.11.1",
-    "req-all": "^0.1.0"
+    "req-all": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
