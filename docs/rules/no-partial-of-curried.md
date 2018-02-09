@@ -29,7 +29,7 @@ _.partial(_.find, [_, {this: 'is', an: 'object'}]);
 ```js
 _.partial((a, b) => a + b, [2]);
 
-// This is oay because `_.flow` is not curried
+// This is okay because `_.flow` is not curried
 _.partial(_.flow, [
   a => a + 1,
   b => b * 10
