@@ -14,6 +14,7 @@ module.exports = {
   rules,
   configs: {
     recommended: {
+      plugins: ['lodash-fp'],
       rules: recommendedRules
     }
   }
