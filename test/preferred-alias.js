@@ -28,6 +28,7 @@ ruleTester.run('preferred-alias', rule, {
     code('_.get(a, b);'),
     code('_.getOr(a, b);'),
     code('_.foo(a, b);'),
+    code('_.toString({});'),
     code('foo(a, b);'),
     code('foo(a, b);', ['foo']),
     {
