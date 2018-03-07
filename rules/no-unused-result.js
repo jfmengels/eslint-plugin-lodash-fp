@@ -24,7 +24,7 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    ExpressionStatement: function (node) {
+    ExpressionStatement(node) {
       const method = isMethodCall(info, node.expression);
       if (method && !isForEach(method)) {
         context.report(node, 'Unused expression');

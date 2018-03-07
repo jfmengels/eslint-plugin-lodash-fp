@@ -33,9 +33,9 @@ function isExtraneous(info, argNode) {
 
   // If <SOMETHING> is not a call expression
   if (callExpression.type !== 'CallExpression' ||
-    // or if `lastArgName` is used somewhere else in the function
+    // Or if `lastArgName` is used somewhere else in the function
     astUtils.containsIdentifier(lastArgName, callExpression.callee) ||
-    // or in `lastArgName` is used among the other arguments
+    // Or in `lastArgName` is used among the other arguments
     astUtils.someContainIdentifier(lastArgName, _.initial(callExpression.arguments))
   ) {
     return false;
@@ -63,17 +63,17 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    FunctionDeclaration: function (node) {
+    FunctionDeclaration(node) {
       if (isExtraneous(info, node)) {
         context.report(node, errorMessage);
       }
     },
-    CallExpression: function (node) {
+    CallExpression(node) {
       node.arguments
-        .filter(function (argNode) {
+        .filter(argNode => {
           return isExtraneous(info, argNode);
         })
-        .forEach(function (arg) {
+        .forEach(arg => {
           context.report(arg, errorMessage);
         });
     }

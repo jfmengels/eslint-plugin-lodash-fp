@@ -16,7 +16,7 @@ const ruleTester = avaRuleTester(test, {
 function errors(message) {
   return [{
     ruleId: 'preferred-alias',
-    message: message
+    message
   }];
 }
 

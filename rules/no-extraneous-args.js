@@ -27,7 +27,7 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       const method = info.helpers.isMethodCall(node);
 
       if (method && !method.skipFixed && node.arguments.length > method.ary) {

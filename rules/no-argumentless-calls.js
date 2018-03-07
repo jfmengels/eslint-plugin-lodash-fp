@@ -9,7 +9,7 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       if (node.arguments.length !== 0) {
         return;
       }

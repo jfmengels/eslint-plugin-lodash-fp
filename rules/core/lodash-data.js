@@ -6,8 +6,8 @@ const mapping = require('lodash/fp/_mapping');
 function methodArities() {
   return _.keys(mapping.aryMethod)
     .map(_.parseInt(10))
-    .reduce(function (res, n) {
-      mapping.aryMethod[n].forEach(function (name) {
+    .reduce((res, n) => {
+      mapping.aryMethod[n].forEach(name => {
         res[name] = n;
       });
       return res;
@@ -18,7 +18,7 @@ const ary = methodArities();
 
 function iterateePos() {
   return _.keys(mapping.iterateeAry)
-    .reduce(function (res, name) {
+    .reduce((res, name) => {
       const methodAry = ary[name];
       const rearg = mapping.methodRearg[name] || mapping.aryRearg[methodAry];
       res[name] = rearg[1];

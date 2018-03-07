@@ -5,12 +5,12 @@ const data = require('./core/lodash-data');
 const enhance = require('./core/enhance');
 
 function checkOverrides(overrides) {
-  overrides.map(function (override) {
+  overrides.map(override => {
     return {
-      override: override,
+      override,
       target: data.aliasToReal[override] || override
     };
-  }).reduce(function (res, item) {
+  }).reduce((res, item) => {
     if (res[item.target]) {
       throw new Error(`\`override\` contains \`${res[item.target]}\` and \`${item.override}\` that target \`${item.target}\``);
     }
@@ -30,7 +30,7 @@ const create = function (context) {
   const info = enhance();
 
   return info.merge({
-    CallExpression: function (node) {
+    CallExpression(node) {
       const method = info.helpers.isMethodCall(node);
       if (!method) {
         return;

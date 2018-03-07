@@ -15,7 +15,7 @@ const create = function (context) {
   return {
     FunctionExpression: handleFunctionExpression,
     FunctionDeclaration: handleFunctionExpression,
-    ArrowFunctionExpression: function (node) {
+    ArrowFunctionExpression(node) {
       if (shouldCheckArrowFunctions) {
         handleFunctionExpression(node);
       }
