@@ -68,7 +68,7 @@ module.exports = function (imports) {
 
   function isIdentifierMethod(node) {
     return isIdentifier(node) &&
-      imports[node.name] !== undefined &&
+      Reflect.getOwnPropertyDescriptor(imports, node.name) !== undefined &&
       buildInfo({
         node,
         varname: node.name,
