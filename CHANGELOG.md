@@ -4,7 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
-- (none)
+### Added
+- Added lodash-fp to recommended preset ([#66], thanks [@iddan]]).
+- Added [`no-extraneous-partials`] rule ([#68]).
+
+### Fixed
+- Fixed [`no-unused-result`] by exempting [`_.defer`] and [`_.delay`] as side
+  effect methods ([#64], thanks [@friday]).
 
 ## [2.1.3] - 2016-11-08
 ### Fixed
@@ -154,22 +160,28 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`_.overEvery`]: https://lodash.com/docs#overEvery
 [`_.overSome`]: https://lodash.com/docs#overSome
 [`_.reject`]: https://lodash.com/docs#reject
+[`_.defer`]: https://lodash.com/docs#defer
+[`_.delay`]: https://lodash.com/docs#delay
 
 [`ast-utils`]: https://github.com/jfmengels/eslint-ast-utils
 [`eslint-ast-utils`]: https://github.com/jfmengels/eslint-ast-utils
 [`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#68]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/68
+[#64]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/64
 [#42]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/42
 [#36]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/36
 [#14]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/14
 [#11]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/11
+[#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
 
 [#41]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/41
 [#38]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/38
 [#30]: https://github.com/jfmengels/eslint-plugin-lodash-fp/issues/30
-[#13]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/13
 
+[@iddan]: https://github.com/iddan
+[@friday]: https://github.com/friday
 [@dfadler]: https://github.com/dfadler
 [@godu]: https://github.com/godu
 [@gunar]: https://github.com/gunar

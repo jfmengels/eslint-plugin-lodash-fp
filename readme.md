@@ -39,6 +39,7 @@ Configure it in `package.json`.
       "lodash-fp/no-extraneous-args": "error",
       "lodash-fp/no-extraneous-function-wrapping": "error",
       "lodash-fp/no-extraneous-iteratee-args": "error",
+      "lodash-fp/no-extraneous-partials": "error",
       "lodash-fp/no-for-each": "off",
       "lodash-fp/no-partial-of-curried": "error",
       "lodash-fp/no-single-composition": "error",
@@ -78,6 +79,7 @@ Configure it in `package.json`.
 - [no-chain](docs/rules/no-chain.md) - Forbid the use of [`_.chain`](https://lodash.com/docs#chain)
 - [no-extraneous-args](docs/rules/no-extraneous-args.md) - No extraneous arguments to methods with a fixed arity.
 - [no-extraneous-function-wrapping](docs/rules/no-extraneous-function-wrapping.md) - Avoid unnecessary function wrapping.
+- [no-extraneous-partials](docs/rules/no-extraneous-partials.md) - Avoid unnecessary intermediate partials in curried methods.
 - [no-extraneous-iteratee-args](docs/rules/no-extraneous-iteratee-args.md) - No extraneous parameters in iteratees.
 - [no-for-each](docs/rules/no-for-each.md) -  Forbid the use of [`_.forEach`](https://lodash.com/docs#forEach)
 - [no-partial-of-curried](docs/rules/no-partial-of-curried.md) - No use of [`_.partial`](https://lodash.com/docs#partial) on curried Lodash methods.
