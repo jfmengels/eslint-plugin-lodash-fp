@@ -6,6 +6,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [Unreleased]
 ### Added
 - Added lodash-fp to recommended preset ([#66], thanks [@iddan]]).
+- Added [`no-extraneous-partials`] rule ([#68]).
 
 ### Fixed
 - Fixed [`no-unused-result`] by exempting [`_.defer`] and [`_.delay`] as side
@@ -167,6 +168,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#68]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/68
 [#64]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/64
 [#42]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/42
 [#36]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/36
