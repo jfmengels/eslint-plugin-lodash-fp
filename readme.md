@@ -107,9 +107,6 @@ To enable this configuration, use the `extends` property in your `package.json`.
 {
 	"name": "my-awesome-project",
 	"eslintConfig": {
-		"plugins": [
-			"lodash-fp"
-		],
 		"extends": "plugin:lodash-fp/recommended"
 	}
 }
