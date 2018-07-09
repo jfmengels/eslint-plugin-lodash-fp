@@ -10,7 +10,7 @@
     "url": "github.com/jfmengels"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "scripts": {
     "test": "xo && nyc ava",
