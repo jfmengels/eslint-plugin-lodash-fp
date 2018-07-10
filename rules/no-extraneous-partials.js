@@ -19,7 +19,7 @@ module.exports = {
   create,
   meta: {
     docs: {
-      description: 'No extraneous partials in method calls.',
+      description: 'Avoid unnecessary intermediate partials in curried methods.',
       recommended: 'off'
     }
   }
