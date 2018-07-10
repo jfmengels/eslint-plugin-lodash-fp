@@ -1,6 +1,12 @@
 'use strict';
 
+const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+
+const hasSpread = _.flow(
+  _.get('arguments'),
+  _.some({type: 'SpreadElement'}),
+);
 
 const create = function (context) {
   const info = enhance();
@@ -9,7 +15,7 @@ const create = function (context) {
     CallExpression(node) {
       const callee = node.callee;
       const method = info.helpers.isMethodCall(callee);
-      if (method && !method.skipFixed && (callee.arguments.length || 1) < method.ary) {
+      if (method && !method.skipFixed && (callee.arguments.length || 1) < method.ary && !hasSpread(callee)) {
         context.report(node, `\`${method.name}\` should be called without an intermediate partial.`);
       }
     }
