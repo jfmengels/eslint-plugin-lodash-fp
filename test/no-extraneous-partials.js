@@ -23,6 +23,10 @@ function errors(message) {
 ruleTester.run('no-extraneous-partials', rule, {
   valid: [
     code('_.get(a, b);'),
+    code('_.get(a, b)(x);'),
+    code('_.getOr(a, b, o)(x);'),
+    code('_.find(a, b)(x);'),
+    code('_.toPairs()();'),
     code('_.getOr(a, b);'),
     code('_.getOr(a, b, c);'),
     code('_.flow(a, b, c, d, e, f)(g);'),

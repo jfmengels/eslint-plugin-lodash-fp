@@ -7,8 +7,9 @@ const create = function (context) {
 
   return info.merge({
     CallExpression(node) {
-      const method = info.helpers.isMethodCall(node.callee);
-      if (method && !method.skipFixed && method.ary) {
+      const callee = node.callee;
+      const method = info.helpers.isMethodCall(callee);
+      if (method && !method.skipFixed && (callee.arguments.length || 1) < method.ary) {
         context.report(node, `\`${method.name}\` should be called without an intermediate partial.`);
       }
     }
