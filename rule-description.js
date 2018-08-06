@@ -2,7 +2,7 @@
 
 const reqAll = require('req-all');
 const createIndex = require('create-eslint-index');
-const index = require('./');
+const index = require('.');
 
 const rules = reqAll('rules', {camelize: false});
 

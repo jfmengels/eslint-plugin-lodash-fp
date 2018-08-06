@@ -22,7 +22,7 @@ function isExtraneous(info, argNode) {
   const lastArgName = argNode.params[0].name;
   let callExpression;
   if (argNode.body.type === 'BlockStatement') {
-    const body = argNode.body.body;
+    const {body} = argNode.body;
     if (body.length !== 1 || body[0].type !== 'ReturnStatement' || body[0].argument === null) {
       return false;
     }
