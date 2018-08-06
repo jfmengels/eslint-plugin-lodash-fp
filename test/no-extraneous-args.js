@@ -25,13 +25,13 @@ ruleTester.run('no-extraneous-args', rule, {
     code('_.get(a, b);'),
     code('_.getOr(a, b);'),
     code('_.getOr(a, b, c);'),
-      // Should ignore when there are not enough arguments
+    // Should ignore when there are not enough arguments
     code('_.get(a);'),
-      // Should ignore methods that are not capped
+    // Should ignore methods that are not capped
     code('_.flow(a, b, c, d, e, f, g);'),
-      // Should ignore unknown methods
+    // Should ignore unknown methods
     code('_.foo(a, b, c, d, e, f, g);'),
-      // Should ignore non-Lodash methods
+    // Should ignore non-Lodash methods
     code('foo(a, b, c, d, e, f, g);')
   ],
   invalid: [

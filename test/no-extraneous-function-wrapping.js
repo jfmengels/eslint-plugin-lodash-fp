@@ -20,32 +20,32 @@ const error = {
 
 ruleTester.run('no-extraneous-function-wrapping', rule, {
   valid: [
-      // Not a Lodash function
+    // Not a Lodash function
     code(`_.map(function(x) { return get('a.b.c', x); });`),
-      // Iteratee does not have a parameter
+    // Iteratee does not have a parameter
     code(`_.map(function() { return _.get('a.b.c', x); });`),
-      // Iteratee as more than one parameter
+    // Iteratee as more than one parameter
     code(`_.map(function(x, y) { return _.get('a.b.c', x); });`),
     code(`_.map(function(y, x) { return _.get('a.b.c', x); });`),
-      // Does not use function's parameter
+    // Does not use function's parameter
     code(`_.map(function(x) { return _.get('a.b.c', y); });`),
-      // Does not use function's parameter as last parameter
+    // Does not use function's parameter as last parameter
     code(`_.map(function(x) { return _.get('a.b.c', x, y); });`),
     code(`function foo(x) { return _.isArray(y); }`),
-      // Does not return the value
+    // Does not return the value
     code(`function foo(x) { _.isArray(x); }`),
     code(`function foo({x}) { _.isArray(x); }`),
     code(`function foo({x}) { _.isArray(x); }`),
     code(`function foo({x}) { _.isArray({x}); }`),
     code(`function foo(x) { _.isArray({x}); }`),
     code(`function foo(x) { _.isArray({x})(x); }`),
-      // Not a call expression body
+    // Not a call expression body
     code(`function foo(x) { return 2; }`),
     code(`function foo(x) { return; }`),
     code(`_.map(x => 2);`),
-      // Calling result of call with one argument but not with function's parameter
+    // Calling result of call with one argument but not with function's parameter
     code(`function foo(x) { return bar(x)(y); }`),
-      // Uses argument somewhere else in the arguments
+    // Uses argument somewhere else in the arguments
     code(`_.map(x => bar(x, x));`),
     code(`_.map(x => x.bar(x));`),
     code(`_.map(x => x(x));`),

@@ -31,9 +31,9 @@ ruleTester.run('no-extraneous-partials', rule, {
     code('_.getOr(a, b);'),
     code('_.getOr(a, b, c);'),
     code('_.flow(a, b, c, d, e, f)(g);'),
-      // Should ignore unknown methods
+    // Should ignore unknown methods
     code('_.foo(a)(b);'),
-      // Should ignore non-Lodash methods
+    // Should ignore non-Lodash methods
     code('foo(a)(b);')
   ],
   invalid: [

@@ -43,7 +43,7 @@ ruleTester.run('consistent-compose', rule, {
       code: code(`compose(fn1, fn2)(x);`, false),
       options: ['flow']
     },
-      // Check assignments created via composition
+    // Check assignments created via composition
     {
       code: code(`var composed = flow(fn1, fn2); var b = composed(x);`, ['flow']),
       options: ['flow']
@@ -52,7 +52,7 @@ ruleTester.run('consistent-compose', rule, {
       code: code(`var composed = _.pipe(fn1, fn2); var b = composed(x);`),
       options: ['pipe']
     },
-      // Make sure there are no false positives on non-compose functions
+    // Make sure there are no false positives on non-compose functions
     {
       code: code(`_.partial(fn1, args)(x);`),
       options: ['flow']
@@ -77,12 +77,12 @@ ruleTester.run('consistent-compose', rule, {
       code: code(`var fn = _.map(fn2);`),
       options: ['flow']
     },
-      // Should not warn on ambiguously renamed imports
+    // Should not warn on ambiguously renamed imports
     {
       code: code(`import {map as flow} from 'lodash/fp'; flow(fn1, iterable);`, false),
       options: ['compose']
     },
-      // Should not warn if no compose function is specified
+    // Should not warn if no compose function is specified
     {
       code: code(`compose(fn1, fn2); pipe(fn1, fn2);`, ['compose', 'pipe']),
       options: []
@@ -156,7 +156,7 @@ ruleTester.run('consistent-compose', rule, {
         ...error, message: 'Forbidden use of `compose`. Use `flow` instead'
       }]
     },
-      // Should still warn on ambiguously renamed imports
+    // Should still warn on ambiguously renamed imports
     {
       code: code(`import {compose as flow} from 'lodash/fp'; flow(fn1, fn2)(x);`, false),
       options: ['flow'],

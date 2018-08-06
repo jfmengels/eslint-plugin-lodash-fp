@@ -27,7 +27,7 @@ ruleTester.run('no-unused-result', rule, {
     code(`var updated = _.set('a.b.c', 1000, obj);`),
     code(`_.map(fn, array).forEach(console.log);`),
     code(`foo(_.filter(fn, array));`),
-      // Exceptions
+    // Exceptions
     code(`_.forEach(fn);`),
     code(`_.forEachRight(fn);`),
     code(`_.each(fn);`),

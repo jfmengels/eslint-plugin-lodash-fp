@@ -18,8 +18,8 @@ const isFunctionDefinitionWithBlock = _.overSome([
  * @returns {node|undefined}
  */
 const getFirstFunctionLine = _.cond([
-    [isFunctionDefinitionWithBlock, _.property(['body', 'body', 0])],
-    [_.matches({type: 'ArrowFunctionExpression'}), _.property('body')]
+  [isFunctionDefinitionWithBlock, _.property(['body', 'body', 0])],
+  [_.matches({type: 'ArrowFunctionExpression'}), _.property('body')]
 ]);
 
 /**

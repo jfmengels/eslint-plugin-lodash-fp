@@ -1,7 +1,7 @@
 import fs from 'fs';
 import test from 'ava';
 import pify from 'pify';
-import index from '../';
+import index from '..';
 
 test('Every rule is defined in index file', async t => {
   const files = await pify(fs.readdir, Promise)('rules/');
