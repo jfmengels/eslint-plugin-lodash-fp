@@ -2,6 +2,7 @@
 
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const hasSpread = _.flow(
   _.get('arguments'),
@@ -27,7 +28,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Avoid unnecessary intermediate partials in curried methods.',
-      recommended: 'off'
+      recommended: 'off',
+      url: getDocsUrl(__filename)
     }
   }
 };

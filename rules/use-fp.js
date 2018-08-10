@@ -2,6 +2,7 @@
 
 const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const lodashRegex = /^lodash($|\/(?!fp))/;
 
@@ -31,7 +32,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Use lodash/fp instead of Lodash.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

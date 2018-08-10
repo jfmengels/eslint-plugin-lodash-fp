@@ -3,6 +3,7 @@
 const _ = require('lodash/fp');
 const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const isFunction = _.flow(
   _.get('type'),
@@ -85,7 +86,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Avoid unnecessary function wrapping.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

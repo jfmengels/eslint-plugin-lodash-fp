@@ -2,6 +2,7 @@
 
 const enhance = require('./core/enhance');
 const astUtil = require('./core/ast-util');
+const getDocsUrl = require('./core/get-docs-url');
 
 const create = function (context) {
   const info = enhance();
@@ -31,7 +32,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Prefer [`_.compact`](https://lodash.com/docs#compact) over [`_.filter`](https://lodash.com/docs#filter) with identity function.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

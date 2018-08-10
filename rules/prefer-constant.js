@@ -1,6 +1,7 @@
 'use strict';
 
 const astUtil = require('./core/ast-util');
+const getDocsUrl = require('./core/get-docs-url');
 
 const create = function (context) {
   const options = context.options[0] || {};
@@ -56,7 +57,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Prefer [`_.constant`](https://lodash.com/docs#constant) over functions returning literals.',
-      recommended: ['error', {arrowFunctions: false}]
+      recommended: ['error', {arrowFunctions: false}],
+      url: getDocsUrl(__filename)
     }
   }
 };

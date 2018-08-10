@@ -3,6 +3,7 @@
 const _ = require('lodash/fp');
 const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const isImportSpecifier = _.matches({type: 'ImportSpecifier'});
 const isObjectPattern = _.matches({type: 'ObjectPattern'});
@@ -44,7 +45,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbid destructuring of Lodash submodules.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

@@ -1,6 +1,7 @@
 'use strict';
 
 const astUtil = require('./core/ast-util');
+const getDocsUrl = require('./core/get-docs-url');
 
 function shouldCheckDeeper(node, nodeRight, toCompare) {
   return node.operator === '&&' &&
@@ -54,7 +55,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Prefer [`_.get`](https://lodash.com/docs#get) over multiple `&&`.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

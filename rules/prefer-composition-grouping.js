@@ -2,6 +2,7 @@
 
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const realName = _.property('realName');
 const groupableMethods = ['map', 'filter', 'reject'];
@@ -51,7 +52,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Prefer grouping similar methods in composition methods.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

@@ -2,6 +2,7 @@
 
 const enhance = require('./core/enhance');
 const astUtil = require('./core/ast-util');
+const getDocsUrl = require('./core/get-docs-url');
 
 function getFunctionArgumentsLength(node) {
   if (!node || !astUtil.isFunction(node)) {
@@ -36,7 +37,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'No extraneous parameters in iteratees.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

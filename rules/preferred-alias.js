@@ -3,6 +3,7 @@
 const _ = require('lodash/fp');
 const data = require('./core/lodash-data');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 function checkOverrides(overrides) {
   overrides.map(override => {
@@ -64,7 +65,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Limit the use of aliases.',
-      recommended: 'off'
+      recommended: 'off',
+      url: getDocsUrl(__filename)
     }
   }
 };

@@ -2,6 +2,7 @@
 
 const enhance = require('./core/enhance');
 const constants = require('./core/constants');
+const getDocsUrl = require('./core/get-docs-url');
 
 const create = function (context) {
   const info = enhance();
@@ -31,7 +32,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Enforce a consistent composition method.',
-      recommended: 'off'
+      recommended: 'off',
+      url: getDocsUrl(__filename)
     }
   }
 };
