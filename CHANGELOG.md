@@ -8,9 +8,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Added lodash-fp to recommended preset ([#66], thanks [@iddan]]).
 - Added [`no-extraneous-partials`] rule ([#68]).
 
+### Misc
+- Upgraded xo/ava etc ([#73]).
+
 ### Fixed
 - Fixed [`no-unused-result`] by exempting [`_.defer`] and [`_.delay`] as side
   effect methods ([#64], thanks [@friday]).
+- Fixed [`prefer-get`] not working with eslint 5 ([#73]).
 
 ## [2.1.3] - 2016-11-08
 ### Fixed
@@ -168,6 +172,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [`eslint`]: https://github.com/eslint/eslint
 [`eslint-plugin-lodash`]: https://github.com/wix/eslint-plugin-lodash
 
+[#73]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/73
 [#68]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/68
 [#64]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/64
 [#42]: https://github.com/jfmengels/eslint-plugin-lodash-fp/pull/42

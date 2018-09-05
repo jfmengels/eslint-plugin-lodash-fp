@@ -64,7 +64,7 @@ function isComputed(node) {
  */
 function isEquivalentExp(a, b) {
   return _.isEqualWith((left, right, key) => {
-    if (_.includes(key, ['loc', 'range', 'computed', 'start', 'end'])) {
+    if (_.includes(key, ['loc', 'range', 'computed', 'start', 'end', 'parent'])) {
       return true;
     }
     if (isComputed(left) || isComputed(right)) {
