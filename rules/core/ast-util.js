@@ -63,19 +63,23 @@ function isComputed(node) {
  * @returns {boolean}
  */
 function isEquivalentExp(a, b) {
-  return _.isEqualWith((left, right, key) => {
-    if (_.includes(key, ['loc', 'range', 'computed', 'start', 'end', 'parent'])) {
-      return true;
-    }
-    if (isComputed(left) || isComputed(right)) {
-      return false;
-    }
-    if (key === 'property') {
-      const leftValue = left.name || left.value;
-      const rightValue = right.name || right.value;
-      return leftValue === rightValue;
-    }
-  }, a, b);
+  return _.isEqualWith(
+    (left, right, key) => {
+      if (_.includes(key, ['loc', 'range', 'computed', 'start', 'end', 'parent'])) {
+        return true;
+      }
+      if (isComputed(left) || isComputed(right)) {
+        return false;
+      }
+      if (key === 'property') {
+        const leftValue = left.name || left.value;
+        const rightValue = right.name || right.value;
+        return leftValue === rightValue;
+      }
+    },
+    a,
+    b
+  );
 }
 
 /**
@@ -105,8 +109,7 @@ function isIdentityFunction(node) {
     returnedElement = node.body;
   }
 
-  return returnedElement.type === 'Identifier' &&
-    returnedElement.name === node.params[0].name;
+  return returnedElement.type === 'Identifier' && returnedElement.name === node.params[0].name;
 }
 
 module.exports = {
@@ -117,3 +120,22 @@ module.exports = {
   isFunction,
   isIdentityFunction
 };
+
+/*
+  rules/core/ast-util.js:32:1
+217
+  ⚠  32:1   Missing JSDoc return description.                     valid-jsdoc
+218
+  ⚠  34:4   Missing JSDoc parameter description for func.         valid-jsdoc
+219
+  ⚠  50:1   Missing JSDoc return description.                     valid-jsdoc
+220
+  ⚠  52:4   Missing JSDoc parameter description for node.         valid-jsdoc
+221
+  ⚠  59:1   Missing JSDoc return description.                     valid-jsdoc
+222
+  ⚠  61:4   Missing JSDoc parameter description for a.            valid-jsdoc
+223
+  ⚠  62:4   Missing JSDoc parameter description for b.            valid-jsdoc
+
+*/
