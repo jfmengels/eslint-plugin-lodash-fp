@@ -70,7 +70,6 @@ module.exports = {
       description: 'Limit the use of aliases.',
       recommended: 'off',
 
-      // preferred-alias.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/preferred-alias.md'
     }
   }

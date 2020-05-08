@@ -33,7 +33,6 @@ module.exports = {
         'Prefer [`_.compact`](https://lodash.com/docs#compact) over [`_.filter`](https://lodash.com/docs#filter) with identity function.',
       recommended: 'error',
 
-      // prefer-compact.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-compact.md'
     }
   }

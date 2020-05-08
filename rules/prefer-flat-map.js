@@ -59,7 +59,6 @@ module.exports = {
         'Prefer [`_.flatMap`](https://lodash.com/docs#flatMap) over consecutive [`_.map`](https://lodash.com/docs#map) and [`_.flatten`](https://lodash.com/docs#flatten).',
       recommended: 'error',
 
-      // prefer-flat-map.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-flat-map.md'
     }
   }

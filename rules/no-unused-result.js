@@ -37,7 +37,6 @@ module.exports = {
       description: 'Enforce that the result of a Lodash method call gets used.',
       recommended: 'error',
 
-      // no-unused-result.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-unused-result.md'
     }
   }

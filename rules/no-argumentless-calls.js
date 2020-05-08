@@ -28,7 +28,6 @@ module.exports = {
       description: 'Forbid argument-less calls of Lodash methods.',
       recommended: 'error',
 
-      // no-argumentless-calls.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-argumentless-calls.md'
     }
   }

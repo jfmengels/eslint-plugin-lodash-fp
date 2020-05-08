@@ -61,7 +61,6 @@ module.exports = {
       description: 'Enforce a consistent name for Lodash.',
       recommended: ['error', '_'],
 
-      // consistent-name.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/consistent-name.md'
     }
   }

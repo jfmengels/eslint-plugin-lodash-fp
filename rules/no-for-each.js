@@ -5,7 +5,7 @@ const enhance = require('./core/enhance');
 
 const isForEachCall = _.matches({
   type: 'MemberExpression',
-  property: { name: 'forEach' }
+  property: {name: 'forEach'}
 });
 
 const create = function (context) {
@@ -47,7 +47,6 @@ module.exports = {
       description: ' Forbid the use of [`_.forEach`](https://lodash.com/docs#forEach)',
       recommended: 'off',
 
-      // no-for-each.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-for-each.md'
     }
   }

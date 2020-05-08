@@ -34,7 +34,6 @@ module.exports = {
       description: 'Enforce at least two methods arguments for composition methods.',
       recommended: 'error',
 
-      // no-single-composition.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-single-composition.md'
     }
   }

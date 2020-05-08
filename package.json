@@ -61,6 +61,7 @@
     "arrowParens": "avoid",
     "printWidth": 120,
     "proseWrap": "preserve",
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "bracketSpacing": false
   }
 }
