@@ -47,7 +47,7 @@
     "inject-in-tag": "^1.1.1",
     "nyc": "^15.0.1",
     "pify": "^3.0.0",
-    "xo": "^0.22.0"
+    "xo": "^0.30.0"
   },
   "peerDependencies": {
     "eslint": ">=3"
