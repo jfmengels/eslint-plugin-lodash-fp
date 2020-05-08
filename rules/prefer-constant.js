@@ -58,9 +58,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Prefer [`_.constant`](https://lodash.com/docs#constant) over functions returning literals.',
-      recommended: ['error', { arrowFunctions: false }],
+      recommended: ['error', {arrowFunctions: false}],
 
-      // prefer-constant.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-constant.md'
     }
   }
