@@ -3,11 +3,13 @@
 const astUtil = require('./core/ast-util');
 
 function shouldCheckDeeper(node, nodeRight, toCompare) {
-  return node.operator === '&&' &&
+  return (
+    node.operator === '&&' &&
     nodeRight &&
     nodeRight.type === 'MemberExpression' &&
     !astUtil.isComputed(nodeRight) &&
-    (!toCompare || astUtil.isEquivalentExp(nodeRight, toCompare));
+    (!toCompare || astUtil.isEquivalentExp(nodeRight, toCompare))
+  );
 }
 
 const create = function (context) {
@@ -54,7 +56,9 @@ module.exports = {
     schema,
     docs: {
       description: 'Prefer [`_.get`](https://lodash.com/docs#get) over multiple `&&`.',
-      recommended: 'error'
+      recommended: 'error',
+
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-get.md'
     }
   }
 };

@@ -3,8 +3,7 @@
 const enhance = require('./core/enhance');
 
 function isLodashWrap(helpers, node) {
-  return node.type === 'Identifier' &&
-    helpers.isAnyLodash(node.name);
+  return node.type === 'Identifier' && helpers.isAnyLodash(node.name);
 }
 
 const create = function (context) {
@@ -26,7 +25,9 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbid the use of [`_.chain`](https://lodash.com/docs#chain)',
-      recommended: 'error'
+      recommended: 'error',
+
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-chain.md'
     }
   }
 };

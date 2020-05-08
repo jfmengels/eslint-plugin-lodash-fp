@@ -31,7 +31,9 @@ module.exports = {
   meta: {
     docs: {
       description: 'Use lodash/fp instead of Lodash.',
-      recommended: 'error'
+      recommended: 'error',
+
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/use-fp.md'
     }
   }
 };

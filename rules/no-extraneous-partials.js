@@ -3,10 +3,7 @@
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
 
-const hasSpread = _.flow(
-  _.get('arguments'),
-  _.some({type: 'SpreadElement'}),
-);
+const hasSpread = _.flow(_.get('arguments'), _.some({type: 'SpreadElement'}));
 
 const create = function (context) {
   const info = enhance();
@@ -27,7 +24,9 @@ module.exports = {
   meta: {
     docs: {
       description: 'Avoid unnecessary intermediate partials in curried methods.',
-      recommended: 'off'
+      recommended: 'off',
+
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-extraneous-partials.md'
     }
   }
 };
