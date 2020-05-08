@@ -18,7 +18,7 @@ const create = function (context) {
 
   const expStates = [];
   function getState() {
-    return expStates[expStates.length - 1] || { depth: 0 };
+    return expStates[expStates.length - 1] || {depth: 0};
   }
 
   /* eslint quote-props: [2, "as-needed"] */
@@ -28,7 +28,7 @@ const create = function (context) {
       const rightMemberExp = astUtil.isEqEqEq(node.right) && state.depth === 0 ? node.right.left : node.right;
 
       if (shouldCheckDeeper(node, rightMemberExp, state.node)) {
-        expStates.push({ depth: state.depth + 1, node: rightMemberExp.object });
+        expStates.push({depth: state.depth + 1, node: rightMemberExp.object});
         if (astUtil.isEquivalentExp(node.left, rightMemberExp.object) && state.depth >= ruleDepth - 2) {
           context.report(node, 'Prefer `_.get` or `_.has` over an `&&` chain');
         }
@@ -58,7 +58,6 @@ module.exports = {
       description: 'Prefer [`_.get`](https://lodash.com/docs#get) over multiple `&&`.',
       recommended: 'error',
 
-      // prefer-get.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-get.md'
     }
   }
