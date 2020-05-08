@@ -25,7 +25,10 @@ module.exports = {
   meta: {
     docs: {
       description: 'No use of [`_.partial`](https://lodash.com/docs#partial) on curried Lodash methods.',
-      recommended: 'error'
+      recommended: 'error',
+
+      // no-partial-of-curried.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-partial-of-curried.md'
     }
   }
 };

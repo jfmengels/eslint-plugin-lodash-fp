@@ -9,8 +9,7 @@ const create = function (context) {
   const isFilterCall = info.helpers.isMethodCallOf('filter');
 
   function isIdentity(node) {
-    return info.helpers.isMethodOf('identity', node) ||
-      astUtil.isIdentityFunction(node);
+    return info.helpers.isMethodOf('identity', node) || astUtil.isIdentityFunction(node);
   }
 
   function isFilterWithIdentity(node) {
@@ -30,8 +29,12 @@ module.exports = {
   create,
   meta: {
     docs: {
-      description: 'Prefer [`_.compact`](https://lodash.com/docs#compact) over [`_.filter`](https://lodash.com/docs#filter) with identity function.',
-      recommended: 'error'
+      description:
+        'Prefer [`_.compact`](https://lodash.com/docs#compact) over [`_.filter`](https://lodash.com/docs#filter) with identity function.',
+      recommended: 'error',
+
+      // prefer-compact.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-compact.md'
     }
   }
 };

@@ -3,7 +3,10 @@
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
 
-const isForEachCall = _.matches({type: 'MemberExpression', property: {name: 'forEach'}});
+const isForEachCall = _.matches({
+  type: 'MemberExpression',
+  property: { name: 'forEach' }
+});
 
 const create = function (context) {
   const info = enhance();
@@ -42,7 +45,10 @@ module.exports = {
     schema,
     docs: {
       description: ' Forbid the use of [`_.forEach`](https://lodash.com/docs#forEach)',
-      recommended: 'off'
+      recommended: 'off',
+
+      // no-for-each.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-for-each.md'
     }
   }
 };

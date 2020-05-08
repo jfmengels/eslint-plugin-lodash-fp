@@ -35,7 +35,8 @@ const create = function (context) {
     },
     'Program:exit'() {
       const importValues = _.values(info.imports);
-      if (// `lodash`/`lodash/fp` was imported
+      if (
+        // `lodash`/`lodash/fp` was imported
         (importValues.indexOf('') !== -1 || importValues.indexOf('fp') !== -1) &&
         // But <expectedName> does not refer to either `lodash` or `lodash/fp`
         !info.helpers.isAnyLodash(expectedName)
@@ -46,9 +47,11 @@ const create = function (context) {
   });
 };
 
-const schema = [{
-  type: 'string'
-}];
+const schema = [
+  {
+    type: 'string'
+  }
+];
 
 module.exports = {
   create,
@@ -56,7 +59,10 @@ module.exports = {
     schema,
     docs: {
       description: 'Enforce a consistent name for Lodash.',
-      recommended: ['error', '_']
+      recommended: ['error', '_'],
+
+      // consistent-name.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/consistent-name.md'
     }
   }
 };

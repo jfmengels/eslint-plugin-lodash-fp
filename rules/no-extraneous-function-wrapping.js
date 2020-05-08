@@ -10,8 +10,7 @@ const isFunction = _.flow(
 );
 
 function hasSingleIdentifierParam(node) {
-  return node.params.length === 1 &&
-    node.params[0].type === 'Identifier';
+  return node.params.length === 1 && node.params[0].type === 'Identifier';
 }
 
 function isExtraneous(info, argNode) {
@@ -22,7 +21,7 @@ function isExtraneous(info, argNode) {
   const lastArgName = argNode.params[0].name;
   let callExpression;
   if (argNode.body.type === 'BlockStatement') {
-    const {body} = argNode.body;
+    const { body } = argNode.body;
     if (body.length !== 1 || body[0].type !== 'ReturnStatement' || body[0].argument === null) {
       return false;
     }
@@ -32,7 +31,8 @@ function isExtraneous(info, argNode) {
   }
 
   // If <SOMETHING> is not a call expression
-  if (callExpression.type !== 'CallExpression' ||
+  if (
+    callExpression.type !== 'CallExpression' ||
     // Or if `lastArgName` is used somewhere else in the function
     astUtils.containsIdentifier(lastArgName, callExpression.callee) ||
     // Or in `lastArgName` is used among the other arguments
@@ -52,9 +52,7 @@ function isExtraneous(info, argNode) {
   }
   const calleeArgs = callExpression.arguments;
   const lastCalleeArg = calleeArgs[calleeArgs.length - 1];
-  return lastCalleeArg &&
-    lastCalleeArg.type === 'Identifier' &&
-    lastCalleeArg.name === lastArgName;
+  return lastCalleeArg && lastCalleeArg.type === 'Identifier' && lastCalleeArg.name === lastArgName;
 }
 
 const errorMessage = 'Found extraneous function wrap around curried method. Pass inner function directly';
@@ -85,7 +83,11 @@ module.exports = {
   meta: {
     docs: {
       description: 'Avoid unnecessary function wrapping.',
-      recommended: 'error'
+      recommended: 'error',
+
+      // no-extraneous-function-wrapping.js
+      url:
+        'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-extraneous-function-wrapping.md'
     }
   }
 };

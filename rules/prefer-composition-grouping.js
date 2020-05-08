@@ -51,7 +51,10 @@ module.exports = {
   meta: {
     docs: {
       description: 'Prefer grouping similar methods in composition methods.',
-      recommended: 'error'
+      recommended: 'error',
+
+      // prefer-composition-grouping.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-composition-grouping.md'
     }
   }
 };

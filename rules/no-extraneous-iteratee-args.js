@@ -23,9 +23,11 @@ const create = function (context) {
 
       const nArgs = getFunctionArgumentsLength(node.arguments[method.iterateePos]);
       if (nArgs > method.iterateeAry) {
-        context.report(node,
+        context.report(
+          node,
           `Too many parameters in \`${method.name}\`'s iteratee, it is only given ` +
-          `${method.iterateeAry} argument${method.iterateeAry === 1 ? '' : 's'}.`);
+            `${method.iterateeAry} argument${method.iterateeAry === 1 ? '' : 's'}.`
+        );
       }
     }
   });
@@ -36,7 +38,10 @@ module.exports = {
   meta: {
     docs: {
       description: 'No extraneous parameters in iteratees.',
-      recommended: 'error'
+      recommended: 'error',
+
+      // no-extraneous-iteratee-args.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-extraneous-iteratee-args.md'
     }
   }
 };

@@ -4,10 +4,7 @@ const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
 const constants = require('./core/constants');
 
-const isForEach = _.flow(
-  _.get('realName'),
-  _.includes(_, constants.SIDE_EFFECT_METHODS)
-);
+const isForEach = _.flow(_.get('realName'), _.includes(_, constants.SIDE_EFFECT_METHODS));
 
 function isMethodCall(info, node) {
   const method = info.helpers.isMethodCall(node);
@@ -38,7 +35,10 @@ module.exports = {
   meta: {
     docs: {
       description: 'Enforce that the result of a Lodash method call gets used.',
-      recommended: 'error'
+      recommended: 'error',
+
+      // no-unused-result.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-unused-result.md'
     }
   }
 };

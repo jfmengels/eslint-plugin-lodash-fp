@@ -4,8 +4,8 @@ const _ = require('lodash/fp');
 const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
 
-const isImportSpecifier = _.matches({type: 'ImportSpecifier'});
-const isObjectPattern = _.matches({type: 'ObjectPattern'});
+const isImportSpecifier = _.matches({ type: 'ImportSpecifier' });
+const isObjectPattern = _.matches({ type: 'ObjectPattern' });
 
 const errorMessage = 'Import of Lodash submodule should not be destructured';
 
@@ -14,9 +14,7 @@ function isLodashSubModule(source) {
 }
 
 function isRequireOfLodashSubModule(node) {
-  return astUtils.isStaticRequire(node) &&
-    node.arguments.length > 0 &&
-    isLodashSubModule(node.arguments[0].value);
+  return astUtils.isStaticRequire(node) && node.arguments.length > 0 && isLodashSubModule(node.arguments[0].value);
 }
 
 const create = function (context) {
@@ -44,7 +42,10 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbid destructuring of Lodash submodules.',
-      recommended: 'error'
+      recommended: 'error',
+
+      // no-submodule-destructuring.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-submodule-destructuring.md'
     }
   }
 };

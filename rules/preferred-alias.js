@@ -5,18 +5,22 @@ const data = require('./core/lodash-data');
 const enhance = require('./core/enhance');
 
 function checkOverrides(overrides) {
-  overrides.map(override => {
-    return {
-      override,
-      target: data.aliasToReal[override] || override
-    };
-  }).reduce((res, item) => {
-    if (res[item.target]) {
-      throw new Error(`\`override\` contains \`${res[item.target]}\` and \`${item.override}\` that target \`${item.target}\``);
-    }
-    res[item.target] = item.override;
-    return res;
-  }, {});
+  overrides
+    .map(override => {
+      return {
+        override,
+        target: data.aliasToReal[override] || override
+      };
+    })
+    .reduce((res, item) => {
+      if (res[item.target]) {
+        throw new Error(
+          `\`override\` contains \`${res[item.target]}\` and \`${item.override}\` that target \`${item.target}\``
+        );
+      }
+      res[item.target] = item.override;
+      return res;
+    }, {});
 }
 
 function wantedAlias(overrides, method) {
@@ -64,7 +68,10 @@ module.exports = {
     schema,
     docs: {
       description: 'Limit the use of aliases.',
-      recommended: 'off'
+      recommended: 'off',
+
+      // preferred-alias.js
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/preferred-alias.md'
     }
   }
 };
