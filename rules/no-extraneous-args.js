@@ -43,7 +43,9 @@ module.exports = {
   meta: {
     docs: {
       description: 'No extraneous arguments to methods with a fixed arity.',
-      recommended: 'error'
+      recommended: 'error',
+
+      url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/no-extraneous-args.md'
     }
   }
 };
