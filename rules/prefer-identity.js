@@ -40,9 +40,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Prefer [`_.identity`](https://lodash.com/docs#identity) over functions returning their argument.',
-      recommended: ['error', { arrowFunctions: false }],
+      recommended: ['error', {arrowFunctions: false}],
 
-      // prefer-identity.js
       url: 'https://github.com/jfmengels/eslint-plugin-lodash-fp/blob/master/docs/rules/prefer-identity.md'
     }
   }
