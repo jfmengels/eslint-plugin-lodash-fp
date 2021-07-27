@@ -13,5 +13,9 @@ module.exports = {
       return `import {${header.join(', ')}} from 'lodash/fp';${content}`;
     }
     return importHeader(header || '_') + content;
+  },
+
+  toString(value) {
+    return `${value}`;
   }
 };
