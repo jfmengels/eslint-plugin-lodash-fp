@@ -21,7 +21,7 @@ function strippedModuleName(strippedName, name) {
 }
 
 module.exports = function () {
-  const imports = {};
+  const imports = Object.create(null);
 
   // `ImportDeclaration` and `VariableDeclarator` will find Lodash imports and require()
   // and fill `imports` with what is found
