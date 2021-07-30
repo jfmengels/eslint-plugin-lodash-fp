@@ -1,6 +1,7 @@
 'use strict';
 
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const create = function (context) {
   const info = enhance();
@@ -25,7 +26,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'No use of [`_.partial`](https://lodash.com/docs#partial) on curried Lodash methods.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

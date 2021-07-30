@@ -2,6 +2,7 @@
 
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const isForEachCall = _.matches({type: 'MemberExpression', property: {name: 'forEach'}});
 
@@ -42,7 +43,8 @@ module.exports = {
     schema,
     docs: {
       description: ' Forbid the use of [`_.forEach`](https://lodash.com/docs#forEach)',
-      recommended: 'off'
+      recommended: 'off',
+      url: getDocsUrl(__filename)
     }
   }
 };

@@ -2,6 +2,7 @@
 
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 function findIndexByName(name) {
   return _.findIndex(_.eq(name));
@@ -56,7 +57,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Prefer [`_.flatMap`](https://lodash.com/docs#flatMap) over consecutive [`_.map`](https://lodash.com/docs#map) and [`_.flatten`](https://lodash.com/docs#flatten).',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

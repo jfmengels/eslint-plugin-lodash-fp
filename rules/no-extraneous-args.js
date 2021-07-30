@@ -3,6 +3,7 @@
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
 const data = require('./core/lodash-data');
+const getDocsUrl = require('./core/get-docs-url');
 
 function reportMessage(method, alternative) {
   const baseMessage = `\`${method.name}\` is capped at ${method.ary} arguments`;
@@ -43,7 +44,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'No extraneous arguments to methods with a fixed arity.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

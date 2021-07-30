@@ -2,6 +2,7 @@
 
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const exceptions = ['uniqueId', 'now', 'noConflict', 'runInContext'];
 
@@ -26,7 +27,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbid argument-less calls of Lodash methods.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

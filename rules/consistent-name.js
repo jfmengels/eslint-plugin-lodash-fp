@@ -3,6 +3,7 @@
 const _ = require('lodash/fp');
 const astUtils = require('eslint-ast-utils');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 function isLodash(name) {
   return name === 'lodash' || name === 'lodash/fp';
@@ -56,7 +57,8 @@ module.exports = {
     schema,
     docs: {
       description: 'Enforce a consistent name for Lodash.',
-      recommended: ['error', '_']
+      recommended: ['error', '_'],
+      url: getDocsUrl(__filename)
     }
   }
 };

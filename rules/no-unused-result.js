@@ -3,6 +3,7 @@
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
 const constants = require('./core/constants');
+const getDocsUrl = require('./core/get-docs-url');
 
 const isForEach = _.flow(
   _.get('realName'),
@@ -38,7 +39,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Enforce that the result of a Lodash method call gets used.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

@@ -2,6 +2,7 @@
 
 const _ = require('lodash/fp');
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 const create = function (context) {
   const info = enhance();
@@ -32,7 +33,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Enforce at least two methods arguments for composition methods.',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };

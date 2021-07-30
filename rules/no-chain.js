@@ -1,6 +1,7 @@
 'use strict';
 
 const enhance = require('./core/enhance');
+const getDocsUrl = require('./core/get-docs-url');
 
 function isLodashWrap(helpers, node) {
   return node.type === 'Identifier' &&
@@ -26,7 +27,8 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbid the use of [`_.chain`](https://lodash.com/docs#chain)',
-      recommended: 'error'
+      recommended: 'error',
+      url: getDocsUrl(__filename)
     }
   }
 };
