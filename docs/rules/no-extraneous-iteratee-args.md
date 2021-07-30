@@ -2,7 +2,7 @@
 
 In `lodash/fp`, iteratees (the functions passed to methods like [`_.map`], [`_.reduce`] or [`_.forEach`]) have their arguments [capped], meaning that instead of being called with `iteratee(value, index|key)`, they are called with `iteratee(value)`.
 
-That is done to avoid problems with iteratees that can accept multiple arguments. Try out `['1', '2', '3'].forEach(parseInt);` and see if the result is the same as what you expected it to be.
+That is done to avoid problems with iteratees that can accept multiple arguments. Try out `['1', '2', '3'].map(parseInt);` and see if the result is the same as what you expected it to be.
 
 This rule will report an error when you are passing an iteratee to a Lodash method, that accepts more arguments than that will be passed to it.
 Note that as of this moment, this rule will not report anything when being passed a function that is declared somewhere else in the code, see passing example below.
